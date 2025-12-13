@@ -354,20 +354,26 @@ import Layout from '../layouts/Layout.astro';
 
 </Layout>
 
-<script>
-    function openTab(tabName: string) {
+<script is:inline>
+    function openTab(tabName) {
         var i, tabContent, tabBtn;
         tabContent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabContent.length; i++) { tabContent[i].classList.remove("active"); }
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].classList.remove("active");
+        }
         tabBtn = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tabBtn.length; i++) { tabBtn[i].classList.remove("active"); }
-        document.getElementById("tab-" + tabName)?.classList.add("active");
-        document.getElementById("btn-" + tabName)?.classList.add("active");
+        for (i = 0; i < tabBtn.length; i++) {
+            tabBtn[i].classList.remove("active");
+        }
+        var tabElement = document.getElementById("tab-" + tabName);
+        var btnElement = document.getElementById("btn-" + tabName);
+        if (tabElement) tabElement.classList.add("active");
+        if (btnElement) btnElement.classList.add("active");
     }
 
-    function toggleFAQ(button: HTMLButtonElement) {
-        const content = button.nextElementSibling as HTMLElement;
-        const expanded = button.getAttribute('aria-expanded') === 'true';
+    function toggleFAQ(button) {
+        var content = button.nextElementSibling;
+        var expanded = button.getAttribute('aria-expanded') === 'true';
 
         button.setAttribute('aria-expanded', (!expanded).toString());
         if (!expanded) {
