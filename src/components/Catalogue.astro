@@ -1,0 +1,189 @@
+---
+// src/components/Catalogue.astro
+---
+
+<section id="catalogue" class="py-24 bg-black relative px-4 md:px-12">
+    <div class="max-w-7xl mx-auto mb-16 overflow-x-auto pb-4">
+        <div class="flex gap-8 md:gap-12 min-w-max border-b border-white/10 px-4">
+            <button class="tab-btn active pb-4 text-lg font-display uppercase font-bold tracking-widest text-gray-400" data-target="ouvertures">Ouvertures</button>
+            <button class="tab-btn pb-4 text-lg font-display uppercase font-bold tracking-widest text-gray-400" data-target="exterieur">Extérieur</button>
+            <button class="tab-btn pb-4 text-lg font-display uppercase font-bold tracking-widest text-gray-400" data-target="stores">Stores</button>
+            <button class="tab-btn pb-4 text-lg font-display uppercase font-bold tracking-widest text-gray-400" data-target="automatisations">Automatisation</button>
+            <button class="tab-btn pb-4 text-lg font-display uppercase font-bold tracking-widest text-gray-400" data-target="rangements">Rangements</button>
+            <button class="tab-btn pb-4 text-lg font-display uppercase font-bold tracking-widest text-gray-400" data-target="autres">Autres</button>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto min-h-[600px]">
+
+        <div id="tab-ouvertures" class="tab-content active grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/fenetre.jpg" class="card-img" alt="Fenêtre PVC Oise"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Fenêtres</h3><p class="text-gray-400 text-sm font-light mb-6">PVC & Aluminium pour l'Oise (60).</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/porte-entree.webp" class="card-img" alt="Porte Entrée 77"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Portes d'entrée</h3><p class="text-gray-400 text-sm font-light mb-6">Sécurité et Design sur mesure.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/porte-interieur.webp" class="card-img" alt="Porte Intérieur"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Portes d'intérieur</h3><p class="text-gray-400 text-sm font-light mb-6">Modernes ou classiques.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/porte-garage.webp" class="card-img" alt="Garage"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Portes de Garage</h3><p class="text-gray-400 text-sm font-light mb-6">Motorisées et isolantes.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/volet-roulant.webp" class="card-img" alt="Volets Roulants Oise"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Volets Roulants</h3><p class="text-gray-400 text-sm font-light mb-6">Installation 60 & 77.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/volets.webp" class="card-img" alt="Volets Battants"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Volets Battants</h3><p class="text-gray-400 text-sm font-light mb-6">Charme & Robustesse.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+        </div>
+
+        <div id="tab-exterieur" class="tab-content grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/portail.webp" class="card-img" alt="Portail Alu Plessis-Belleville"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Portails</h3><p class="text-gray-400 text-sm font-light mb-6">Alu sur mesure.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/pergola.webp" class="card-img" alt="Pergola Oise"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Pergolas</h3><p class="text-gray-400 text-sm font-light mb-6">Bioclimatiques.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/cloture.webp" class="card-img" alt="Clôture"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Clôtures</h3><p class="text-gray-400 text-sm font-light mb-6">Assorties au portail.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/veranda.jpg" class="card-img" alt="Véranda"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Vérandas</h3><p class="text-gray-400 text-sm font-light mb-6">Pièce de vie lumineuse.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/carport.webp" class="card-img" alt="Carport"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Carports</h3><p class="text-gray-400 text-sm font-light mb-6">Protection véhicule.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/garde-corps-barreaux.png" class="card-img" alt="Garde-corps"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Garde-corps</h3><p class="text-gray-400 text-sm font-light mb-6">Sécurité terrasse.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+        </div>
+
+        <div id="tab-stores" class="tab-content grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/store.jpg" class="card-img" alt="Stores intérieurs"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Stores Intérieurs</h3><p class="text-gray-400 text-sm font-light mb-6">Vénitiens, Enrouleurs.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/store-banne.webp" class="card-img" alt="Stores Bannes"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Stores Bannes</h3><p class="text-gray-400 text-sm font-light mb-6">Protection solaire.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/bg-moustiquaire.jpg" class="card-img" alt="Moustiquaires"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Moustiquaires</h3><p class="text-gray-400 text-sm font-light mb-6">Tranquillité absolue.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+        </div>
+
+        <div id="tab-automatisations" class="tab-content grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/domotique.webp" class="card-img" alt="Domotique"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Domotique</h3><p class="text-gray-400 text-sm font-light mb-6">Maison connectée Somfy.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/volet-roulant.webp" class="card-img" alt="Motorisation"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Motorisations</h3><p class="text-gray-400 text-sm font-light mb-6">Portails & Volets.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+        </div>
+
+        <div id="tab-rangements" class="tab-content grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/abris-jardin-berry.avif" class="card-img" alt="Abris Jardin"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Abris de Jardin</h3><p class="text-gray-400 text-sm font-light mb-6">Rangement esthétique.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/abris-bois-berry.avif" class="card-img" alt="Abris Bois"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Abris à Bois</h3><p class="text-gray-400 text-sm font-light mb-6">Protection optimale.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+            <div class="product-card group cursor-pointer">
+                <div class="card-img-container"><img src="/public/images/bg-coffre-jardin.avif" class="card-img" alt="Coffres"><div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div></div>
+                <div class="p-8 relative"><div class="gold-line"></div><h3 class="text-3xl font-display font-bold uppercase text-white mb-2 mt-4">Coffres Jardin</h3><p class="text-gray-400 text-sm font-light mb-6">Stockage malin.</p><span class="text-gold text-xs font-bold uppercase tracking-widest group-hover:underline">Configurer →</span></div>
+            </div>
+        </div>
+
+        <div id="tab-autres" class="tab-content grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="bg-carbon p-8 border border-white/5 hover:border-gold transition group h-full flex flex-col justify-center text-center">
+                <h3 class="text-xl font-display font-bold uppercase text-white mb-2">Grilles de Défense</h3><span class="text-gold text-xs font-bold uppercase tracking-widest mt-2 group-hover:translate-x-1 transition">Découvrir →</span>
+            </div>
+            <div class="bg-carbon p-8 border border-white/5 hover:border-gold transition group h-full flex flex-col justify-center text-center">
+                <h3 class="text-xl font-display font-bold uppercase text-white mb-2">Dressing</h3><span class="text-gold text-xs font-bold uppercase tracking-widest mt-2 group-hover:translate-x-1 transition">Découvrir →</span>
+            </div>
+            <div class="bg-carbon p-8 border border-white/5 hover:border-gold transition group h-full flex flex-col justify-center text-center">
+                <h3 class="text-xl font-display font-bold uppercase text-white mb-2">Accessoires VR</h3><span class="text-gold text-xs font-bold uppercase tracking-widest mt-2 group-hover:translate-x-1 transition">Découvrir →</span>
+            </div>
+            <div class="bg-carbon p-8 border border-white/5 hover:border-gold transition group h-full flex flex-col justify-center text-center">
+                <h3 class="text-xl font-display font-bold uppercase text-white mb-2">Accessoires VB</h3><span class="text-gold text-xs font-bold uppercase tracking-widest mt-2 group-hover:translate-x-1 transition">Découvrir →</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Styles spécifiques aux onglets */
+    .tab-btn {
+        opacity: 0.6;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s;
+    }
+    .tab-btn:hover,
+    .tab-btn.active {
+        opacity: 1;
+        color: #ffb103;
+        border-bottom: 2px solid #ffb103;
+    }
+
+    .tab-content {
+        display: none;
+        animation: slideUp 0.5s ease forwards;
+    }
+
+    .tab-content.active {
+        display: grid;
+    }
+
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<script>
+    // Logique isolée pour le composant Catalogue
+    function initTabs() {
+        const buttons = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.tab-content');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+
+                // Reset classes
+                buttons.forEach(b => b.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                // Set Active
+                btn.classList.add('active');
+                const targetContent = document.getElementById(`tab-${targetId}`);
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+            });
+        });
+    }
+
+    // Lancer au chargement initial
+    initTabs();
+
+    // Compatibilité avec les View Transitions d'Astro (si activées un jour)
+    document.addEventListener('astro:page-load', initTabs);
+</script>

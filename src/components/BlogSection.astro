@@ -1,0 +1,285 @@
+---
+// src/components/BlogSection.astro
+
+// Données des articles mises à jour
+const posts = [
+    {
+        id: 1,
+        category: "Style",
+        date: "12 Décembre 2024",
+        title: "L'Art de la Fenêtre",
+        excerpt: "La fenêtre n'est pas qu'un produit technique, c'est une ouverture sur le monde qui définit le caractère de votre façade.",
+        image: "/public/images/art-fenetre.webp",
+        buttonLabel: "Lire l'analyse",
+        // Contenu de la modale (Texte complet)
+        content: `
+      <p class="mb-4 text-lg text-white">Longtemps considérée comme un simple élément fonctionnel, la fenêtre est aujourd'hui un objet de décoration à part entière.</p>
+      <h4 class="text-xl font-bold text-gold mb-3 mt-6">L'importance du clair de jour</h4>
+      <p class="mb-4">Les tendances 2025 privilégient les profils ultra-fins. Que ce soit en Aluminium ou en PVC nouvelle génération, l'objectif est de maximiser la surface vitrée pour laisser entrer la lumière naturelle et chauffer votre intérieur gratuitement.</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+        <div class="bg-white/5 p-4 rounded border border-white/10">
+            <strong class="text-gold block mb-2">Design Intérieur</strong>
+            <p class="text-sm text-gray-400">Poignées centrées, paumelles cachées et coloris mats pour une intégration parfaite.</p>
+        </div>
+        <div class="bg-white/5 p-4 rounded border border-white/10">
+             <strong class="text-gold block mb-2">Performance</strong>
+            <p class="text-sm text-gray-400">Le style ne sacrifie rien à l'isolation thermique (Uw) et acoustique.</p>
+        </div>
+      </div>
+      <p>Venez découvrir nos gammes "Art & Fenêtres" dans notre showroom pour voir la différence.</p>
+    `
+    },
+    {
+        id: 2,
+        category: "Aide",
+        date: "28 Novembre 2024",
+        title: "Comment choisir son portail Cetal",
+        excerpt: "Choisir le bon portail est une décision importante qui allie sécurité, esthétique et praticité pour votre entrée.",
+        image: "/public/images/portail-battant.webp",
+        buttonLabel: "Le guide complet",
+        content: `
+      <p class="mb-6">Cetal est la référence du portail en aluminium thermolaqué. Mais face à la multitude de collections, comment faire le bon choix ?</p>
+      
+      <h5 class="text-gold font-display text-xl font-bold mb-4">1. Le type d'ouverture</h5>
+      <ul class="list-disc pl-5 mb-6 space-y-2 text-gray-300 marker:text-gold">
+        <li><strong>Battant :</strong> Le charme classique, nécessite un espace de dégagement vers l'intérieur (ou l'extérieur).</li>
+        <li><strong>Coulissant :</strong> Idéal pour les entrées en pente ou pour gagner de la place (refoulement latéral nécessaire).</li>
+      </ul>
+
+      <h5 class="text-gold font-display text-xl font-bold mb-4">2. Le style & l'intimité</h5>
+      <p class="mb-4">Cetal propose des modèles <strong>pleins</strong> pour une intimité totale, <strong>ajourés</strong> pour laisser passer le vent, ou <strong>semi-ajourés</strong> pour un compromis parfait.</p>
+      
+      <div class="bg-white/5 p-6 rounded border-l-4 border-gold">
+        <p class="italic text-gray-300">"Le label Qualicoat Seaside garantit une tenue de la couleur exceptionnelle, même dans des conditions difficiles."</p>
+      </div>
+    `
+    },
+    {
+        id: 3,
+        category: "Tendance",
+        date: "15 Octobre 2024",
+        title: "Volets connectés : l'avenir du confort ?",
+        excerpt: "La domotique révolutionne notre façon de vivre en automatisant et contrôlant à distance vos fermetures.",
+        image: "/public/images/domotique.webp",
+        buttonLabel: "Découvrir",
+        content: `
+      <p class="mb-4">Imaginez : vos volets se ferment automatiquement à la tombée de la nuit pour conserver la chaleur, et s'ouvrent au lever du soleil pour un réveil en douceur.</p>
+      
+      <div class="space-y-4 mb-8">
+        <div class="flex gap-4 items-start">
+            <div class="bg-gold/10 w-10 h-10 flex flex-shrink-0 items-center justify-center rounded text-gold text-lg"><i class="fa-solid fa-mobile-screen"></i></div>
+            <div>
+                <h4 class="font-bold text-white">Pilotage à distance</h4>
+                <p class="text-sm text-gray-400">Avec votre smartphone, vérifiez si vous avez bien fermé la maison, où que vous soyez.</p>
+            </div>
+        </div>
+        <div class="flex gap-4 items-start">
+            <div class="bg-gold/10 w-10 h-10 flex flex-shrink-0 items-center justify-center rounded text-gold text-lg"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+                <h4 class="font-bold text-white">Simulation de présence</h4>
+                <p class="text-sm text-gray-400">Pendant vos vacances, programmez des scénarios pour faire vivre la maison et dissuader les intrus.</p>
+            </div>
+        </div>
+        <div class="flex gap-4 items-start">
+            <div class="bg-gold/10 w-10 h-10 flex flex-shrink-0 items-center justify-center rounded text-gold text-lg"><i class="fa-solid fa-leaf"></i></div>
+            <div>
+                <h4 class="font-bold text-white">Économies d'énergie</h4>
+                <p class="text-sm text-gray-400">Associés à des capteurs solaires, les volets s'adaptent à la météo pour optimiser l'isolation thermique.</p>
+            </div>
+        </div>
+      </div>
+      
+      <p>Nous installons les solutions Somfy, leaders du marché pour leur fiabilité et leur simplicité.</p>
+    `
+    }
+];
+---
+
+<section class="py-24 bg-dark border-t border-white/5 relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <span class="text-gold font-bold tracking-widest uppercase text-xs mb-2 block">Le Journal de l'Expert</span>
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase text-white">Conseils & <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-600">Tendances.</span></h2>
+            </div>
+            <a href="#" class="hidden md:flex items-center gap-2 text-white text-xs font-bold uppercase tracking-widest hover:text-gold transition group">
+                Voir tous les articles <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {posts.map((post) => (
+                    <article class="group bg-carbon border border-white/5 hover:border-gold/30 transition duration-500 flex flex-col h-full">
+                        <div class="relative h-64 overflow-hidden">
+                            <div class="absolute top-4 left-4 z-10 bg-white text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1">
+                                {post.category}
+                            </div>
+                            <img
+                                    src={post.image}
+                                    alt={post.title}
+                                    class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                            >
+                        </div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <div class="mb-4 text-gray-500 text-xs uppercase tracking-wider font-bold">{post.date}</div>
+                            <h3 class="text-white font-display text-2xl uppercase font-bold mb-4 leading-tight group-hover:text-gold transition">
+                                {post.title}
+                            </h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                                {post.excerpt}
+                            </p>
+
+                            <button
+                                    class="inline-flex items-center text-white text-xs font-bold uppercase tracking-widest group-hover:text-gold transition mt-auto read-more-btn text-left"
+                                    data-id={post.id}
+                            >
+                                {post.buttonLabel} <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                            </button>
+                        </div>
+                    </article>
+            ))}
+        </div>
+    </div>
+
+    {posts.map(post => (
+            <template id={`post-template-${post.id}`}>
+                <div class="post-data"
+                     data-title={post.title}
+                     data-date={post.date}
+                     data-category={post.category}
+                     data-image={post.image}>
+                    <Fragment set:html={post.content} />
+                </div>
+            </template>
+    ))}
+
+    <div id="blog-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm transition-opacity opacity-0 duration-300" id="modal-overlay"></div>
+
+        <div class="relative z-10 w-full h-full flex items-center justify-center p-4 md:p-8">
+            <div class="relative bg-carbon border border-white/10 rounded-sm shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto transform transition-all scale-95 opacity-0 duration-300 flex flex-col" id="modal-panel">
+
+                <div class="relative h-64 sm:h-80 w-full flex-shrink-0">
+                    <img id="modal-image" src="" alt="" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/20 to-transparent"></div>
+
+                    <button id="modal-close-btn" class="absolute top-4 right-4 bg-black/50 hover:bg-gold hover:text-black text-white w-10 h-10 rounded-full flex items-center justify-center transition backdrop-blur-md z-20 border border-white/10">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+
+                    <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+                        <span id="modal-category" class="bg-gold text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 mb-4 inline-block shadow-lg"></span>
+                        <h2 id="modal-title" class="text-3xl md:text-5xl font-display font-bold text-white uppercase leading-none mb-2 drop-shadow-lg"></h2>
+                        <p id="modal-date" class="text-gray-300 text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                            <i class="fa-regular fa-calendar"></i> <span id="modal-date-text"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-10 bg-carbon">
+                    <div id="modal-body" class="prose prose-invert prose-p:text-gray-300 prose-headings:font-display prose-a:text-gold max-w-none">
+                    </div>
+                </div>
+
+                <div class="p-6 md:px-10 border-t border-white/5 bg-black/20 flex justify-between items-center flex-shrink-0">
+                    <div class="flex items-center gap-2">
+                        <img src="/public/images/logo.png" alt="Hello Fermetures" class="h-6 w-auto opacity-50 grayscale">
+                    </div>
+                    <button id="modal-close-bottom" class="text-white text-xs font-bold uppercase tracking-widest hover:text-gold transition flex items-center gap-2 group">
+                        Fermer l'article <i class="fa-solid fa-xmark group-hover:rotate-90 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Logique du Blog Modal
+    function initBlog() {
+        const modal = document.getElementById('blog-modal');
+        const overlay = document.getElementById('modal-overlay');
+        const panel = document.getElementById('modal-panel');
+        const buttons = document.querySelectorAll('.read-more-btn');
+        const closeBtns = [document.getElementById('modal-close-btn'), document.getElementById('modal-close-bottom'), overlay];
+
+        // Éléments à remplir
+        const mImage = document.getElementById('modal-image') as HTMLImageElement;
+        const mCategory = document.getElementById('modal-category');
+        const mTitle = document.getElementById('modal-title');
+        const mDate = document.getElementById('modal-date-text');
+        const mBody = document.getElementById('modal-body');
+
+        // Fonction Ouvrir
+        const openModal = (id) => {
+            const template = document.getElementById(`post-template-${id}`);
+            if (!template) return;
+
+            // Récupérer les données du template
+            // @ts-ignore
+            const contentDiv = template.content.firstElementChild;
+            const title = contentDiv.dataset.title;
+            const date = contentDiv.dataset.date;
+            const category = contentDiv.dataset.category;
+            const image = contentDiv.dataset.image;
+            const htmlContent = contentDiv.innerHTML;
+
+            // Remplir la modale
+            if(mImage) mImage.src = image;
+            if(mCategory) mCategory.textContent = category;
+            if(mTitle) mTitle.textContent = title;
+            if(mDate) mDate.textContent = date;
+            if(mBody) mBody.innerHTML = htmlContent;
+
+            // Afficher
+            modal?.classList.remove('hidden');
+            // Petit délai pour l'animation CSS
+            setTimeout(() => {
+                overlay?.classList.remove('opacity-0');
+                panel?.classList.remove('opacity-0', 'scale-95');
+                panel?.classList.add('opacity-100', 'scale-100');
+            }, 10);
+
+            // Bloquer le scroll du body
+            document.body.style.overflow = 'hidden';
+        };
+
+        // Fonction Fermer
+        const closeModal = () => {
+            overlay?.classList.add('opacity-0');
+            panel?.classList.remove('opacity-100', 'scale-100');
+            panel?.classList.add('opacity-0', 'scale-95');
+
+            setTimeout(() => {
+                modal?.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300); // Correspond à duration-300
+        };
+
+        // Listeners
+        buttons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // @ts-ignore
+                const id = btn.dataset.id;
+                openModal(id);
+            });
+        });
+
+        closeBtns.forEach(btn => {
+            btn?.addEventListener('click', closeModal);
+        });
+
+        // Fermer avec Echap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    }
+
+    // Init
+    initBlog();
+    document.addEventListener('astro:page-load', initBlog);
+</script>
