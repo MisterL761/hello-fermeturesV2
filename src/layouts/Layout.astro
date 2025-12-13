@@ -30,6 +30,9 @@ const { title, description } = Astro.props;
     <!-- Defer Font Awesome to avoid render blocking -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- Allow pages to add extra meta tags or scripts in head -->
+    <slot name="head" />
 </head>
 <body class="font-body selection:bg-gold selection:text-black overflow-x-hidden">
     <Header />
