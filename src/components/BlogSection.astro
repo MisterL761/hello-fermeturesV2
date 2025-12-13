@@ -196,56 +196,39 @@ const posts = [
 </section>
 
 <script>
-    // Logique du Blog Modal
     function initBlog() {
         const modal = document.getElementById('blog-modal');
         const overlay = document.getElementById('modal-overlay');
         const panel = document.getElementById('modal-panel');
         const buttons = document.querySelectorAll('.read-more-btn');
         const closeBtns = [document.getElementById('modal-close-btn'), document.getElementById('modal-close-bottom'), overlay];
-
-        // Éléments à remplir
         const mImage = document.getElementById('modal-image') as HTMLImageElement;
         const mCategory = document.getElementById('modal-category');
         const mTitle = document.getElementById('modal-title');
         const mDate = document.getElementById('modal-date-text');
         const mBody = document.getElementById('modal-body');
-
-        // Fonction Ouvrir
         const openModal = (id) => {
             const template = document.getElementById(`post-template-${id}`);
             if (!template) return;
-
-            // Récupérer les données du template
-            // @ts-ignore
             const contentDiv = template.content.firstElementChild;
             const title = contentDiv.dataset.title;
             const date = contentDiv.dataset.date;
             const category = contentDiv.dataset.category;
             const image = contentDiv.dataset.image;
             const htmlContent = contentDiv.innerHTML;
-
-            // Remplir la modale
             if(mImage) mImage.src = image;
             if(mCategory) mCategory.textContent = category;
             if(mTitle) mTitle.textContent = title;
             if(mDate) mDate.textContent = date;
             if(mBody) mBody.innerHTML = htmlContent;
-
-            // Afficher
             modal?.classList.remove('hidden');
-            // Petit délai pour l'animation CSS
             setTimeout(() => {
                 overlay?.classList.remove('opacity-0');
                 panel?.classList.remove('opacity-0', 'scale-95');
                 panel?.classList.add('opacity-100', 'scale-100');
             }, 10);
-
-            // Bloquer le scroll du body
             document.body.style.overflow = 'hidden';
         };
-
-        // Fonction Fermer
         const closeModal = () => {
             overlay?.classList.add('opacity-0');
             panel?.classList.remove('opacity-100', 'scale-100');
@@ -256,8 +239,6 @@ const posts = [
                 document.body.style.overflow = '';
             }, 300); // Correspond à duration-300
         };
-
-        // Listeners
         buttons.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -266,20 +247,15 @@ const posts = [
                 openModal(id);
             });
         });
-
         closeBtns.forEach(btn => {
             btn?.addEventListener('click', closeModal);
         });
-
-        // Fermer avec Echap
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
                 closeModal();
             }
         });
     }
-
-    // Init
     initBlog();
     document.addEventListener('astro:page-load', initBlog);
 </script>

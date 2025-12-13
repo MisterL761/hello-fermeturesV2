@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Catalogue from '../components/Catalogue.astro';
-// 1. On importe le nouveau blog
 import BlogSection from '../components/BlogSection.astro';
 ---
 
@@ -66,7 +65,7 @@ import BlogSection from '../components/BlogSection.astro';
                     </div>
                     <div class="relative border border-white/10 rounded-sm overflow-hidden shadow-2xl h-[400px]">
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-60"></div>
-                        <img src="/public/images/leaFrancois.png" alt="Léa François, cliente Hello Fermetures Oise" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <img src="/images/leaFrancois.webp" alt="Léa François, cliente Hello Fermetures Oise" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
                         <div class="absolute bottom-6 left-6 z-20">
                             <p class="text-white font-display uppercase font-bold text-lg">"Une équipe à l'écoute."</p>
                         </div>
@@ -301,11 +300,9 @@ import BlogSection from '../components/BlogSection.astro';
 <style media="screen and (max-width: 750px)" type="text/css">.widget-001{width:100px;height:100px;}</style><a href="https://www.eldo.com/pro/hello_fermetures"><iframe src="https://www.eldo.com/widget/artisan/102610/dark" frameborder="0" height="120px" width="120px" style="position: fixed;left: 20px;bottom: 50px;z-index:100 !important;opacity: 1" class="widget-001"></iframe></a>
 
 <script is:inline>
-    // Seul le script pour la FAQ reste ici
     function toggleFAQ(button) {
         var content = button.nextElementSibling;
         var expanded = button.getAttribute('aria-expanded') === 'true';
-
         button.setAttribute('aria-expanded', (!expanded).toString());
         if (!expanded) {
             content.style.maxHeight = content.scrollHeight + "px";
