@@ -133,7 +133,8 @@ import Layout from '../layouts/Layout.astro';
     .product-image {
         width: 100%;
         height: 250px;
-        object-fit: cover;
+        object-fit: contain;
+        background: rgba(255, 255, 255, 0.02);
     }
 
     .product-content {
@@ -265,7 +266,7 @@ import Layout from '../layouts/Layout.astro';
         }
 
         .product-image {
-            height: 200px;
+            height: 220px;
         }
     }
 
