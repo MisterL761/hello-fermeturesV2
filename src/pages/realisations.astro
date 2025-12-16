@@ -172,17 +172,14 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .gallery {
-        display: block;
-        column-count: 3;
-        column-gap: 25px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
         padding: 40px 0;
     }
 
     .gallery-item {
-        break-inside: avoid;
-        display: inline-block;
         width: 100%;
-        margin-bottom: 25px;
         opacity: 1;
         border-radius: 15px;
         overflow: hidden;
@@ -191,16 +188,17 @@ import Layout from '../layouts/Layout.astro';
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: opacity 0.4s ease, transform 0.3s ease;
     }
 
     .gallery-item.show {
         opacity: 1;
-        display: inline-block;
+        display: block;
     }
 
     .gallery-item.hide {
         display: none;
+        opacity: 0;
     }
 
     .gallery-item img {
@@ -329,8 +327,8 @@ import Layout from '../layouts/Layout.astro';
 
     @media (max-width: 1024px) {
         .gallery {
-            column-count: 2;
-            column-gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
     }
 
@@ -350,8 +348,8 @@ import Layout from '../layouts/Layout.astro';
         }
 
         .gallery {
-            column-count: 1;
-            column-gap: 0;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 20px;
             padding: 20px 0;
         }
 
@@ -422,7 +420,8 @@ import Layout from '../layouts/Layout.astro';
         }
 
         .gallery {
-            column-count: 1;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 15px;
         }
     }
 </style>
