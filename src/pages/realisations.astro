@@ -1,0 +1,688 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+    title="Nos Réalisations Hello Fermetures"
+    description="Explorez les réalisations de Hello Fermetures : fenêtres, portes d'entrée, vérandas, stores, portails, volets, et portes de garage. Découvrez notre savoir-faire."
+>
+
+<style>
+    .container-realisations {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 30px 20px;
+        margin-top: 180px;
+    }
+
+    .title-main {
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 3px;
+        position: relative;
+        opacity: 0;
+        animation: titleFadeIn 1.5s ease-out 0.5s forwards;
+        margin-bottom: 50px;
+    }
+
+    .title-main::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #fff, transparent);
+        animation: underlineExpand 2s ease-out 1s forwards;
+    }
+
+    @keyframes titleFadeIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes underlineExpand {
+        to { width: 200px; }
+    }
+
+    .video-button-container {
+        text-align: center;
+        margin: 30px 0 20px 0;
+        opacity: 0;
+        animation: filterFadeIn 1s ease-out 1.2s forwards;
+    }
+
+    .video-button {
+        background: linear-gradient(135deg, #ffb103, #ff8c00);
+        color: #ffffff;
+        border: 2px solid transparent;
+        padding: 15px 30px;
+        cursor: pointer;
+        border-radius: 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 1.1rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 6px 20px rgba(255, 177, 3, 0.3);
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .video-button::before {
+        content: '🎥';
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+
+    .video-button::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.6s;
+    }
+
+    .video-button:hover::after {
+        left: 100%;
+    }
+
+    .video-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 177, 3, 0.4);
+    }
+
+    .filter-container {
+        text-align: center;
+        margin: 50px 0;
+        opacity: 0;
+        animation: filterFadeIn 1s ease-out 1.5s forwards;
+    }
+
+    @keyframes filterFadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .filter-button {
+        background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+        color: #000000;
+        border: 2px solid transparent;
+        padding: 12px 24px;
+        margin: 8px;
+        cursor: pointer;
+        border-radius: 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .filter-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.6s;
+    }
+
+    .filter-button:hover::before {
+        left: 100%;
+    }
+
+    .filter-button:hover {
+        background: linear-gradient(135deg, #000000 0%, #333333 100%);
+        color: #ffffff;
+        border-color: #ffffff;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+    }
+
+    .filter-button.active {
+        background: linear-gradient(135deg, #ffb103 0%, #ff8c00 100%);
+        color: #000;
+        border-color: #ffb103;
+        box-shadow: 0 0 20px rgba(255, 177, 3, 0.3);
+        transform: translateY(-3px);
+    }
+
+    .mobile-filter-container {
+        display: none;
+    }
+
+    .mobile-filter-menu {
+        display: none;
+    }
+
+    .mobile-filter-menu.active {
+        display: block;
+    }
+
+    .gallery {
+        display: block;
+        column-count: 3;
+        column-gap: 25px;
+        padding: 40px 0;
+    }
+
+    .gallery-item {
+        break-inside: avoid;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 25px;
+        opacity: 1;
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .gallery-item.show {
+        opacity: 1;
+        display: inline-block;
+    }
+
+    .gallery-item.hide {
+        display: none;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+        border-color: rgba(255, 177, 3, 0.5);
+        box-shadow: 0 8px 25px rgba(255, 177, 3, 0.2);
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .lightbox.active {
+        display: flex;
+    }
+
+    .lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slides {
+        max-width: 100%;
+        max-height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slides img {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+
+    .close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        font-size: 40px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 10000;
+        transition: color 0.3s;
+    }
+
+    .close:hover {
+        color: #ffb103;
+    }
+
+    .prev, .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 177, 3, 0.8);
+        color: #000;
+        border: none;
+        padding: 15px 20px;
+        cursor: pointer;
+        font-size: 24px;
+        border-radius: 5px;
+        transition: all 0.3s;
+        z-index: 10000;
+    }
+
+    .prev {
+        left: 20px;
+    }
+
+    .next {
+        right: 20px;
+    }
+
+    .prev:hover, .next:hover {
+        background: #ffb103;
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .toggle-btn {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #ffb103, #ff8c00);
+        color: #fff;
+        border: none;
+        padding: 12px 24px;
+        cursor: pointer;
+        border-radius: 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        z-index: 10000;
+    }
+
+    .toggle-btn:hover {
+        transform: translateX(-50%) translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 177, 3, 0.4);
+    }
+
+    @media (max-width: 1024px) {
+        .gallery {
+            column-count: 2;
+            column-gap: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container-realisations {
+            margin-top: 140px;
+        }
+
+        .title-main {
+            font-size: 2.5rem;
+        }
+
+        .video-button {
+            padding: 12px 24px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .gallery {
+            column-count: 1;
+            column-gap: 0;
+            padding: 20px 0;
+        }
+
+        .filter-container {
+            display: none;
+        }
+
+        .mobile-filter-container {
+            display: block;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .mobile-filter-button {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            color: #000000;
+            border: 2px solid transparent;
+            padding: 12px 24px;
+            margin: 8px;
+            cursor: pointer;
+            border-radius: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            display: block;
+            width: 90%;
+            margin: 8px auto;
+        }
+
+        .mobile-filter-button.active {
+            background: linear-gradient(135deg, #ffb103 0%, #ff8c00 100%);
+            color: #000;
+        }
+
+        .prev, .next {
+            padding: 10px 15px;
+            font-size: 18px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .toggle-btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container-realisations {
+            margin-top: 160px;
+        }
+
+        .title-main {
+            font-size: 2rem;
+        }
+
+        .video-button {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        .gallery {
+            column-count: 1;
+        }
+    }
+</style>
+
+<div class="container-realisations">
+    <h1 class="title-main font-display uppercase">Nos Réalisations</h1>
+
+    <div class="video-button-container">
+        <a href="/videos-pose" class="video-button">Nos vidéos de pose</a>
+    </div>
+
+    <div class="filter-container">
+        <button class="filter-button active" data-filter="all">Tout</button>
+        <button class="filter-button" data-filter="fenetre">Fenêtres</button>
+        <button class="filter-button" data-filter="porte">Portes d'entrée</button>
+        <button class="filter-button" data-filter="veranda">Vérandas et pergolas</button>
+        <button class="filter-button" data-filter="store-interieur">Stores intérieurs</button>
+        <button class="filter-button" data-filter="portail">Portails et clôtures</button>
+        <button class="filter-button" data-filter="store-banne">Stores bannes</button>
+        <button class="filter-button" data-filter="volet-roulant">Volets roulants</button>
+        <button class="filter-button" data-filter="volet-battant">Volets battants</button>
+        <button class="filter-button" data-filter="porte-garage">Portes de garage</button>
+        <button class="filter-button" data-filter="carport">Carports</button>
+    </div>
+
+    <div class="mobile-filter-container">
+        <button class="mobile-filter-button" id="mobile-filter-toggle">Filtres</button>
+        <div class="mobile-filter-menu">
+            <button class="mobile-filter-button active" data-filter="all">Tout</button>
+            <button class="mobile-filter-button" data-filter="fenetre">Fenêtres</button>
+            <button class="mobile-filter-button" data-filter="porte">Portes d'entrée</button>
+            <button class="mobile-filter-button" data-filter="veranda">Vérandas et pergolas</button>
+            <button class="mobile-filter-button" data-filter="store-interieur">Stores intérieurs</button>
+            <button class="mobile-filter-button" data-filter="portail">Portails et clôtures</button>
+            <button class="mobile-filter-button" data-filter="store-banne">Stores bannes</button>
+            <button class="mobile-filter-button" data-filter="volet-roulant">Volets roulants</button>
+            <button class="mobile-filter-button" data-filter="volet-battant">Volets battants</button>
+            <button class="mobile-filter-button" data-filter="porte-garage">Portes de garage</button>
+            <button class="mobile-filter-button" data-filter="carport">Carports</button>
+        </div>
+    </div>
+
+    <div class="gallery">
+        <!-- Fenêtres -->
+        <div class="gallery-item fenetre show" data-after="/public/images/fenetre1.webp"><img src="/public/images/fenetre1.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-before="/public/images/fenetre2-avant.png" data-after="/public/images/fenetre2.webp"><img src="/public/images/fenetre2.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/public/images/fenetre3.webp"><img src="/public/images/fenetre3.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/public/images/fenetre4.webp"><img src="/public/images/fenetre4.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/public/images/fenetre5.png"><img src="/public/images/fenetre5.png" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/public/images/fenetre6.webp"><img src="/public/images/fenetre6.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/public/images/fenetre7.webp"><img src="/public/images/fenetre7.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-before="/public/images/fenetre8-avant.png" data-after="/public/images/fenetre8.webp"><img src="/public/images/fenetre8.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/public/images/fenetre9.webp"><img src="/public/images/fenetre9.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/public/images/fenetre10.webp"><img src="/public/images/fenetre10.webp" alt="Fenêtre" loading="lazy"></div>
+
+        <!-- Portes d'entrée -->
+        <div class="gallery-item porte show" data-after="/public/images/porte1.webp"><img src="/public/images/porte1.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/public/images/porte2.webp"><img src="/public/images/porte2.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/public/images/porte3.webp"><img src="/public/images/porte3.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/public/images/porte4.webp"><img src="/public/images/porte4.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/public/images/porte5.webp"><img src="/public/images/porte5.webp" alt="Porte d'entrée" loading="lazy"></div>
+
+        <!-- Vérandas et Pergolas -->
+        <div class="gallery-item veranda show" data-after="/public/images/pergola1.webp"><img src="/public/images/pergola1.webp" alt="Pergola" loading="lazy"></div>
+        <div class="gallery-item veranda show" data-after="/public/images/veranda1.webp"><img src="/public/images/veranda1.webp" alt="Véranda" loading="lazy"></div>
+        <div class="gallery-item veranda show" data-after="/public/images/pergola2.webp"><img src="/public/images/pergola2.webp" alt="Pergola" loading="lazy"></div>
+        <div class="gallery-item veranda show" data-after="/public/images/pergola3.webp"><img src="/public/images/pergola3.webp" alt="Pergola" loading="lazy"></div>
+
+        <!-- Stores intérieurs -->
+        <div class="gallery-item store-interieur show" data-after="/public/images/store1.webp"><img src="/public/images/store1.webp" alt="Store intérieur" loading="lazy"></div>
+        <div class="gallery-item store-interieur show" data-after="/public/images/store2.webp"><img src="/public/images/store2.webp" alt="Store intérieur" loading="lazy"></div>
+        <div class="gallery-item store-interieur show" data-after="/public/images/store3.webp"><img src="/public/images/store3.webp" alt="Store intérieur" loading="lazy"></div>
+
+        <!-- Portails et clôtures -->
+        <div class="gallery-item portail show" data-after="/public/images/portail1.webp"><img src="/public/images/portail1.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/public/images/portail2.webp"><img src="/public/images/portail2.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/public/images/portail3.webp"><img src="/public/images/portail3.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/public/images/cloture1.png"><img src="/public/images/cloture1.png" alt="Clôture" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/public/images/cloture2.png"><img src="/public/images/cloture2.png" alt="Clôture" loading="lazy"></div>
+
+        <!-- Stores bannes -->
+        <div class="gallery-item store-banne show" data-after="/public/images/store-banne1.webp"><img src="/public/images/store-banne1.webp" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/public/images/store-banne2.webp"><img src="/public/images/store-banne2.webp" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/public/images/store-banne3.webp"><img src="/public/images/store-banne3.webp" alt="Store banne" loading="lazy"></div>
+
+        <!-- Volets roulants -->
+        <div class="gallery-item volet-roulant show" data-after="/public/images/volet1.webp"><img src="/public/images/volet1.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/public/images/volet2.webp"><img src="/public/images/volet2.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/public/images/volet3.webp"><img src="/public/images/volet3.webp" alt="Volet roulant" loading="lazy"></div>
+
+        <!-- Volets battants -->
+        <div class="gallery-item volet-battant show" data-after="/public/images/volet-battant1.webp"><img src="/public/images/volet-battant1.webp" alt="Volet battant" loading="lazy"></div>
+        <div class="gallery-item volet-battant show" data-after="/public/images/volet-battant2.webp"><img src="/public/images/volet-battant2.webp" alt="Volet battant" loading="lazy"></div>
+        <div class="gallery-item volet-battant show" data-after="/public/images/volet-battant5.webp"><img src="/public/images/volet-battant5.webp" alt="Volet battant" loading="lazy"></div>
+
+        <!-- Portes de garage -->
+        <div class="gallery-item porte-garage show" data-after="/public/images/porte-garage1.webp"><img src="/public/images/porte-garage1.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-after="/public/images/porte-garage2.webp"><img src="/public/images/porte-garage2.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-before="/public/images/porte-garage7-avant.png" data-after="/public/images/porte-garage7.webp"><img src="/public/images/porte-garage7.webp" alt="Porte de garage" loading="lazy"></div>
+
+        <!-- Carports -->
+        <div class="gallery-item carport show" data-after="/public/images/carport1.png"><img src="/public/images/carport1.png" alt="Carport" loading="lazy"></div>
+        <div class="gallery-item carport show" data-after="/public/images/carport2.png"><img src="/public/images/carport2.png" alt="Carport" loading="lazy"></div>
+    </div>
+</div>
+
+<div id="lightbox" class="lightbox">
+    <span class="close">×</span>
+    <div class="lightbox-content">
+        <div class="slides"></div>
+        <button class="prev">❮</button>
+        <button class="next">❯</button>
+        <button class="toggle-btn">Voir Avant / Après</button>
+    </div>
+</div>
+
+</Layout>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-button, .mobile-filter-button:not(#mobile-filter-toggle)');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const mobileFilterToggle = document.getElementById('mobile-filter-toggle');
+        const mobileFilterMenu = document.querySelector('.mobile-filter-menu');
+
+        // Mobile filter toggle
+        if (mobileFilterToggle) {
+            mobileFilterToggle.addEventListener('click', () => {
+                mobileFilterMenu.classList.toggle('active');
+            });
+        }
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                // Filter items
+                galleryItems.forEach(item => {
+                    if (filter === 'all') {
+                        item.classList.remove('hide');
+                        item.classList.add('show');
+                    } else {
+                        if (item.classList.contains(filter)) {
+                            item.classList.remove('hide');
+                            item.classList.add('show');
+                        } else {
+                            item.classList.add('hide');
+                            item.classList.remove('show');
+                        }
+                    }
+                });
+
+                // Close mobile menu
+                if (mobileFilterMenu) {
+                    mobileFilterMenu.classList.remove('active');
+                }
+
+                // Scroll to gallery
+                const gallery = document.querySelector('.gallery');
+                if (gallery) {
+                    const galleryTop = gallery.getBoundingClientRect().top + window.pageYOffset - 100;
+                    window.scrollTo({ top: galleryTop, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const slidesContainer = lightbox.querySelector('.slides');
+        const closeBtn = lightbox.querySelector('.close');
+        const prevBtn = lightbox.querySelector('.prev');
+        const nextBtn = lightbox.querySelector('.next');
+        const toggleBtn = lightbox.querySelector('.toggle-btn');
+        let currentIndex = 0;
+        let isBefore = false;
+        let items = [];
+
+        // Build items array
+        galleryItems.forEach(item => {
+            items.push({
+                before: item.getAttribute('data-before'),
+                after: item.getAttribute('data-after')
+            });
+        });
+
+        // Open lightbox on item click
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentIndex = index;
+                isBefore = false;
+                showLightbox();
+            });
+        });
+
+        // Close lightbox
+        closeBtn.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        // Previous image
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
+        });
+
+        // Next image
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        });
+
+        // Toggle before/after
+        toggleBtn.addEventListener('click', () => {
+            if (items[currentIndex].before) {
+                isBefore = !isBefore;
+                updateCarousel();
+            }
+        });
+
+        function showLightbox() {
+            updateCarousel();
+            lightbox.classList.add('active');
+        }
+
+        function updateCarousel() {
+            slidesContainer.innerHTML = '';
+            const img = document.createElement('img');
+
+            if (items[currentIndex].before && isBefore) {
+                img.src = items[currentIndex].before;
+                toggleBtn.style.display = 'block';
+                toggleBtn.textContent = "Voir Après";
+            } else {
+                img.src = items[currentIndex].after;
+                toggleBtn.style.display = items[currentIndex].before ? 'block' : 'none';
+                toggleBtn.textContent = items[currentIndex].before ? "Voir Avant" : "";
+            }
+
+            slidesContainer.appendChild(img);
+        }
+
+        // Close lightbox on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        // Close lightbox on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+    });
+</script>
