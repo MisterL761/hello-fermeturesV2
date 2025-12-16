@@ -1,0 +1,637 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+    title="Demandez votre devis en ligne pour vos menuiseries, 100% gratuit, rapide"
+    description="Demandez votre devis gratuit et personnalisé pour vos travaux de fermetures : volets, stores, portes, fenêtres. Hello Fermetures vous accompagne avec expertise et rapidité. Estimation en ligne !"
+>
+
+<style>
+    .container-devis {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 30px 20px;
+        margin-top: 180px;
+    }
+
+    .intro-section {
+        text-align: center;
+        margin-bottom: 60px;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .intro-section h1 {
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 3px;
+        margin-bottom: 30px;
+        position: relative;
+        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .intro-section h1::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, #ffb103, #ff8c00);
+    }
+
+    .intro-section p {
+        color: #cccccc;
+        font-size: 1.1rem;
+        max-width: 800px;
+        margin: 40px auto 0;
+        line-height: 1.8;
+    }
+
+    .intro-section strong {
+        color: #ffb103;
+    }
+
+    .form-container {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 50px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        animation: fadeInUp 1s ease-out 0.3s forwards;
+    }
+
+    .form-container h2 {
+        font-size: 2rem;
+        color: #ffb103;
+        margin-bottom: 40px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group.full-width {
+        grid-column: 1 / -1;
+    }
+
+    label {
+        color: #ffffff;
+        font-weight: 600;
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+        background: rgba(255, 255, 255, 0.08);
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        padding: 15px 20px;
+        color: #ffffff;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+        border-color: #ffb103;
+        background: rgba(255, 177, 3, 0.1);
+        box-shadow: 0 0 20px rgba(255, 177, 3, 0.2);
+    }
+
+    select {
+        cursor: pointer;
+    }
+
+    select option {
+        background: #1a1a1a;
+        color: #ffffff;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 120px;
+        font-family: inherit;
+    }
+
+    .checkbox-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .checkbox-item:hover {
+        background: rgba(255, 177, 3, 0.1);
+        border-color: rgba(255, 177, 3, 0.5);
+    }
+
+    .checkbox-item input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        accent-color: #ffb103;
+    }
+
+    .checkbox-item label {
+        margin: 0;
+        cursor: pointer;
+        color: #cccccc;
+        font-weight: 400;
+        font-size: 0.9rem;
+    }
+
+    .consent-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 20px;
+        background: rgba(255, 177, 3, 0.05);
+        border: 1px solid rgba(255, 177, 3, 0.3);
+        border-radius: 10px;
+        margin: 30px 0;
+    }
+
+    .consent-group input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        accent-color: #ffb103;
+        flex-shrink: 0;
+    }
+
+    .consent-group p {
+        margin: 0;
+        color: #cccccc;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 18px 40px;
+        background: linear-gradient(135deg, #ffb103, #ff8c00);
+        color: #000;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 6px 20px rgba(255, 177, 3, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .submit-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.6s;
+    }
+
+    .submit-btn:hover::before {
+        left: 100%;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(255, 177, 3, 0.5);
+    }
+
+    .submit-btn:disabled {
+        background: rgba(255, 255, 255, 0.2);
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .checkbox-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container-devis {
+            margin-top: 140px;
+            padding: 20px 15px;
+        }
+
+        .intro-section h1 {
+            font-size: 2.2rem;
+        }
+
+        .intro-section p {
+            font-size: 1rem;
+        }
+
+        .form-container {
+            padding: 30px 20px;
+        }
+
+        .form-container h2 {
+            font-size: 1.6rem;
+        }
+
+        .checkbox-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .submit-btn {
+            font-size: 1rem;
+            padding: 15px 30px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container-devis {
+            margin-top: 160px;
+        }
+
+        .intro-section h1 {
+            font-size: 1.8rem;
+        }
+
+        .form-container {
+            padding: 25px 15px;
+        }
+    }
+
+    /* Success/Error Messages */
+    .message {
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+        text-align: center;
+        font-weight: 600;
+        animation: slideDown 0.5s ease;
+    }
+
+    .message.success {
+        background: rgba(76, 175, 80, 0.2);
+        border: 2px solid #4CAF50;
+        color: #4CAF50;
+    }
+
+    .message.error {
+        background: rgba(244, 67, 54, 0.2);
+        border: 2px solid #f44336;
+        color: #f44336;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div class="container-devis">
+    <div class="intro-section">
+        <h1 class="font-display">Obtenir un devis personnalisé</h1>
+        <p>
+            Chez Hello Fermetures, obtenir un devis est un processus simple et <strong>gratuit</strong>.
+            Nous mettons un point d'honneur à vous fournir une estimation précise et adaptée à vos besoins spécifiques.
+            Que vous envisagiez l'installation de nouvelles fenêtres, un portail sur mesure, ou des stores intérieurs,
+            notre équipe est à votre disposition pour vous accompagner à chaque étape.
+            Commencez par nous contacter via notre <strong>formulaire ci-dessous</strong> ou par téléphone.
+            Nous échangerons sur vos attentes et les spécificités de votre projet.
+        </p>
+    </div>
+
+    <div class="form-container">
+        <h2 class="font-display">Demande de Devis</h2>
+
+        <div id="message-container"></div>
+
+        <form id="devis-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="nom">Nom *</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="prenom">Prénom *</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telephone">Tél. portable *</label>
+                    <input type="tel" id="telephone" name="telephone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ville">Ville *</label>
+                    <input type="text" id="ville" name="ville" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="postcode">Code postal *</label>
+                    <input type="text" id="postcode" name="postcode" required pattern="\d{5}" title="Entrez un code postal valide (5 chiffres)">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="adresse">Adresse *</label>
+                    <input type="text" id="adresse" name="adresse" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Votre demande concerne quelles gammes ? *</label>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Fenêtres" id="gamme-fenetre">
+                            <label for="gamme-fenetre">Fenêtres</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Volets" id="gamme-volets">
+                            <label for="gamme-volets">Volets</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Porte" id="gamme-porte">
+                            <label for="gamme-porte">Porte</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Stores intérieurs" id="gamme-stores-int">
+                            <label for="gamme-stores-int">Stores intérieurs</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Stores bannes" id="gamme-stores-bannes">
+                            <label for="gamme-stores-bannes">Stores bannes</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Moustiquaires" id="gamme-moustiquaires">
+                            <label for="gamme-moustiquaires">Moustiquaires</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Porte de garage" id="gamme-garage">
+                            <label for="gamme-garage">Porte de garage</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Portail" id="gamme-portail">
+                            <label for="gamme-portail">Portail</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Clôtures" id="gamme-clotures">
+                            <label for="gamme-clotures">Clôtures</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Pergola" id="gamme-pergola">
+                            <label for="gamme-pergola">Pergola</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Domotique" id="gamme-domotique">
+                            <label for="gamme-domotique">Domotique</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Motorisation" id="gamme-motorisation">
+                            <label for="gamme-motorisation">Motorisation</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Véranda" id="gamme-veranda">
+                            <label for="gamme-veranda">Véranda</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Garde corps" id="gamme-garde-corps">
+                            <label for="gamme-garde-corps">Garde corps</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Vitrage" id="gamme-vitrage">
+                            <label for="gamme-vitrage">Vitrage</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Abris de piscine" id="gamme-abris">
+                            <label for="gamme-abris">Abris de piscine</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="A définir" id="gamme-definir">
+                            <label for="gamme-definir">À définir</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Alarme" id="gamme-alarme">
+                            <label for="gamme-alarme">Alarme</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="SAV" id="gamme-sav">
+                            <label for="gamme-sav">SAV</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Marquises" id="gamme-marquises">
+                            <label for="gamme-marquises">Marquises</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="gamme" value="Autres" id="gamme-autres">
+                            <label for="gamme-autres">Autres</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="delai">Quel est le délai de votre demande ? *</label>
+                    <select id="delai" name="delai" required>
+                        <option value="">Sélectionner</option>
+                        <option value="Urgent">Urgent</option>
+                        <option value="1 mois">1 mois</option>
+                        <option value="3 mois">3 mois</option>
+                        <option value="6 mois et plus">6 mois et plus</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="details">À propos de votre demande</label>
+                    <textarea id="details" name="details" rows="4" placeholder="Décrivez votre projet en détail..."></textarea>
+                </div>
+            </div>
+
+            <div class="consent-group">
+                <input type="checkbox" name="consent" id="consent" required>
+                <p>
+                    <label for="consent">En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées par Hello Fermetures.</label>
+                </p>
+            </div>
+
+            <button class="submit-btn" id="submit-btn" type="submit">Envoyer la demande</button>
+        </form>
+    </div>
+</div>
+
+</Layout>
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("devis-form");
+        const submitBtn = document.getElementById("submit-btn");
+        const messageContainer = document.getElementById("message-container");
+
+        function showMessage(message, type) {
+            messageContainer.innerHTML = `<div class="message ${type}">${message}</div>`;
+            setTimeout(() => {
+                messageContainer.innerHTML = '';
+            }, 5000);
+        }
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Envoi en cours...";
+
+            let formData = new FormData(form);
+
+            let jsonData = {
+                "token": "rT1ZV1OycYA=",
+                "form": "DemandeDevisHelloFermetures",
+                "ctc_lastname": formData.get("nom"),
+                "ctc_firstname": formData.get("prenom"),
+                "ctc_email": formData.get("email"),
+                "ctc_mobile": formData.get("telephone"),
+                "ctc_address": formData.get("adresse"),
+                "ctc_postcode": formData.get("postcode"),
+                "ctc_city": formData.get("ville"),
+                "ctc_country": "FR",
+                "ctc_consent": formData.get("consent") ? "TRUE" : "FALSE",
+                "prj_channel": "CNL_9555",
+                "prj_message": formData.get("details"),
+                "prj_request": "RTY_762",
+            };
+
+            const delaiMapping = {
+                "Urgent": "DLY_731",
+                "1 mois": "DLY_732",
+                "3 mois": "DLY_733",
+                "6 mois et plus": "DLY_734"
+            };
+            jsonData["prj_delay"] = delaiMapping[formData.get("delai")] || "";
+
+            const gammeMapping = {
+                "Fenêtres": "RNG_1255",
+                "Volets": "RNG_1256",
+                "Porte": "RNG_1257",
+                "Stores intérieurs": "RNG_1258",
+                "Stores bannes": "RNG_1259",
+                "Moustiquaires": "RNG_1260",
+                "Porte de garage": "RNG_1261",
+                "Portail": "RNG_1262",
+                "Clôtures": "RNG_1263",
+                "Pergola": "RNG_1266",
+                "Domotique": "RNG_1265",
+                "Motorisation": "RNG_1267",
+                "Véranda": "RNG_1268",
+                "Garde corps": "RNG_1392",
+                "Vitrage": "RNG_4633",
+                "Abris de piscine": "RNG_4634",
+                "A définir": "RNG_4288",
+                "Alarme": "RNG_1264",
+                "SAV": "RNG_1975",
+                "Autres": "RNG_4288",
+                "Marquises": "RNG_6480"
+            };
+
+            const selectedGammes = formData.getAll("gamme").map(g => gammeMapping[g] || "RNG_4288");
+            jsonData["prj_range"] = selectedGammes.join(",");
+
+            fetch("https://leadimport.oplead.com/addlead/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(jsonData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Réponse de l'API :", data);
+                if (data.status === "OK" && parseInt(data.lead.lead_id) > 0) {
+                    showMessage("✅ Votre demande a bien été envoyée ! Nous vous contacterons rapidement.", "success");
+                    form.reset();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    showMessage("⚠️ La demande a été traitée mais le lead n'a pas été créé. Veuillez réessayer ou nous contacter directement.", "error");
+                }
+            })
+            .catch(error => {
+                showMessage("❌ Erreur lors de l'envoi : " + error.message + ". Veuillez réessayer ou nous contacter par téléphone.", "error");
+                console.error("Erreur :", error);
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Envoyer la demande";
+            });
+        });
+    });
+</script>
