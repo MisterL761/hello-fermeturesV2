@@ -1,0 +1,41 @@
+/* Styles pour les sections catalogue */
+
+.catalogue-section {
+    padding: 100px 20px;
+    background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+
+.catalogue-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.catalogue-link {
+    display: block;
+    transition: transform 0.3s ease;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.catalogue-link:hover {
+    transform: scale(1.05);
+}
+
+.catalogue-image {
+    max-width: 100%;
+    width: 400px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .catalogue-image {
+        max-width: 100%;
+        width: 100%;
+    }
+}

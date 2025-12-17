@@ -1,0 +1,22 @@
+---
+interface Props {
+    title: string;
+    subtitle?: string;
+    variant?: 'default' | 'compact';
+}
+
+const { title, subtitle, variant = 'default' } = Astro.props;
+---
+
+<section class="products-section">
+    <h2 class="section-title">{title}</h2>
+    {subtitle && <p class="intro-text">{subtitle}</p>}
+
+    <div class={`products-grid ${variant}`}>
+        <slot />
+    </div>
+</section>
+
+<style>
+    @import '../../styles/products.css';
+</style>

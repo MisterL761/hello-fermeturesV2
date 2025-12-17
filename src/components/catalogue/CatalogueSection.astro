@@ -1,0 +1,28 @@
+---
+interface Props {
+    title: string;
+    catalogueUrl: string;
+    catalogueImage: string;
+    altText?: string;
+}
+
+const {
+    title,
+    catalogueUrl,
+    catalogueImage,
+    altText = 'Catalogue'
+} = Astro.props;
+---
+
+<section class="catalogue-section">
+    <h2 class="section-title">{title}</h2>
+    <div class="catalogue-container">
+        <a href={catalogueUrl} target="_blank" class="catalogue-link">
+            <img src={catalogueImage} alt={altText} class="catalogue-image" />
+        </a>
+    </div>
+</section>
+
+<style>
+    @import '../../styles/catalogue.css';
+</style>

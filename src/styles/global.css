@@ -300,3 +300,10 @@
 .faq-btn[aria-expanded="true"] {
     border-color: rgba(255, 177, 3, 0.5);
 }
+
+/* Imports des modules CSS organisés */
+@import './variables.css';
+@import './animations.css';
+@import './hero.css';
+@import './products.css';
+@import './catalogue.css';
