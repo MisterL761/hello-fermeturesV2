@@ -529,8 +529,10 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.catalogue-link {
-		display: inline-block;
+		display: block;
 		transition: transform 0.3s ease;
+		margin: 0 auto;
+		width: fit-content;
 	}
 
 	.catalogue-link:hover {
@@ -538,8 +540,11 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.catalogue-image {
-		max-width: 50%;
+		max-width: 100%;
+		width: 400px;
 		height: auto;
+		display: block;
+		margin: 0 auto;
 		border-radius: 15px;
 		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 	}
@@ -590,6 +595,7 @@ import Layout from '../layouts/Layout.astro';
 
 		.catalogue-image {
 			max-width: 100%;
+			width: 100%;
 		}
 	}
 </style>
