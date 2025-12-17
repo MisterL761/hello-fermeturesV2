@@ -19,20 +19,10 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description}>
 
-    <!-- Preconnect to external resources for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-
-    <!-- Load fonts with display=swap for better FCP -->
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Defer Font Awesome to avoid render blocking -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-
-    <!-- Allow pages to add extra meta tags or scripts in head -->
-    <slot name="head" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="font-body selection:bg-gold selection:text-black overflow-x-hidden">
     <Header />
