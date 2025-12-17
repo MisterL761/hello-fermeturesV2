@@ -1,0 +1,212 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+    title="Volets Battants Isolants Modernes - Hello Fermetures"
+    description="Découvrez nos volets isolants modernes en aluminium : Titan H, Titan V, Rotin, Pétillant, Maya, Losange. Designs innovants et performants."
+>
+
+<style>
+    .products-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+        margin-top: 150px;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 50px;
+        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .product-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.2s; }
+    .product-card:nth-child(3) { animation-delay: 0.3s; }
+    .product-card:nth-child(4) { animation-delay: 0.4s; }
+    .product-card:nth-child(5) { animation-delay: 0.5s; }
+    .product-card:nth-child(6) { animation-delay: 0.6s; }
+    .product-card:nth-child(7) { animation-delay: 0.7s; }
+    .product-card:nth-child(8) { animation-delay: 0.8s; }
+    .product-card:nth-child(9) { animation-delay: 0.9s; }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 177, 3, 0.5);
+        box-shadow: 0 12px 40px rgba(255, 177, 3, 0.2);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 350px;
+        object-fit: contain;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .product-content {
+        padding: 20px;
+    }
+
+    .product-content h3 {
+        font-size: 1.3rem;
+        color: #ffb103;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .product-content p {
+        color: #cccccc;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .products-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .products-section {
+            margin-top: 140px;
+            padding: 40px 15px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .products-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .product-image {
+            height: 280px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .section-title {
+            font-size: 1.6rem;
+        }
+
+        .product-content h3 {
+            font-size: 1.2rem;
+        }
+    }
+</style>
+
+<section class="products-section">
+    <h1 class="section-title font-display">Volets Isolants Modernes</h1>
+
+    <div class="products-grid">
+        <div class="product-card">
+            <img src="/public/images/volet-modern-titan-h.png" alt="Le Titan H" class="product-image">
+            <div class="product-content">
+                <h3>Le Titan H</h3>
+                <p>Design horizontal affirmé pour une façade ultra moderne et structurée.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/public/images/volet-modern-titan-v.png" alt="Le Titan V" class="product-image">
+            <div class="product-content">
+                <h3>Le Titan V</h3>
+                <p>Lignes verticales élégantes qui allongent la façade avec raffinement.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/public/images/volet-modern-titan-hv.png" alt="Le Titan HV" class="product-image">
+            <div class="product-content">
+                <h3>Le Titan HV</h3>
+                <p>Combinaison de lignes horizontales et verticales pour un look graphique unique.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/public/images/volet-modern-rotin.png" alt="Le Rotin" class="product-image">
+            <div class="product-content">
+                <h3>Le Rotin</h3>
+                <p>Inspiration naturelle avec un motif tressé contemporain et chaleureux.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/public/images/volet-modern-petillant.png" alt="Le Pétillant" class="product-image">
+            <div class="product-content">
+                <h3>Le Pétillant</h3>
+                <p>Un style audacieux et dynamique pour des volets qui attirent le regard.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/public/images/volet-modern-boite-musique.png" alt="Boîte à musique" class="product-image">
+            <div class="product-content">
+                <h3>Boîte à Musique</h3>
+                <p>Des formes géométriques en rythme, pour un esprit design et mélodieux.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/public/images/volet-modern-industriel.png" alt="L'industriel" class="product-image">
+            <div class="product-content">
+                <h3>L'Industriel</h3>
+                <p>Style brut et minimaliste inspiré des lofts et ateliers modernes.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/public/images/volet-modern-maya.png" alt="Le Maya" class="product-image">
+            <div class="product-content">
+                <h3>Le Maya</h3>
+                <p>Motifs angulaires et structure géométrique pour une touche architecturale.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/public/images/volet-modern-losange.png" alt="Le Losange" class="product-image">
+            <div class="product-content">
+                <h3>Le Losange</h3>
+                <p>Un motif graphique fort, pour une façade au style résolument moderne.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+</Layout>

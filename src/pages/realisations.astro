@@ -1,0 +1,810 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+    title="Nos Réalisations Hello Fermetures"
+    description="Explorez les réalisations de Hello Fermetures : fenêtres, portes d'entrée, vérandas, stores, portails, volets, et portes de garage. Découvrez notre savoir-faire."
+>
+
+<style>
+    .container-realisations {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 30px 20px;
+        margin-top: 180px;
+    }
+
+    .title-main {
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 3px;
+        position: relative;
+        opacity: 0;
+        animation: titleFadeIn 1.5s ease-out 0.5s forwards;
+        margin-bottom: 50px;
+    }
+
+    .title-main::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #fff, transparent);
+        animation: underlineExpand 2s ease-out 1s forwards;
+    }
+
+    @keyframes titleFadeIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes underlineExpand {
+        to { width: 200px; }
+    }
+
+    .video-button-container {
+        text-align: center;
+        margin: 30px 0 20px 0;
+        opacity: 0;
+        animation: filterFadeIn 1s ease-out 1.2s forwards;
+    }
+
+    .video-button {
+        background: linear-gradient(135deg, #ffb103, #ff8c00);
+        color: #ffffff;
+        border: 2px solid transparent;
+        padding: 15px 30px;
+        cursor: pointer;
+        border-radius: 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 1.1rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 6px 20px rgba(255, 177, 3, 0.3);
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .video-button::before {
+        content: '🎥';
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+
+    .video-button::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.6s;
+    }
+
+    .video-button:hover::after {
+        left: 100%;
+    }
+
+    .video-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 177, 3, 0.4);
+    }
+
+    .filter-container {
+        text-align: center;
+        margin: 50px 0;
+        opacity: 0;
+        animation: filterFadeIn 1s ease-out 1.5s forwards;
+    }
+
+    @keyframes filterFadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .filter-button {
+        background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+        color: #000000;
+        border: 2px solid transparent;
+        padding: 12px 24px;
+        margin: 8px;
+        cursor: pointer;
+        border-radius: 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .filter-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.6s;
+    }
+
+    .filter-button:hover::before {
+        left: 100%;
+    }
+
+    .filter-button:hover {
+        background: linear-gradient(135deg, #000000 0%, #333333 100%);
+        color: #ffffff;
+        border-color: #ffffff;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+    }
+
+    .filter-button.active {
+        background: linear-gradient(135deg, #ffb103 0%, #ff8c00 100%);
+        color: #000;
+        border-color: #ffb103;
+        box-shadow: 0 0 20px rgba(255, 177, 3, 0.3);
+        transform: translateY(-3px);
+    }
+
+    .mobile-filter-container {
+        display: none;
+    }
+
+    .mobile-filter-menu {
+        display: none;
+    }
+
+    .mobile-filter-menu.active {
+        display: block;
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        padding: 40px 0;
+    }
+
+    .gallery-item {
+        width: 100%;
+        opacity: 1;
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: opacity 0.4s ease, transform 0.3s ease;
+    }
+
+    .gallery-item.show {
+        opacity: 1;
+        display: block;
+    }
+
+    .gallery-item.hide {
+        display: none;
+        opacity: 0;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+        border-color: rgba(255, 177, 3, 0.5);
+        box-shadow: 0 8px 25px rgba(255, 177, 3, 0.2);
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .lightbox.active {
+        display: flex;
+    }
+
+    .lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slides {
+        max-width: 100%;
+        max-height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slides img {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 10px;
+    }
+
+    .close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        font-size: 40px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 10000;
+        transition: color 0.3s;
+    }
+
+    .close:hover {
+        color: #ffb103;
+    }
+
+    .prev, .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 177, 3, 0.8);
+        color: #000;
+        border: none;
+        padding: 15px 20px;
+        cursor: pointer;
+        font-size: 24px;
+        border-radius: 5px;
+        transition: all 0.3s;
+        z-index: 10000;
+    }
+
+    .prev {
+        left: 20px;
+    }
+
+    .next {
+        right: 20px;
+    }
+
+    .prev:hover, .next:hover {
+        background: #ffb103;
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .toggle-btn {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #ffb103, #ff8c00);
+        color: #fff;
+        border: none;
+        padding: 12px 24px;
+        cursor: pointer;
+        border-radius: 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        z-index: 10000;
+    }
+
+    .toggle-btn:hover {
+        transform: translateX(-50%) translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 177, 3, 0.4);
+    }
+
+    @media (max-width: 1024px) {
+        .gallery {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container-realisations {
+            margin-top: 140px;
+        }
+
+        .title-main {
+            font-size: 2.5rem;
+        }
+
+        .video-button {
+            padding: 12px 24px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .gallery {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .filter-container {
+            display: none;
+        }
+
+        .mobile-filter-container {
+            display: block;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .mobile-filter-button {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            color: #000000;
+            border: 2px solid transparent;
+            padding: 12px 24px;
+            margin: 8px;
+            cursor: pointer;
+            border-radius: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            display: block;
+            width: 90%;
+            margin: 8px auto;
+        }
+
+        .mobile-filter-button.active {
+            background: linear-gradient(135deg, #ffb103 0%, #ff8c00 100%);
+            color: #000;
+        }
+
+        .prev, .next {
+            padding: 10px 15px;
+            font-size: 18px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .toggle-btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container-realisations {
+            margin-top: 160px;
+        }
+
+        .title-main {
+            font-size: 2rem;
+        }
+
+        .video-button {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        .gallery {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 15px;
+        }
+    }
+</style>
+
+<div class="container-realisations">
+    <h1 class="title-main font-display uppercase">Nos Réalisations</h1>
+
+    <div class="video-button-container">
+        <a href="/videos-pose" class="video-button">Nos vidéos de pose</a>
+    </div>
+
+    <div class="filter-container">
+        <button class="filter-button active" data-filter="all">Tout</button>
+        <button class="filter-button" data-filter="fenetre">Fenêtres</button>
+        <button class="filter-button" data-filter="porte">Portes d'entrée</button>
+        <button class="filter-button" data-filter="veranda">Vérandas et pergolas</button>
+        <button class="filter-button" data-filter="store-interieur">Stores intérieurs</button>
+        <button class="filter-button" data-filter="portail">Portails et clôtures</button>
+        <button class="filter-button" data-filter="store-banne">Stores bannes</button>
+        <button class="filter-button" data-filter="volet-roulant">Volets roulants</button>
+        <button class="filter-button" data-filter="volet-battant">Volets battants</button>
+        <button class="filter-button" data-filter="porte-garage">Portes de garage</button>
+        <button class="filter-button" data-filter="carport">Carports</button>
+    </div>
+
+    <div class="mobile-filter-container">
+        <button class="mobile-filter-button" id="mobile-filter-toggle">Filtres</button>
+        <div class="mobile-filter-menu">
+            <button class="mobile-filter-button active" data-filter="all">Tout</button>
+            <button class="mobile-filter-button" data-filter="fenetre">Fenêtres</button>
+            <button class="mobile-filter-button" data-filter="porte">Portes d'entrée</button>
+            <button class="mobile-filter-button" data-filter="veranda">Vérandas et pergolas</button>
+            <button class="mobile-filter-button" data-filter="store-interieur">Stores intérieurs</button>
+            <button class="mobile-filter-button" data-filter="portail">Portails et clôtures</button>
+            <button class="mobile-filter-button" data-filter="store-banne">Stores bannes</button>
+            <button class="mobile-filter-button" data-filter="volet-roulant">Volets roulants</button>
+            <button class="mobile-filter-button" data-filter="volet-battant">Volets battants</button>
+            <button class="mobile-filter-button" data-filter="porte-garage">Portes de garage</button>
+            <button class="mobile-filter-button" data-filter="carport">Carports</button>
+        </div>
+    </div>
+
+    <div class="gallery">
+        <!-- Fenêtres -->
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre1.webp"><img src="/realisations/fenetre1.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-before="/realisations/fenetre2-avant.png" data-after="/realisations/fenetre2.webp"><img src="/realisations/fenetre2.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre3.webp"><img src="/realisations/fenetre3.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre4.webp"><img src="/realisations/fenetre4.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre5.webp"><img src="/realisations/fenetre5.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre6.webp"><img src="/realisations/fenetre6.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre7.webp"><img src="/realisations/fenetre7.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-before="/realisations/fenetre8-avant.png" data-after="/realisations/fenetre8.webp"><img src="/realisations/fenetre8.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre9.webp"><img src="/realisations/fenetre9.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre10.webp"><img src="/realisations/fenetre10.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre11.webp"><img src="/realisations/fenetre11.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre12.webp"><img src="/realisations/fenetre12.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre13.webp"><img src="/realisations/fenetre13.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre14.webp"><img src="/realisations/fenetre14.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre15.webp"><img src="/realisations/fenetre15.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre16.webp"><img src="/realisations/fenetre16.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre17.webp"><img src="/realisations/fenetre17.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre18.webp"><img src="/realisations/fenetre18.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre19.webp"><img src="/realisations/fenetre19.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre20.webp"><img src="/realisations/fenetre20.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre21.webp"><img src="/realisations/fenetre21.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre22.webp"><img src="/realisations/fenetre22.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre23.webp"><img src="/realisations/fenetre23.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre24.webp"><img src="/realisations/fenetre24.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre25.webp"><img src="/realisations/fenetre25.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre26.webp"><img src="/realisations/fenetre26.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre27.webp"><img src="/realisations/fenetre27.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre28.webp"><img src="/realisations/fenetre28.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre32.webp"><img src="/realisations/fenetre32.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre33.webp"><img src="/realisations/fenetre33.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre34.webp"><img src="/realisations/fenetre34.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre35.webp"><img src="/realisations/fenetre35.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre36.webp"><img src="/realisations/fenetre36.webp" alt="Fenêtre" loading="lazy"></div>
+        <div class="gallery-item fenetre show" data-after="/realisations/fenetre37.webp"><img src="/realisations/fenetre37.webp" alt="Fenêtre" loading="lazy"></div>
+
+        <!-- Portes d'entrée -->
+        <div class="gallery-item porte show" data-after="/realisations/porte1.webp"><img src="/realisations/porte1.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte2.webp"><img src="/realisations/porte2.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte3.webp"><img src="/realisations/porte3.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte4.webp"><img src="/realisations/porte4.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte5.webp"><img src="/realisations/porte5.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte6.webp"><img src="/realisations/porte6.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte7.webp"><img src="/realisations/porte7.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte8.webp"><img src="/realisations/porte8.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte9.webp"><img src="/realisations/porte9.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte10.webp"><img src="/realisations/porte10.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte11.webp"><img src="/realisations/porte11.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte12.webp"><img src="/realisations/porte12.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte13.webp"><img src="/realisations/porte13.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte14.webp"><img src="/realisations/porte14.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte15.webp"><img src="/realisations/porte15.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte16.webp"><img src="/realisations/porte16.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte17.webp"><img src="/realisations/porte17.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte18.webp"><img src="/realisations/porte18.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte19.webp"><img src="/realisations/porte19.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte20.webp"><img src="/realisations/porte20.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte21.webp"><img src="/realisations/porte21.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte22.webp"><img src="/realisations/porte22.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte23.webp"><img src="/realisations/porte23.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte24.webp"><img src="/realisations/porte24.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte25.webp"><img src="/realisations/porte25.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte26.webp"><img src="/realisations/porte26.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte27.webp"><img src="/realisations/porte27.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte28.webp"><img src="/realisations/porte28.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte29.webp"><img src="/realisations/porte29.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte30.webp"><img src="/realisations/porte30.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte31.webp"><img src="/realisations/porte31.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte32.webp"><img src="/realisations/porte32.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte33.webp"><img src="/realisations/porte33.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte34.webp"><img src="/realisations/porte34.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte35.webp"><img src="/realisations/porte35.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte36.webp"><img src="/realisations/porte36.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte37.webp"><img src="/realisations/porte37.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte38.webp"><img src="/realisations/porte38.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte39.webp"><img src="/realisations/porte39.webp" alt="Porte d'entrée" loading="lazy"></div>
+        <div class="gallery-item porte show" data-after="/realisations/porte40.webp"><img src="/realisations/porte40.webp" alt="Porte d'entrée" loading="lazy"></div>
+
+        <!-- Vérandas et Pergolas -->
+        <div class="gallery-item veranda show" data-after="/realisations/pergola1.webp"><img src="/realisations/pergola1.webp" alt="Pergola" loading="lazy"></div>
+        <div class="gallery-item veranda show" data-after="/realisations/veranda1.webp"><img src="/realisations/veranda1.webp" alt="Véranda" loading="lazy"></div>
+        <div class="gallery-item veranda show" data-after="/realisations/pergola2.webp"><img src="/realisations/pergola2.webp" alt="Pergola" loading="lazy"></div>
+        <div class="gallery-item veranda show" data-after="/realisations/pergola3.webp"><img src="/realisations/pergola3.webp" alt="Pergola" loading="lazy"></div>
+
+        <!-- Stores intérieurs -->
+        <div class="gallery-item store-interieur show" data-after="/realisations/store1.webp"><img src="/realisations/store1.webp" alt="Store intérieur" loading="lazy"></div>
+        <div class="gallery-item store-interieur show" data-after="/realisations/store2.webp"><img src="/realisations/store2.webp" alt="Store intérieur" loading="lazy"></div>
+        <div class="gallery-item store-interieur show" data-after="/realisations/store3.webp"><img src="/realisations/store3.webp" alt="Store intérieur" loading="lazy"></div>
+        <div class="gallery-item store-interieur show" data-after="/realisations/store4.webp"><img src="/realisations/store4.webp" alt="Store intérieur" loading="lazy"></div>
+        <div class="gallery-item store-interieur show" data-after="/realisations/store5.webp"><img src="/realisations/store5.webp" alt="Store intérieur" loading="lazy"></div>
+        <div class="gallery-item store-interieur show" data-after="/realisations/store6.webp"><img src="/realisations/store6.webp" alt="Store intérieur" loading="lazy"></div>
+
+        <!-- Portails et clôtures -->
+        <div class="gallery-item portail show" data-after="/realisations/portail1.webp"><img src="/realisations/portail1.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail2.webp"><img src="/realisations/portail2.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail3.webp"><img src="/realisations/portail3.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail4.webp"><img src="/realisations/portail4.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail5.webp"><img src="/realisations/portail5.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail6.webp"><img src="/realisations/portail6.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/cloture1.png"><img src="/realisations/cloture1.png" alt="Clôture" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail8.webp"><img src="/realisations/portail8.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail9.webp"><img src="/realisations/portail9.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/cloture2.png"><img src="/realisations/cloture2.png" alt="Clôture" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail11.webp"><img src="/realisations/portail11.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail12.webp"><img src="/realisations/portail12.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail13.webp"><img src="/realisations/portail13.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail14.webp"><img src="/realisations/portail14.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail15.webp"><img src="/realisations/portail15.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail16.webp"><img src="/realisations/portail16.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail17.webp"><img src="/realisations/portail17.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail18.webp"><img src="/realisations/portail18.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail19.webp"><img src="/realisations/portail19.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail20.webp"><img src="/realisations/portail20.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail21.png"><img src="/realisations/portail21.png" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail22.webp"><img src="/realisations/portail22.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail23.webp"><img src="/realisations/portail23.webp" alt="Portail" loading="lazy"></div>
+        <div class="gallery-item portail show" data-after="/realisations/portail24.webp"><img src="/realisations/portail24.webp" alt="Portail" loading="lazy"></div>
+
+        <!-- Stores bannes -->
+        <div class="gallery-item store-banne show" data-after="/realisations/store-banne1.webp"><img src="/realisations/store-banne1.webp" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/realisations/store-banne2.webp"><img src="/realisations/store-banne2.webp" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/realisations/store-banne3.webp"><img src="/realisations/store-banne3.webp" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/realisations/store-banne4.webp"><img src="/realisations/store-banne4.webp" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/realisations/store-banne5.webp"><img src="/realisations/store-banne5.webp" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/realisations/store-banne6.webp"><img src="/realisations/store-banne6.webp" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/realisations/store-banne7.webp"><img src="/realisations/store-banne7.webp" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/realisations/store-banne8.webp"><img src="/realisations/store-banne8.webp" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/realisations/store-banne9.png"><img src="/realisations/store-banne9.png" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/realisations/store-banne10.webp"><img src="/realisations/store-banne10.webp" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/realisations/store-banne11.webp"><img src="/realisations/store-banne11.webp" alt="Store banne" loading="lazy"></div>
+        <div class="gallery-item store-banne show" data-after="/realisations/store-banne12.webp"><img src="/realisations/store-banne12.webp" alt="Store banne" loading="lazy"></div>
+
+        <!-- Volets roulants -->
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet1.webp"><img src="/realisations/volet1.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet2.webp"><img src="/realisations/volet2.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet3.webp"><img src="/realisations/volet3.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet4.webp"><img src="/realisations/volet4.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet5.webp"><img src="/realisations/volet5.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet6.webp"><img src="/realisations/volet6.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet7.webp"><img src="/realisations/volet7.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet8.webp"><img src="/realisations/volet8.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet9.webp"><img src="/realisations/volet9.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet10.webp"><img src="/realisations/volet10.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet11.webp"><img src="/realisations/volet11.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet12.webp"><img src="/realisations/volet12.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet13.webp"><img src="/realisations/volet13.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet14.webp"><img src="/realisations/volet14.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet15.webp"><img src="/realisations/volet15.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet16.webp"><img src="/realisations/volet16.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet17.webp"><img src="/realisations/volet17.webp" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet-roulant18.png"><img src="/realisations/volet-roulant18.png" alt="Volet roulant" loading="lazy"></div>
+        <div class="gallery-item volet-roulant show" data-after="/realisations/volet19.png"><img src="/realisations/volet19.png" alt="Volet roulant" loading="lazy"></div>
+
+        <!-- Volets battants -->
+        <div class="gallery-item volet-battant show" data-after="/realisations/volet-battant1.webp"><img src="/realisations/volet-battant1.webp" alt="Volet battant" loading="lazy"></div>
+        <div class="gallery-item volet-battant show" data-after="/realisations/volet-battant2.webp"><img src="/realisations/volet-battant2.webp" alt="Volet battant" loading="lazy"></div>
+        <div class="gallery-item volet-battant show" data-after="/realisations/volet-battant5.webp"><img src="/realisations/volet-battant5.webp" alt="Volet battant" loading="lazy"></div>
+        <div class="gallery-item volet-battant show" data-after="/realisations/volet-battant4.webp"><img src="/realisations/volet-battant4.webp" alt="Volet battant" loading="lazy"></div>
+        <div class="gallery-item volet-battant show" data-after="/realisations/volet-battant6.webp"><img src="/realisations/volet-battant6.webp" alt="Volet battant" loading="lazy"></div>
+        <div class="gallery-item volet-battant show" data-after="/realisations/volet-battant7.webp"><img src="/realisations/volet-battant7.webp" alt="Volet battant" loading="lazy"></div>
+        <div class="gallery-item volet-battant show" data-after="/realisations/volet-battant8.webp"><img src="/realisations/volet-battant8.webp" alt="Volet battant" loading="lazy"></div>
+        <div class="gallery-item volet-battant show" data-after="/realisations/volet-battant9.webp"><img src="/realisations/volet-battant9.webp" alt="Volet battant" loading="lazy"></div>
+        <div class="gallery-item volet-battant show" data-after="/realisations/volet-battant10.webp"><img src="/realisations/volet-battant10.webp" alt="Volet battant" loading="lazy"></div>
+        <div class="gallery-item volet-battant show" data-after="/realisations/volet-battant11.webp"><img src="/realisations/volet-battant11.webp" alt="Volet battant" loading="lazy"></div>
+
+        <!-- Portes de garage -->
+        <div class="gallery-item porte-garage show" data-after="/realisations/porte-garage1.webp"><img src="/realisations/porte-garage1.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-after="/realisations/porte-garage2.webp"><img src="/realisations/porte-garage2.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-after="/realisations/porte-garage3.webp"><img src="/realisations/porte-garage3.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-after="/realisations/porte-garage4.webp"><img src="/realisations/porte-garage4.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-after="/realisations/porte-garage5.webp"><img src="/realisations/porte-garage5.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-after="/realisations/porte-garage6.webp"><img src="/realisations/porte-garage6.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-before="/realisations/porte-garage7-avant.png" data-after="/realisations/porte-garage7.webp"><img src="/realisations/porte-garage7.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-after="/realisations/porte-garage9.webp"><img src="/realisations/porte-garage9.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-after="/realisations/porte-garage10.webp"><img src="/realisations/porte-garage10.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-after="/realisations/porte-garage11.png"><img src="/realisations/porte-garage11.png" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-after="/realisations/porte-garage11.webp"><img src="/realisations/porte-garage11.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage portail show" data-after="/realisations/porte-garage12.webp"><img src="/realisations/porte-garage12.webp" alt="Porte de garage" loading="lazy"></div>
+        <div class="gallery-item porte-garage show" data-after="/realisations/porte-garage13.webp"><img src="/realisations/porte-garage13.webp" alt="Porte de garage" loading="lazy"></div>
+
+        <!-- Carports -->
+        <div class="gallery-item carport show" data-after="/realisations/carport1.png"><img src="/realisations/carport1.png" alt="Carport" loading="lazy"></div>
+        <div class="gallery-item carport show" data-after="/realisations/carport2.png"><img src="/realisations/carport2.png" alt="Carport" loading="lazy"></div>
+    </div>
+</div>
+
+<div id="lightbox" class="lightbox">
+    <span class="close">×</span>
+    <div class="lightbox-content">
+        <div class="slides"></div>
+        <button class="prev">❮</button>
+        <button class="next">❯</button>
+        <button class="toggle-btn">Voir Avant / Après</button>
+    </div>
+</div>
+
+</Layout>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-button, .mobile-filter-button:not(#mobile-filter-toggle)');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const mobileFilterToggle = document.getElementById('mobile-filter-toggle');
+        const mobileFilterMenu = document.querySelector('.mobile-filter-menu');
+
+        // Mobile filter toggle
+        if (mobileFilterToggle) {
+            mobileFilterToggle.addEventListener('click', () => {
+                mobileFilterMenu.classList.toggle('active');
+            });
+        }
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                // Filter items
+                galleryItems.forEach(item => {
+                    if (filter === 'all') {
+                        item.classList.remove('hide');
+                        item.classList.add('show');
+                    } else {
+                        if (item.classList.contains(filter)) {
+                            item.classList.remove('hide');
+                            item.classList.add('show');
+                        } else {
+                            item.classList.add('hide');
+                            item.classList.remove('show');
+                        }
+                    }
+                });
+
+                // Close mobile menu
+                if (mobileFilterMenu) {
+                    mobileFilterMenu.classList.remove('active');
+                }
+
+                // Scroll to gallery
+                const gallery = document.querySelector('.gallery');
+                if (gallery) {
+                    const galleryTop = gallery.getBoundingClientRect().top + window.pageYOffset - 100;
+                    window.scrollTo({ top: galleryTop, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const slidesContainer = lightbox.querySelector('.slides');
+        const closeBtn = lightbox.querySelector('.close');
+        const prevBtn = lightbox.querySelector('.prev');
+        const nextBtn = lightbox.querySelector('.next');
+        const toggleBtn = lightbox.querySelector('.toggle-btn');
+        let currentIndex = 0;
+        let isBefore = false;
+        let items = [];
+
+        // Build items array
+        galleryItems.forEach(item => {
+            items.push({
+                before: item.getAttribute('data-before'),
+                after: item.getAttribute('data-after')
+            });
+        });
+
+        // Open lightbox on item click
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentIndex = index;
+                isBefore = false;
+                showLightbox();
+            });
+        });
+
+        // Close lightbox
+        closeBtn.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        // Previous image
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
+        });
+
+        // Next image
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        });
+
+        // Toggle before/after
+        toggleBtn.addEventListener('click', () => {
+            if (items[currentIndex].before) {
+                isBefore = !isBefore;
+                updateCarousel();
+            }
+        });
+
+        function showLightbox() {
+            updateCarousel();
+            lightbox.classList.add('active');
+        }
+
+        function updateCarousel() {
+            slidesContainer.innerHTML = '';
+            const img = document.createElement('img');
+
+            if (items[currentIndex].before && isBefore) {
+                img.src = items[currentIndex].before;
+                toggleBtn.style.display = 'block';
+                toggleBtn.textContent = "Voir Après";
+            } else {
+                img.src = items[currentIndex].after;
+                toggleBtn.style.display = items[currentIndex].before ? 'block' : 'none';
+                toggleBtn.textContent = items[currentIndex].before ? "Voir Avant" : "";
+            }
+
+            slidesContainer.appendChild(img);
+        }
+
+        // Close lightbox on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        // Close lightbox on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+    });
+</script>

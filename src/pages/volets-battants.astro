@@ -1,0 +1,353 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+    title="Volets Battants Aluminium Sur-mesure - Hello Fermetures"
+    description="Découvrez nos volets battants sur mesure : traditionnels, persiennes, panneaux, mixtes et isolants. Design, élégance et protection pour votre maison."
+>
+
+<style>
+    .hero-section {
+        position: relative;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
+                    url('/img/bg-volet-battant.jpg') center/cover;
+        margin-top: 140px;
+    }
+
+    .hero-content {
+        max-width: 900px;
+        text-align: center;
+        padding: 40px 20px;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .video-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+    }
+
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .video-description {
+        color: #cccccc;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    .products-section {
+        max-width: 1200px;
+        margin: 80px auto;
+        padding: 0 20px;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .section-intro {
+        text-align: center;
+        color: #cccccc;
+        font-size: 1.1rem;
+        margin-bottom: 50px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .product-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+        text-decoration: none;
+        display: block;
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.2s; }
+    .product-card:nth-child(3) { animation-delay: 0.3s; }
+    .product-card:nth-child(4) { animation-delay: 0.4s; }
+    .product-card:nth-child(5) { animation-delay: 0.5s; }
+    .product-card:nth-child(6) { animation-delay: 0.6s; }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 177, 3, 0.5);
+        box-shadow: 0 12px 40px rgba(255, 177, 3, 0.2);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 280px;
+        object-fit: contain;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .product-content {
+        padding: 25px;
+    }
+
+    .product-content h3 {
+        font-size: 1.4rem;
+        color: #ffb103;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .product-content p {
+        color: #cccccc;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .catalogues-section {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 60px 20px;
+        margin-top: 80px;
+    }
+
+    .catalogues-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .catalogues-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .catalogue-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        transition: transform 0.4s ease;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .catalogue-card:hover {
+        transform: scale(1.05);
+        border-color: rgba(255, 177, 3, 0.5);
+    }
+
+    .catalogue-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
+            min-height: 50vh;
+            margin-top: 140px;
+        }
+
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .section-intro {
+            font-size: 1rem;
+        }
+
+        .products-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .catalogues-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .product-image {
+            height: 240px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-content h1 {
+            font-size: 1.8rem;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+        }
+
+        .product-content h3 {
+            font-size: 1.2rem;
+        }
+    }
+</style>
+
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="font-display">Volets Battants Sur-Mesure</h1>
+        <div class="video-container">
+            <div class="video-wrapper">
+                <iframe
+                    src="https://www.youtube.com/embed/la3FLQi1XeA?si=0GCbjOH8Bvrzh8ar"
+                    title="Découvrez nos partenaires"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="video-description">
+                Situé au cœur du Sundgau en Alsace depuis 1993, VOLPRO est une entreprise à taille humaine,
+                qui se consacre entièrement à la conception et à la fabrication de volets en aluminium avec
+                des équipements de haute précision.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="products-section">
+    <h2 class="section-title font-display">Notre Gamme de Volets Battants</h2>
+    <p class="section-intro">
+        Alliez la force à l'élégance : des volets battants qui protègent sans compromettre le style.
+    </p>
+
+    <div class="products-grid">
+        <a href="/volets-battants/traditionnels" class="product-card">
+            <img src="/public/images/volet-battant-traditionnel.png" alt="Volets battants traditionnels" class="product-image">
+            <div class="product-content">
+                <h3>Volets Traditionnels</h3>
+                <p>Volets battants en bois, parfaits pour un style intemporel.</p>
+            </div>
+        </a>
+
+        <a href="/volets-battants/persiennes" class="product-card">
+            <img src="/public/images/volet-battant-persienne.png" alt="Volets battants persiennes" class="product-image">
+            <div class="product-content">
+                <h3>Volets Persiennes</h3>
+                <p>Design minimaliste, idéal pour un extérieur classique.</p>
+            </div>
+        </a>
+
+        <a href="/volets-battants/panneaux" class="product-card">
+            <img src="/public/images/volet-battant-panneau.png" alt="Volets battants panneaux" class="product-image">
+            <div class="product-content">
+                <h3>Volets Panneaux</h3>
+                <p>Structure simple, pour un design épuré et moderne.</p>
+            </div>
+        </a>
+
+        <a href="/volets-battants/mixtes" class="product-card">
+            <img src="/public/images/volet-battant-mixtes.png" alt="Volets battants mixtes" class="product-image">
+            <div class="product-content">
+                <h3>Volets Mixtes</h3>
+                <p>Design mixte, parfait pour un look original et moderne.</p>
+            </div>
+        </a>
+
+        <a href="/volets-battants/isolants" class="product-card">
+            <img src="/public/images/volet-battant-isolant.png" alt="Volets battants isolants" class="product-image">
+            <div class="product-content">
+                <h3>Volets Isolants</h3>
+                <p>Design simple et moderne, plus isolant pour une meilleure sécurité.</p>
+            </div>
+        </a>
+
+        <a href="/volets-battants/isolants-modernes" class="product-card">
+            <img src="/public/images/volet-battant-isolant-moderne.png" alt="Volets battants isolants modernes" class="product-image">
+            <div class="product-content">
+                <h3>Volets Isolants Modernes</h3>
+                <p>Design contemporain ultra-isolant pour une sécurité maximale.</p>
+            </div>
+        </a>
+    </div>
+</section>
+
+<section class="catalogues-section">
+    <div class="catalogues-container">
+        <h2 class="section-title font-display">Nos Catalogues</h2>
+        <p class="section-intro">
+            Découvrez l'intégralité de nos gammes de volets battants.
+        </p>
+
+        <div class="catalogues-grid">
+            <a href="/public/catalogues/volpro.pdf" target="_blank" class="catalogue-card">
+                <img src="/public/images/catalogue-volpro.png" alt="Catalogue Volpro">
+            </a>
+            <a href="/public/catalogues/catalogue-thiebaut.pdf" target="_blank" class="catalogue-card">
+                <img src="/public/images/catalogue-thiebaut.png" alt="Catalogue Thiebaut">
+            </a>
+        </div>
+    </div>
+</section>
+
+</Layout>

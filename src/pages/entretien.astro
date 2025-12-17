@@ -1,0 +1,928 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+    title="Guide d'entretien des produits - Hello Fermetures"
+    description="Guide d'entretien pour fenêtres, portes, volets, portails et stores. Découvrez nos conseils pour prolonger la durée de vie de vos produits Hello Fermetures."
+>
+
+<style>
+    .container-entretien {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 30px 20px;
+        margin-top: 180px;
+        transition: margin-top 0.3s ease;
+    }
+
+    .title-main {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 50px;
+        position: relative;
+        animation: fadeInDown 0.6s ease;
+    }
+
+    .title-main::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #ffb103, #ff8c00);
+    }
+
+    .category-title {
+        font-size: 2.2rem;
+        margin: 60px 0 30px;
+        color: #ffb103;
+        position: relative;
+        padding-bottom: 10px;
+        animation: slideInLeft 0.6s ease;
+    }
+
+    .category-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #ffb103, #ff8c00);
+    }
+
+    .product {
+        display: flex;
+        align-items: flex-start;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 25px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeInUp 0.5s ease backwards;
+    }
+
+    .product:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 177, 3, 0.2);
+    }
+
+    .product-image {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 25px;
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+    }
+
+    .product:hover .product-image {
+        transform: scale(1.05);
+    }
+
+    .product-content {
+        flex: 1;
+    }
+
+    .product-content h3 {
+        font-size: 1.6rem;
+        margin-top: 0;
+        color: #ffffff;
+        transition: color 0.3s ease;
+    }
+
+    .product-content h4 {
+        font-size: 1.2rem;
+        color: #cccccc;
+        margin: 15px 0 10px;
+    }
+
+    .maintenance-tips ul {
+        padding-left: 25px;
+        color: #cccccc;
+        list-style-type: disc;
+    }
+
+    .frequency-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 30px 0;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .frequency-table th, .frequency-table td {
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 15px;
+        text-align: left;
+        color: #cccccc;
+        transition: background 0.3s ease;
+    }
+
+    .frequency-table th {
+        background: linear-gradient(135deg, #ffb103, #ff8c00);
+        color: #000;
+        font-weight: 600;
+    }
+
+    .frequency-table tr:nth-child(even) {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .frequency-table tr:hover td {
+        background: rgba(255, 177, 3, 0.1);
+    }
+
+    .warning {
+        background: rgba(255, 177, 3, 0.1);
+        border-left: 6px solid #ffb103;
+        padding: 15px 20px;
+        margin: 20px 0;
+        border-radius: 5px;
+        color: #cccccc;
+        animation: fadeIn 0.5s ease;
+    }
+
+    .cleaning-products {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 40px 0;
+    }
+
+    .cleaning-product {
+        flex: 1;
+        min-width: 250px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease;
+    }
+
+    .cleaning-product:hover {
+        transform: translateY(-3px);
+    }
+
+    .cleaning-product ul {
+        color: #cccccc;
+        list-style-type: circle;
+    }
+
+    .print-button, .print-card-button, .download-button {
+        display: inline-block;
+        margin: 20px auto;
+        padding: 12px 30px;
+        background: linear-gradient(135deg, #ffb103, #ff8c00);
+        color: #000;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .print-card-button {
+        margin: 20px 0 0;
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .download-button {
+        display: none;
+    }
+
+    .print-button:hover, .print-card-button:hover, .download-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(255, 177, 3, 0.4);
+    }
+
+    .intro-text {
+        color: #cccccc;
+        max-width: 900px;
+        margin: 0 auto 30px;
+        text-align: center;
+    }
+
+    @media print {
+        .product {
+            display: none;
+        }
+        .product.print-selected {
+            display: flex;
+            background: white;
+            border: 1px solid #ddd;
+        }
+        .product-image {
+            width: 80px;
+            height: 80px;
+        }
+        .frequency-table {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container-entretien {
+            padding: 15px;
+            margin-top: 140px;
+        }
+        .title-main {
+            font-size: 2.2rem;
+        }
+        .category-title {
+            font-size: 1.8rem;
+        }
+        .product {
+            flex-direction: column;
+            padding: 20px;
+        }
+        .product-image {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+        }
+        .cleaning-product {
+            min-width: 100%;
+        }
+        .frequency-table {
+            display: none;
+        }
+        .download-button {
+            display: block;
+        }
+    }
+
+    @media (max-width: 426px) {
+        .container-entretien {
+            padding: 10px;
+            margin-top: 160px;
+        }
+        .title-main {
+            font-size: 1.8rem;
+        }
+        .category-title {
+            font-size: 1.5rem;
+        }
+        .product-image {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+
+<div class="container-entretien">
+    <h1 class="title-main font-display uppercase">Guide d'entretien des produits</h1>
+    <p class="intro-text">Pour prolonger la durée de vie de vos produits et maintenir leurs performances optimales, un entretien régulier est essentiel. Ce guide vous fournit toutes les informations nécessaires pour l'entretien de votre équipement.</p>
+
+    <div class="category">
+        <h2 class="category-title font-display uppercase">Ouvertures</h2>
+
+        <div class="product">
+            <img src="/public/images/fenetre.jpg" alt="Fenêtre" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Fenêtres</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Nettoyez les vitres avec un produit pour vitres et un chiffon doux.</li>
+                        <li>Essuyez les cadres avec un chiffon humide et un savon doux.</li>
+                        <li>Évitez les produits abrasifs qui peuvent rayer les surfaces.</li>
+                        <li>Vérifiez et nettoyez les rails et les joints régulièrement.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les mécanismes d'ouverture et les serrures avec un lubrifiant silicone (2 fois par an).</li>
+                        <li>Vérifiez l'état des joints d'étanchéité et remplacez-les si nécessaire.</li>
+                        <li>Contrôlez les fixations et resserrez si besoin.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="/public/images/porte-entree.webp" alt="Porte d'entrée" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Portes d'entrée</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Nettoyez les surfaces avec un chiffon doux et un détergent neutre.</li>
+                        <li>Pour les portes en bois, utilisez un produit d'entretien spécifique pour bois.</li>
+                        <li>Pour les portes en PVC ou en aluminium, un simple nettoyage à l'eau savonneuse suffit.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les gonds, les paumelles et la serrure (3-4 fois par an).</li>
+                        <li>Vérifiez l'alignement de la porte et ajustez si nécessaire.</li>
+                        <li>Pour les portes en bois, appliquez une couche de protection (lasure ou vernis) tous les 2-3 ans.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="/public/images/porte-interieur.webp" alt="Porte d'intérieur" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Portes d'intérieurs</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Dépoussiérez régulièrement avec un chiffon doux.</li>
+                        <li>Nettoyez avec un chiffon légèrement humide et un détergent doux.</li>
+                        <li>Séchez immédiatement pour éviter que l'humidité ne pénètre, surtout pour les portes en bois.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les charnières avec quelques gouttes d'huile (1-2 fois par an).</li>
+                        <li>Resserrez les vis des charnières si nécessaire.</li>
+                        <li>Vérifiez et ajustez l'alignement des portes.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="/public/images/porte-garage.webp" alt="Porte de garage" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Portes de garage</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Nettoyez la surface avec de l'eau et un détergent doux.</li>
+                        <li>Vérifiez que les rails sont propres et exempts de débris.</li>
+                        <li>Testez le mécanisme d'ouverture et de fermeture.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les rails, les rouleaux, les charnières et les ressorts (2 fois par an).</li>
+                        <li>Vérifiez la tension des ressorts et des câbles.</li>
+                        <li>Testez les dispositifs de sécurité et les capteurs.</li>
+                        <li>Pour les portes motorisées, vérifiez le bon fonctionnement du moteur.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="/public/images/volet-roulant.webp" alt="Volet roulant" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Volets roulants</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Nettoyez les lames avec de l'eau savonneuse et un chiffon doux.</li>
+                        <li>Brossez les rails pour éliminer la poussière et les débris.</li>
+                        <li>Évitez les produits abrasifs ou corrosifs.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les rails et les mécanismes avec un spray silicone (2 fois par an).</li>
+                        <li>Vérifiez l'état de la sangle ou du cordon et remplacez-les si nécessaire.</li>
+                        <li>Pour les volets motorisés, contrôlez le fonctionnement du moteur et des fins de course.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="/public/images/volets.webp" alt="Volet battant" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Volets battants</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Nettoyez les surfaces avec un chiffon humide et un détergent doux.</li>
+                        <li>Pour les volets en bois, essuyez dans le sens du grain.</li>
+                        <li>Vérifiez qu'il n'y a pas d'accumulation d'eau ou de saleté dans les coins.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les gonds et les espagnolettes (3-4 fois par an).</li>
+                        <li>Pour les volets en Bois, appliquez une couche de protection (peinture, lasure ou vernis) tous les 2-3 ans.</li>
+                        <li>Vérifiez l'état des arrêts de volets et remplacez-les si nécessaire.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2 class="category-title font-display uppercase">Extérieur</h2>
+
+        <div class="product">
+            <img src="/public/images/portail.webp" alt="Portail" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Portails</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Nettoyez les surfaces avec de l'eau savonneuse et un chiffon doux.</li>
+                        <li>Rincez abondamment pour éliminer tout résidu de savon.</li>
+                        <li>Pour les portails en fer forgé, surveillez l'apparition de rouille.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les gonds, les serrures et les mécanismes (3-4 fois par an).</li>
+                        <li>Pour les portails en bois, appliquez une couche de protection tous les 2-3 ans.</li>
+                        <li>Pour les portails en métal, vérifiez les signes de corrosion et traitez-les rapidement.</li>
+                        <li>Pour les portails motorisés, vérifiez le bon fonctionnement du moteur et des dispositifs de sécurité.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="/public/images/cloture.webp" alt="Clôture" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Clôtures</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Retirez les feuilles et débris accumulés le long de la clôture.</li>
+                        <li>Nettoyez avec un jet d'eau à basse pression et une brosse douce.</li>
+                        <li>Pour les clôtures en bois, vérifiez l'apparition de moisissures.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Vérifiez la stabilité des poteaux et renforcez-les si nécessaire.</li>
+                        <li>Pour les clôtures en bois, appliquez un traitement protecteur tous les 2-3 ans.</li>
+                        <li>Pour les clôtures métalliques, traitez les points de rouille dès leur apparition.</li>
+                        <li>Remplacez les éléments endommagés ou pourris.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="/public/images/pergola.webp" alt="Pergola" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Pergolas</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Nettoyez les surfaces avec de l'eau savonneuse et une éponge douce.</li>
+                        <li>Enlevez les feuilles, les toiles d'araignées et autres débris.</li>
+                        <li>Vérifiez que les évacuations d'eau ne sont pas obstruées.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les mécanismes mobiles pour les pergolas bioclimatiques.</li>
+                        <li>Pour les pergolas en bois, appliquez un traitement anti-UV et hydrofuge tous les 2 ans.</li>
+                        <li>Vérifiez l'état des fixations et resserrez si nécessaire.</li>
+                        <li>Contrôlez l'état de la toile pour les pergolas avec couverture textile.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="/public/images/veranda.jpg" alt="Véranda" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Vérandas</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Nettoyez les vitres avec un produit pour vitres et un chiffon doux.</li>
+                        <li>Nettoyez les profils avec de l'eau savonneuse.</li>
+                        <li>Vérifiez que les gouttières et évacuations ne sont pas obstruées.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les mécanismes d'ouverture et les serrures (2 fois par an).</li>
+                        <li>Vérifiez l'étanchéité des joints et remplacez-les si nécessaire.</li>
+                        <li>Contrôlez l'état des fixations et resserrez si besoin.</li>
+                        <li>Vérifiez que la ventilation fonctionne correctement.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="/public/images/carport.webp" alt="Carport" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Carports</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Nettoyez la structure avec de l'eau savonneuse.</li>
+                        <li>Enlevez les feuilles et débris accumulés sur le toit.</li>
+                        <li>Vérifiez que les évacuations d'eau fonctionnent correctement.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Vérifiez l'état des fixations et resserrez si nécessaire.</li>
+                        <li>Pour les carports en bois, appliquez un traitement protecteur tous les 2-3 ans.</li>
+                        <li>Pour les carports métalliques, surveillez l'apparition de rouille et traitez rapidement.</li>
+                        <li>Contrôlez l'état de la couverture (polycarbonate, tôle, etc.) et remplacez les éléments endommagés.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2 class="category-title font-display uppercase">Stores</h2>
+
+        <div class="product">
+            <img src="/public/images/store.jpg" alt="Store intérieur" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Stores intérieurs</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Dépoussiérez régulièrement avec un plumeau ou un aspirateur à faible puissance.</li>
+                        <li>Pour les stores en tissu, suivez les instructions du fabricant pour le nettoyage.</li>
+                        <li>Pour les stores vénitiens, essuyez chaque lame avec un chiffon doux.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les mécanismes d'ouverture et de fermeture (1-2 fois par an).</li>
+                        <li>Vérifiez l'état des cordons et des chaînettes et remplacez-les si nécessaire.</li>
+                        <li>Contrôlez la fixation du store au mur ou au plafond.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="/public/images/store-banne.webp" alt="Store banne" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Stores bannes</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Nettoyez la toile avec de l'eau savonneuse et une brosse douce.</li>
+                        <li>Rincez abondamment et laissez sécher complètement avant de replier le store.</li>
+                        <li>N'utilisez jamais de nettoyeur haute pression.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les articulations et les mécanismes (2 fois par an).</li>
+                        <li>Vérifiez l'état des fixations et resserrez si nécessaire.</li>
+                        <li>Contrôlez l'état de la toile (déchirures, moisissures) et faites-la réparer si besoin.</li>
+                        <li>Pour les stores motorisés, vérifiez le fonctionnement du moteur et des fins de course.</li>
+                    </ul>
+                    <div class="warning">
+                        <p><strong>Important :</strong> Repliez toujours votre store en cas de vent fort ou de pluie intense pour éviter les dommages.</p>
+                    </div>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="/public/images/bg-moustiquaire.jpg" alt="Moustiquaire" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Moustiquaires</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Dépoussiérez la toile avec un aspirateur à faible puissance.</li>
+                        <li>Nettoyez la toile avec une éponge humide et de l'eau savonneuse.</li>
+                        <li>Rincez à l'eau claire sans trop mouiller.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Vérifiez l'état de la toile et réparez les petits trous si nécessaire.</li>
+                        <li>Lubrifiez les rails et les mécanismes coulissants (1-2 fois par an).</li>
+                        <li>Contrôlez l'état des fixations et resserrez si besoin.</li>
+                        <li>Pour les moustiquaires enroulables, vérifiez la tension du ressort.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2 class="category-title font-display uppercase">Automatisation</h2>
+
+        <div class="product">
+            <img src="/public/images/domotique.webp" alt="Domotique" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Domotique</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Dépoussiérez régulièrement les équipements avec un chiffon doux et sec.</li>
+                        <li>Vérifiez l'état des piles des télécommandes et capteurs sans fil.</li>
+                        <li>Redémarrez périodiquement les box domotiques pour optimiser les performances.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Mettez à jour les logiciels et firmwares lorsque disponibles.</li>
+                        <li>Vérifiez la qualité des connexions et des câbles.</li>
+                        <li>Testez les fonctions de sécurité et les scénarios programmés.</li>
+                        <li>Contrôlez l'état des capteurs (présence, température, humidité, etc.).</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="/public/images/motorisation.webp" alt="Motorisation" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Motorisations</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Vérifiez le bon fonctionnement des moteurs en les testant régulièrement.</li>
+                        <li>Nettoyez l'extérieur des boîtiers avec un chiffon légèrement humide.</li>
+                        <li>Vérifiez que les capteurs de sécurité ne sont pas obstrués.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les pièces mobiles selon les recommandations du fabricant.</li>
+                        <li>Vérifiez l'état des fixations et resserrez si nécessaire.</li>
+                        <li>Contrôlez les connexions électriques et l'état des câbles.</li>
+                        <li>Testez les dispositifs de sécurité (photocellules, barre palpeuse, etc.).</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2 class="category-title font-display uppercase">Autres</h2>
+
+        <div class="product">
+            <img src="/public/images/bg-accessoire-volet.webp" alt="Accessoire de volet" class="product-image">
+            <div class="product-content">
+                <h3 class="font-display uppercase">Accessoires volets</h3>
+                <div class="maintenance-tips">
+                    <h4>Entretien courant :</h4>
+                    <ul>
+                        <li>Nettoyez les accessoires avec un chiffon doux et de l'eau savonneuse.</li>
+                        <li>Vérifiez l'état des sangles, manivelles et autres accessoires d'ouverture.</li>
+                        <li>Contrôlez le bon fonctionnement des arrêts de volets.</li>
+                    </ul>
+                    <h4>Entretien périodique :</h4>
+                    <ul>
+                        <li>Lubrifiez les mécanismes des enrouleurs et tourniquets (2 fois par an).</li>
+                        <li>Remplacez les sangles usées ou effilochées.</li>
+                        <li>Vérifiez l'état des fixations et resserrez si nécessaire.</li>
+                    </ul>
+                    <button class="print-card-button" onclick="printCard(this.parentElement.parentElement.parentElement)">Imprimer cette carte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="category-title font-display uppercase text-center">Fréquence d'entretien recommandée</h2>
+    <button class="download-button" onclick="downloadTable()">Télécharger le tableau</button>
+    <table class="frequency-table">
+        <tr>
+            <th>Type de produit</th>
+            <th>Nettoyage</th>
+            <th>Lubrification</th>
+            <th>Vérification</th>
+            <th>Traitement</th>
+        </tr>
+        <tr>
+            <th colspan="5">Ouvertures</th>
+        </tr>
+        <tr>
+            <td>Fenêtres</td>
+            <td>Mensuel</td>
+            <td>Semestriel</td>
+            <td>Annuel</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Portes d'entrée</td>
+            <td>Mensuel</td>
+            <td>Trimestriel</td>
+            <td>Semestriel</td>
+            <td>Tous les 2-3 ans (bois)</td>
+        </tr>
+        <tr>
+            <td>Portes d'intérieur</td>
+            <td>Mensuel</td>
+            <td>Annuel</td>
+            <td>Annuel</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Portes de garage</td>
+            <td>Trimestriel</td>
+            <td>Semestriel</td>
+            <td>Semestriel</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Volets roulants</td>
+            <td>Trimestriel</td>
+            <td>Semestriel</td>
+            <td>Annuel</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Volets battants</td>
+            <td>Trimestriel</td>
+            <td>Trimestriel</td>
+            <td>Semestriel</td>
+            <td>Tous les 2-3 ans (bois)</td>
+        </tr>
+        <tr>
+            <th colspan="5">Extérieur</th>
+        </tr>
+        <tr>
+            <td>Portails</td>
+            <td>Trimestriel</td>
+            <td>Trimestriel</td>
+            <td>Semestriel</td>
+            <td>Tous les 2-3 ans (bois/métal)</td>
+        </tr>
+        <tr>
+            <td>Clôtures</td>
+            <td>Semestriel</td>
+            <td>-</td>
+            <td>Annuel</td>
+            <td>Tous les 2-3 ans (bois/métal)</td>
+        </tr>
+        <tr>
+            <td>Pergolas</td>
+            <td>Trimestriel</td>
+            <td>Semestriel</td>
+            <td>Annuel</td>
+            <td>Tous les 2 ans (bois)</td>
+        </tr>
+        <tr>
+            <td>Vérandas</td>
+            <td>Mensuel</td>
+            <td>Semestriel</td>
+            <td>Annuel</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Carports</td>
+            <td>Trimestriel</td>
+            <td>Semestriel</td>
+            <td>Annuel</td>
+            <td>Tous les 2 ans (bois/métal)</td>
+        </tr>
+        <tr>
+            <th colspan="5">Stores</th>
+        </tr>
+        <tr>
+            <td>Stores intérieurs</td>
+            <td>Mensuel</td>
+            <td>Annuel</td>
+            <td>Annuel</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Stores bannes</td>
+            <td>Trimestriel</td>
+            <td>Semestriel</td>
+            <td>Annuel</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Moustiquaires</td>
+            <td>Mensuel</td>
+            <td>-</td>
+            <td>Annuel</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <th colspan="5">Automatisation</th>
+        </tr>
+        <tr>
+            <td>Domotique</td>
+            <td>-</td>
+            <td>-</td>
+            <td>Annuel</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Motorisations</td>
+            <td>Trimestriel</td>
+            <td>Semestriel</td>
+            <td>Semestriel</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <th colspan="5">Autres</th>
+        </tr>
+        <tr>
+            <td>Accessoires volets</td>
+            <td>Trimestriel</td>
+            <td>Semestriel</td>
+            <td>Annuel</td>
+            <td>-</td>
+        </tr>
+    </table>
+</div>
+
+</Layout>
+
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script is:inline>
+    function downloadTable() {
+        const isMobile = window.innerWidth <= 768;
+        const table = document.querySelector('.frequency-table');
+        if (isMobile) {
+            const originalDisplay = table.style.display;
+            table.style.display = 'table';
+            table.style.position = 'absolute';
+            table.style.left = '-9999px';
+            html2canvas(table, {
+                backgroundColor: '#1a1a1a',
+                scale: 2
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.href = imgData;
+                link.download = 'frequence_entretien.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                table.style.display = originalDisplay;
+                table.style.position = '';
+                table.style.left = '';
+            }).catch(error => {
+                console.error('Error generating image:', error);
+                alert('Une erreur s\'est produite lors du téléchargement de l\'image.');
+                table.style.display = originalDisplay;
+                table.style.position = '';
+                table.style.left = '';
+            });
+        } else {
+            let csv = [];
+            const headers = Array.from(table.querySelectorAll('th')).map(th => `"${th.textContent}"`);
+            csv.push(headers.join(','));
+            table.querySelectorAll('tr').forEach(row => {
+                const cells = Array.from(row.querySelectorAll('td, th'));
+                if (cells.length > 1) {
+                    const rowData = cells.map(cell => `"${cell.textContent.replace(/"/g, '""')}"`);
+                    csv.push(rowData.join(','));
+                }
+            });
+            const csvContent = csv.join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'frequence_entretien.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+
+    function printCard(card) {
+        card.classList.add('print-selected');
+        window.print();
+        card.classList.remove('print-selected');
+    }
+</script>

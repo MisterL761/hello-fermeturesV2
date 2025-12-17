@@ -1,0 +1,251 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Accessoires volets battants Hello Fermetures">
+	<main>
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="hero-content">
+				<h1 class="hero-title">Accessoires pour volets battants</h1>
+				<div class="content-container">
+					<div class="image-container">
+						<img src="/public/images/accessoire-volet-battant.jpg" alt="Accessoires volets battants" class="content-image" />
+					</div>
+					<div class="text-content">
+						<h2>Complétez vos volets battants</h2>
+						<p>Découvrez notre gamme complète d'accessoires pour vos volets battants. Nous proposons des solutions adaptées pour garantir la durabilité, la sécurité et l'esthétique de vos installations.</p>
+
+						<h3>Nos accessoires disponibles</h3>
+						<ul>
+							<li>Pentures et gonds renforcés</li>
+							<li>Verrous et crémones de sécurité</li>
+							<li>Arrêtoirs et butées</li>
+							<li>Espagnolettes de verrouillage</li>
+							<li>Barres de sécurité</li>
+							<li>Têtes de bergère décoratives</li>
+							<li>Poignées et boutons</li>
+							<li>Accessoires de motorisation</li>
+						</ul>
+
+						<h3>Avantages</h3>
+						<ul>
+							<li>Matériaux de qualité résistants aux intempéries</li>
+							<li>Finitions variées pour s'adapter à votre décoration</li>
+							<li>Installation facile avec notice fournie</li>
+							<li>Compatible avec tous types de volets battants</li>
+							<li>Garantie fabricant</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Catalogue Section -->
+
+	</main>
+</Layout>
+
+<style>
+	main {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.hero {
+		position: relative;
+		min-height: 80vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(30, 30, 30, 0.95) 100%);
+		padding: 140px 20px 60px;
+		overflow: hidden;
+	}
+
+	.hero-content {
+		max-width: 1400px;
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+		z-index: 2;
+	}
+
+	.hero-title {
+		font-size: 3.5rem;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 50px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		animation: fadeInUp 0.8s ease-out;
+	}
+
+	.content-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 60px;
+		align-items: center;
+		background: rgba(255, 255, 255, 0.03);
+		backdrop-filter: blur(10px);
+		border-radius: 20px;
+		padding: 60px;
+		border: 1px solid rgba(255, 177, 3, 0.1);
+		animation: fadeInUp 0.8s ease-out 0.2s both;
+	}
+
+	.image-container {
+		width: 100%;
+		height: 500px;
+		overflow: hidden;
+		border-radius: 15px;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+	}
+
+	.content-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.4s ease;
+	}
+
+	.content-container:hover .content-image {
+		transform: scale(1.05);
+	}
+
+	.text-content {
+		color: #e0e0e0;
+	}
+
+	.text-content h2 {
+		font-size: 2.2rem;
+		margin-bottom: 20px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.text-content h3 {
+		font-size: 1.6rem;
+		margin-top: 30px;
+		margin-bottom: 15px;
+		color: #ffb103;
+	}
+
+	.text-content p {
+		font-size: 1.1rem;
+		line-height: 1.8;
+		margin-bottom: 20px;
+	}
+
+	.text-content ul {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 20px 0;
+	}
+
+	.text-content li {
+		color: #d0d0d0;
+		margin-bottom: 12px;
+		padding-left: 25px;
+		position: relative;
+		line-height: 1.6;
+	}
+
+	.text-content li:before {
+		content: "→";
+		position: absolute;
+		left: 0;
+		color: #ffb103;
+		font-weight: bold;
+	}
+
+	.catalogue-section {
+		padding: 100px 20px;
+		background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+	}
+
+	.section-title {
+		font-size: 2.8rem;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 60px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.catalogue-container {
+		max-width: 800px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.catalogue-link {
+		display: inline-block;
+		transition: transform 0.3s ease;
+	}
+
+	.catalogue-link:hover {
+		transform: scale(1.05);
+	}
+
+	.catalogue-image {
+		max-width: 100%;
+		height: auto;
+		border-radius: 15px;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			padding: 120px 15px 40px;
+			min-height: 60vh;
+		}
+
+		.hero-title {
+			font-size: 2rem;
+		}
+
+		.content-container {
+			grid-template-columns: 1fr;
+			padding: 30px;
+			gap: 30px;
+		}
+
+		.image-container {
+			height: 300px;
+		}
+
+		.text-content h2 {
+			font-size: 1.8rem;
+		}
+
+		.text-content h3 {
+			font-size: 1.4rem;
+		}
+
+		.text-content p {
+			font-size: 1rem;
+		}
+
+		.section-title {
+			font-size: 2rem;
+		}
+	}
+</style>

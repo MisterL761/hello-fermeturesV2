@@ -1,0 +1,398 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Stores intérieurs Hello Fermetures">
+	<main>
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="hero-content">
+				<h1 class="hero-title">Découvrez nos partenaires</h1>
+				<div class="video-container">
+					<div class="video-wrapper">
+						<iframe
+							width="560"
+							height="315"
+							src="https://www.youtube.com/embed/tZG1oX94N0s?si=FaAkBrtTssw5mPmL"
+							title="YouTube video player"
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							referrerpolicy="strict-origin-when-cross-origin"
+							allowfullscreen
+						></iframe>
+					</div>
+					<div class="video-description">
+						<p>Filtersun est une marque spécialisée dans la conception et la fabrication de solutions de protection solaire adaptées aux besoins des particuliers et des professionnels. Grâce à une large gamme de stores intérieurs et extérieurs, Filtersun offre des solutions esthétiques et fonctionnelles pour réguler la lumière, préserver l'intimité et optimiser le confort thermique.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Products Section -->
+		<section class="products-section">
+			<h2 class="section-title">Découvrez notre gamme de stores d'intérieurs !</h2>
+			<p class="intro-text">Transformez votre maison avec des fenêtres haut de gamme alliant design, performance et durabilité.</p>
+
+			<div class="products-grid">
+				<!-- Stores Rouleaux -->
+				<div class="product-card">
+					<div class="product-image-container">
+						<img src="/public/images/store-tissue.png" alt="Stores rouleaux en tissu" class="product-image" />
+					</div>
+					<div class="product-info">
+						<h3>Stores rouleaux en tissu</h3>
+						<ul>
+							<li>Esthétique moderne et épurée</li>
+							<li>Contrôle de la lumière selon le type de tissu choisi</li>
+							<li>Idéal pour les petites fenêtres et grands baies vitrées</li>
+							<li>Confort thermique</li>
+							<li>Compatible avec domotique pour les modèles motorisés</li>
+							<li>Large choix de couleurs et motifs</li>
+							<li>Mécanisme d'enroulement manuel (chaînette) ou motorisé</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Stores Plissés -->
+				<div class="product-card">
+					<div class="product-image-container">
+						<img src="/public/images/store-plisse.png" alt="Stores plissés" class="product-image" />
+					</div>
+					<div class="product-info">
+						<h3>Stores plissés</h3>
+						<ul>
+							<li>Peu encombrant, parfait pour les petits espaces</li>
+							<li>Protection solaire efficace, tout en laissant passer la lumière si tamisant</li>
+							<li>Facile à entretenir, un simple dépoussiérage suffit</li>
+							<li>Look élégant et moderne, avec un effet texturé</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Stores Vénitiens -->
+				<div class="product-card">
+					<div class="product-image-container">
+						<img src="/public/images/store-venitien.png" alt="Stores vénitiens" class="product-image" />
+					</div>
+					<div class="product-info">
+						<h3>Stores vénitiens</h3>
+						<ul>
+							<li>Lames horizontales en aluminium, bois ou PVC</li>
+							<li>Inclinaison des lames réglable pour gérer la lumière et l'intimité</li>
+							<li>Manœuvre par cordon, tige, chaînette ou motorisation</li>
+							<li>Look moderne et intemporel, adapté à tous les styles d'intérieur</li>
+							<li>Facile à entretenir, un simple dépoussiérage ou chiffon humide suffit</li>
+							<li>Idéal pour bureaux, salons et pièces humides (PVC et alu résistants à l'humidité)</li>
+							<li>Robuste et durable, notamment les versions en aluminium ou bois</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Stores Panneaux Japonais -->
+				<div class="product-card">
+					<div class="product-image-container">
+						<img src="/public/images/store-japonais.png" alt="Stores panneaux japonais" class="product-image" />
+					</div>
+					<div class="product-info">
+						<h3>Stores panneaux japonais</h3>
+						<ul>
+							<li>Design élégant et épuré, parfait pour une déco moderne</li>
+							<li>Modulation de la lumière selon le tissu choisi</li>
+							<li>Facile à manipuler, même pour les grandes dimensions</li>
+							<li>Remplace avantageusement des rideaux lourds ou des portes coulissantes</li>
+							<li>Entretien simple, certains modèles sont lavables en machine</li>
+							<li>Idéal pour grandes baies vitrées et séparations de pièces</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Stores Bandes -->
+				<div class="product-card">
+					<div class="product-image-container">
+						<img src="/public/images/store-bande.png" alt="Stores bandes" class="product-image" />
+					</div>
+					<div class="product-info">
+						<h3>Stores bandes</h3>
+						<ul>
+							<li>Lames verticales orientables pour moduler la lumière</li>
+							<li>Idéal pour grandes fenêtres, baies vitrées et bureaux</li>
+							<li>Contrôle précis de la lumière et de l'intimité</li>
+							<li>Effet moderne et épuré, parfait pour les intérieurs contemporains</li>
+							<li>Facile à entretenir, certaines lames sont lavables</li>
+							<li>Personnalisable avec divers coloris et matières</li>
+							<li>Alternative élégante aux rideaux traditionnels</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Catalogue Section -->
+		<section class="catalogue-section">
+			<h2 class="section-title">Découvrez nos catalogues de stores intérieurs</h2>
+			<div class="catalogue-container">
+				<a href="/public/catalogues/catalogue-filtersun.pdf" target="_blank" class="catalogue-link">
+					<img src="/public/images/catalogue-store-filtersun.png" alt="Catalogue Filtersun" class="catalogue-image" />
+				</a>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	main {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.hero {
+		position: relative;
+		min-height: 80vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(30, 30, 30, 0.95) 100%),
+					url('/img/bg-store-interieur.png') center/cover no-repeat;
+		padding: 140px 20px 60px;
+		overflow: hidden;
+	}
+
+	.hero-content {
+		max-width: 1400px;
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+		z-index: 2;
+	}
+
+	.hero-title {
+		font-size: 3.5rem;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 50px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		animation: fadeInUp 0.8s ease-out;
+	}
+
+	.video-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 40px;
+		align-items: center;
+		background: rgba(255, 255, 255, 0.03);
+		backdrop-filter: blur(10px);
+		border-radius: 20px;
+		padding: 40px;
+		border: 1px solid rgba(255, 177, 3, 0.1);
+		animation: fadeInUp 0.8s ease-out 0.2s both;
+	}
+
+	.video-wrapper {
+		position: relative;
+		padding-bottom: 56.25%;
+		height: 0;
+		overflow: hidden;
+		border-radius: 15px;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+	}
+
+	.video-wrapper iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 15px;
+	}
+
+	.video-description {
+		color: #e0e0e0;
+		font-size: 1.1rem;
+		line-height: 1.8;
+	}
+
+	.video-description p {
+		margin: 0;
+	}
+
+	.products-section {
+		padding: 100px 20px;
+		background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+	}
+
+	.section-title {
+		font-size: 2.8rem;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 20px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.intro-text {
+		text-align: center;
+		font-size: 1.2rem;
+		color: #b0b0b0;
+		margin-bottom: 60px;
+	}
+
+	.products-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 40px;
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+
+	.product-card {
+		background: rgba(255, 255, 255, 0.03);
+		backdrop-filter: blur(10px);
+		border-radius: 20px;
+		overflow: hidden;
+		border: 1px solid rgba(255, 177, 3, 0.1);
+		transition: all 0.4s ease;
+		animation: fadeInUp 0.6s ease-out both;
+	}
+
+	.product-card:nth-child(1) { animation-delay: 0.1s; }
+	.product-card:nth-child(2) { animation-delay: 0.2s; }
+	.product-card:nth-child(3) { animation-delay: 0.3s; }
+	.product-card:nth-child(4) { animation-delay: 0.4s; }
+	.product-card:nth-child(5) { animation-delay: 0.5s; }
+
+	.product-card:hover {
+		transform: translateY(-10px);
+		border-color: rgba(255, 177, 3, 0.3);
+		box-shadow: 0 20px 60px rgba(255, 177, 3, 0.2);
+	}
+
+	.product-image-container {
+		width: 100%;
+		height: 300px;
+		overflow: hidden;
+		background: rgba(255, 255, 255, 0.02);
+	}
+
+	.product-image {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		transition: transform 0.4s ease;
+	}
+
+	.product-card:hover .product-image {
+		transform: scale(1.05);
+	}
+
+	.product-info {
+		padding: 30px;
+	}
+
+	.product-info h3 {
+		font-size: 1.8rem;
+		margin-bottom: 20px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.product-info ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.product-info li {
+		color: #d0d0d0;
+		margin-bottom: 12px;
+		padding-left: 25px;
+		position: relative;
+		line-height: 1.6;
+	}
+
+	.product-info li:before {
+		content: "→";
+		position: absolute;
+		left: 0;
+		color: #ffb103;
+		font-weight: bold;
+	}
+
+	.catalogue-section {
+		padding: 100px 20px;
+		background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+	}
+
+	.catalogue-container {
+		max-width: 800px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.catalogue-link {
+		display: inline-block;
+		transition: transform 0.3s ease;
+	}
+
+	.catalogue-link:hover {
+		transform: scale(1.05);
+	}
+
+	.catalogue-image {
+		max-width: 100%;
+		height: auto;
+		border-radius: 15px;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			padding: 120px 15px 40px;
+			min-height: 60vh;
+		}
+
+		.hero-title {
+			font-size: 2rem;
+		}
+
+		.video-container {
+			grid-template-columns: 1fr;
+			padding: 25px;
+			gap: 25px;
+		}
+
+		.video-description {
+			font-size: 1rem;
+		}
+
+		.section-title {
+			font-size: 2rem;
+		}
+
+		.products-grid {
+			grid-template-columns: 1fr;
+			gap: 25px;
+		}
+
+		.product-info h3 {
+			font-size: 1.5rem;
+		}
+	}
+</style>

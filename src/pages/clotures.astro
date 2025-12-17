@@ -1,0 +1,354 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Clôtures en Aluminium Cetal - Hello Fermetures">
+	<main>
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="hero-content">
+				<h1 class="hero-title">Découvrez nos partenaires</h1>
+				<div class="video-container">
+					<div class="video-wrapper">
+						<iframe
+							width="560"
+							height="315"
+							src="https://www.youtube.com/embed/OuxfL7GYnAg?si=zktjX709_XMzpF9f"
+							title="Vidéo de présentation des clôtures Cetal en aluminium"
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							referrerpolicy="strict-origin-when-cross-origin"
+							allowfullscreen
+						></iframe>
+					</div>
+					<div class="video-description">
+						<p>Cetal est une entreprise française spécialisée dans la fabrication de portails, clôtures et garde-corps en aluminium sur mesure. Reconnue pour son savoir-faire artisanal et industriel, Cetal conçoit des produits alliant design, robustesse et innovation.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Products Section -->
+		<section class="products-section">
+			<h2 class="section-title">Découvrez notre gamme de clôtures</h2>
+			<p class="intro-text">Gardez votre intimité</p>
+
+			<div class="products-grid">
+				<!-- Clôture Pleine -->
+				<div class="product-card">
+					<div class="product-image-container">
+						<img src="/public/images/cloture-pleine.jpg" alt="Clôture pleine en aluminium Cetal" class="product-image" />
+					</div>
+					<div class="product-info">
+						<h3>Clôture pleine</h3>
+						<ul>
+							<li>Pas de visibilité</li>
+							<li>Sécurité</li>
+							<li>Réduction du bruit</li>
+							<li>Protection contre le vent</li>
+							<li>Esthétique</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Clôture Semi-Ajourée -->
+				<div class="product-card">
+					<div class="product-image-container">
+						<img src="/public/images/cloture-semi-ajouré.jpg" alt="Clôture semi-ajourée en aluminium Cetal" class="product-image" />
+					</div>
+					<div class="product-info">
+						<h3>Clôture semi-ajourée</h3>
+						<ul>
+							<li>Équilibre entre intimité et visibilité</li>
+							<li>Esthétique moderne</li>
+							<li>Réduction de la pression du vent</li>
+							<li>Sécurité</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Clôture Ajourée -->
+				<div class="product-card">
+					<div class="product-image-container">
+						<img src="/public/images/cloture-ajoure.png" alt="Clôture ajourée en aluminium Cetal" class="product-image" />
+					</div>
+					<div class="product-info">
+						<h3>Clôture ajourée</h3>
+						<ul>
+							<li>Visibilité</li>
+							<li>Circulation de l'air</li>
+							<li>Réduction de la pression du vent</li>
+							<li>Sécurité visuelle</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Catalogue Section -->
+		<section class="catalogue-section">
+			<h2 class="section-title">Découvrez nos catalogues de clôture</h2>
+			<div class="catalogue-container">
+				<a href="/public/catalogues/catalogue-cetal.pdf" target="_blank" class="catalogue-link">
+					<img src="/public/images/catalogue-cetal-2025.jpg.png" alt="Catalogue de clôtures Cetal" class="catalogue-image" />
+				</a>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	main {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.hero {
+		position: relative;
+		min-height: 80vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(30, 30, 30, 0.95) 100%),
+					url('/img/bg-clotures.jpg') center/cover no-repeat;
+		padding: 140px 20px 60px;
+		overflow: hidden;
+	}
+
+	.hero-content {
+		max-width: 1400px;
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+		z-index: 2;
+	}
+
+	.hero-title {
+		font-size: 3.5rem;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 50px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		animation: fadeInUp 0.8s ease-out;
+	}
+
+	.video-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 40px;
+		align-items: center;
+		background: rgba(255, 255, 255, 0.03);
+		backdrop-filter: blur(10px);
+		border-radius: 20px;
+		padding: 40px;
+		border: 1px solid rgba(255, 177, 3, 0.1);
+		animation: fadeInUp 0.8s ease-out 0.2s both;
+	}
+
+	.video-wrapper {
+		position: relative;
+		padding-bottom: 56.25%;
+		height: 0;
+		overflow: hidden;
+		border-radius: 15px;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+	}
+
+	.video-wrapper iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 15px;
+	}
+
+	.video-description {
+		color: #e0e0e0;
+		font-size: 1.1rem;
+		line-height: 1.8;
+	}
+
+	.video-description p {
+		margin: 0;
+	}
+
+	.products-section {
+		padding: 100px 20px;
+		background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+	}
+
+	.section-title {
+		font-size: 2.8rem;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 20px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.intro-text {
+		text-align: center;
+		font-size: 1.2rem;
+		color: #b0b0b0;
+		margin-bottom: 60px;
+	}
+
+	.products-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 40px;
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+
+	.product-card {
+		background: rgba(255, 255, 255, 0.03);
+		backdrop-filter: blur(10px);
+		border-radius: 20px;
+		overflow: hidden;
+		border: 1px solid rgba(255, 177, 3, 0.1);
+		transition: all 0.4s ease;
+		animation: fadeInUp 0.6s ease-out both;
+	}
+
+	.product-card:nth-child(1) { animation-delay: 0.1s; }
+	.product-card:nth-child(2) { animation-delay: 0.2s; }
+	.product-card:nth-child(3) { animation-delay: 0.3s; }
+
+	.product-card:hover {
+		transform: translateY(-10px);
+		border-color: rgba(255, 177, 3, 0.3);
+		box-shadow: 0 20px 60px rgba(255, 177, 3, 0.2);
+	}
+
+	.product-image-container {
+		width: 100%;
+		height: 300px;
+		overflow: hidden;
+		background: rgba(255, 255, 255, 0.02);
+	}
+
+	.product-image {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		transition: transform 0.4s ease;
+	}
+
+	.product-card:hover .product-image {
+		transform: scale(1.05);
+	}
+
+	.product-info {
+		padding: 30px;
+	}
+
+	.product-info h3 {
+		font-size: 1.8rem;
+		margin-bottom: 20px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.product-info ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.product-info li {
+		color: #d0d0d0;
+		margin-bottom: 12px;
+		padding-left: 25px;
+		position: relative;
+		line-height: 1.6;
+	}
+
+	.product-info li:before {
+		content: "→";
+		position: absolute;
+		left: 0;
+		color: #ffb103;
+		font-weight: bold;
+	}
+
+	.catalogue-section {
+		padding: 100px 20px;
+		background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+	}
+
+	.catalogue-container {
+		max-width: 800px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.catalogue-link {
+		display: inline-block;
+		transition: transform 0.3s ease;
+	}
+
+	.catalogue-link:hover {
+		transform: scale(1.05);
+	}
+
+	.catalogue-image {
+		max-width: 100%;
+		height: auto;
+		border-radius: 15px;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			padding: 120px 15px 40px;
+			min-height: 60vh;
+		}
+
+		.hero-title {
+			font-size: 2rem;
+		}
+
+		.video-container {
+			grid-template-columns: 1fr;
+			padding: 25px;
+			gap: 25px;
+		}
+
+		.video-description {
+			font-size: 1rem;
+		}
+
+		.section-title {
+			font-size: 2rem;
+		}
+
+		.products-grid {
+			grid-template-columns: 1fr;
+			gap: 25px;
+		}
+
+		.product-info h3 {
+			font-size: 1.5rem;
+		}
+	}
+</style>
