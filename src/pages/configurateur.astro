@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+    title="Configurateur de produits sur mesure - Hello Fermetures"
+    description="Configurez vos fenêtres, portes, volets, pergolas ou carports sur mesure. Devis gratuit en ligne !"
+>
+    <!-- SEO Meta Tags -->
+    <Fragment slot="head">
+        <meta name="keywords" content="configurateur, fenêtres, portes, volets, pergolas, carports, Hello Fermetures, devis gratuit, sur mesure, personnalisation">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Hello Fermetures">
+
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://hello-fermetures.com/configurateur">
+
+        <!-- Hreflang pour indiquer la langue -->
+        <link rel="alternate" hreflang="fr" href="https://www.hello-fermetures.com/configurateur">
+
+        <!-- Open Graph pour les réseaux sociaux -->
+        <meta property="og:title" content="Hello Fermetures - Configurateur de produits sur mesure">
+        <meta property="og:description" content="Personnalisez vos fenêtres, portes, volets, pergolas ou carports avec notre configurateur en ligne. Devis gratuit !">
+        <meta property="og:image" content="https://www.hello-fermetures.com/images/logo.webp">
+        <meta property="og:url" content="https://hello-fermetures.com/configurateur">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Hello Fermetures">
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Hello Fermetures - Configurateur de produits">
+        <meta name="twitter:description" content="Configurez vos solutions sur mesure : fenêtres, portes, volets, pergolas, carports. Devis gratuit en ligne !">
+        <meta name="twitter:image" content="https://www.hello-fermetures.com/images/logo.webp">
+        <meta name="twitter:creator" content="@HelloFermetures">
+
+        <!-- Schema.org pour structurer les données -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                "name": "Hello Fermetures",
+                "description": "Configurez vos fenêtres, portes, volets, pergolas et carports sur mesure avec notre outil en ligne. Devis gratuit.",
+                "url": "https://hello-fermetures.com/configurateur",
+                "logo": "https://www.hello-fermetures.com/images/logo.webp",
+                "image": "https://www.hello-fermetures.com/images/logo.webp",
+                "telephone": "+33310454838",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "2 Avenue Georges Bataille",
+                    "addressLocality": "Le Plessis-Belleville",
+                    "postalCode": "60330",
+                    "addressCountry": "FR"
+                },
+                "openingHoursSpecification": {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday"
+                    ],
+                    "opens": "09:00",
+                    "closes": "18:00"
+                },
+                "sameAs": [
+                    "https://www.eldo.com/pro/hello_fermetures",
+                    "https://helloferm-lead.batitrade.com/"
+                ]
+            }
+        </script>
+    </Fragment>
+
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-32 bg-gradient-to-b from-black via-dark to-carbon overflow-hidden border-b border-white/5">
+        <div class="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-12">
+                <div class="inline-block mb-6">
+                    <span class=" px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-sm">
+                    </span>
+                </div>
+
+                <h1 class="font-display font-bold text-5xl md:text-7xl uppercase text-white mb-6 leading-none">
+                    CONFIGUREZ VOTRE <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-600">PROJET SUR MESURE</span>
+                </h1>
+
+                <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                    Visualisez et personnalisez vos fenêtres, portes, volets, pergolas ou carports en quelques clics.
+                    <br>
+                    <strong class="text-white">Devis gratuit en ligne</strong> disponible immédiatement.
+                </p>
+            </div>
+
+            <!-- Note importante -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="bg-carbon border-l-4 border-gold p-6 flex items-start gap-4 shadow-xl">
+                    <div class="flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-white font-bold uppercase tracking-wide text-sm mb-2">
+                            <i class="fa-solid fa-desktop mr-2"></i> Disponible sur tablette et ordinateur
+                        </h2>
+                        <p class="text-gray-400 text-sm">
+                            Pour une meilleure expérience, nous recommandons l'utilisation d'un écran large (tablette, ordinateur portable ou PC).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Configurateur Section -->
+    <section class="py-12 bg-dark relative">
+        <div class="max-w-[1800px] mx-auto px-4 md:px-6">
+            <div class="bg-carbon border border-white/10 rounded-sm overflow-hidden shadow-2xl">
+                <!-- Barre d'en-tête du configurateur -->
+                <div class="bg-black border-b border-white/10 px-6 py-4 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <div class="hidden md:flex items-center gap-2 text-gray-500 text-xs uppercase tracking-widest">
+                        <i class="fa-solid fa-wrench text-gold"></i>
+                        <span>Configurateur Hello Fermetures</span>
+                    </div>
+                    <div class="text-gray-600 text-xs font-mono">
+                        batitrade.com
+                    </div>
+                </div>
+
+                <!-- iFrame du configurateur -->
+                <div class="relative bg-white" style="min-height: 650px;">
+                    <iframe
+                        id="portalIframe"
+                        src="https://helloferm-lead.batitrade.com/"
+                        name="ConfigurateurFrame"
+                        width="100%"
+                        height="650"
+                        frameborder="0"
+                        scrolling="auto"
+                        title="Configurateur de produits Hello Fermetures"
+                        class="w-full"
+                        loading="lazy"
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Avantages -->
+    <section class="py-24 bg-carbon border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+
+
+
+            <!-- CTA -->
+            <div class="text-center mt-16">
+                <div class="bg-dark border border-white/10 p-8 rounded-sm max-w-3xl mx-auto">
+                    <h3 class="font-display text-2xl font-bold uppercase text-white mb-4">
+                        Besoin d'aide pour configurer ?
+                    </h3>
+                    <p class="text-gray-400 mb-6">
+                        Notre équipe est à votre disposition pour vous accompagner dans votre projet.
+                    </p>
+                    <div class="flex flex-col md:flex-row gap-4 justify-center">
+                        <a href="tel:0310454838" class="bg-gold text-black px-8 py-4 uppercase tracking-widest font-bold text-sm hover:bg-yellow-500 transition duration-300 inline-flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-phone"></i>
+                            03 10 45 48 38
+                        </a>
+                        <a href="/#contact" class="border border-white/30 text-white px-8 py-4 uppercase tracking-widest font-bold text-sm hover:bg-white hover:text-black transition duration-300 inline-flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-envelope"></i>
+                            Nous contacter
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Widget Eldo -->
+    <style media="screen and (max-width: 750px)" type="text/css">.widget-001{width:100px;height:100px;}</style>
+    <a href="https://www.eldo.com/pro/hello_fermetures">
+        <iframe src="https://www.eldo.com/widget/artisan/102610/dark" frameborder="0" height="120px" width="120px" style="position: fixed;left: 20px;bottom: 50px;z-index:100 !important;opacity: 1" class="widget-001" title="Widget Eldo Hello Fermetures"></iframe>
+    </a>
+</Layout>
+
+<style>
+    .bg-grid-pattern {
+        background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+    }
+
+    /* Animation pour le hero */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    h1, h2 {
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    /* Responsive iframe */
+    @media (max-width: 768px) {
+        iframe#portalIframe {
+            min-height: 500px;
+        }
+    }
+</style>

@@ -1,0 +1,37 @@
+---
+interface Props {
+    title: string;
+    videoUrl: string;
+    description: string;
+    backgroundImage?: string;
+}
+
+const { title, videoUrl, description, backgroundImage = '/img/bg-default.jpg' } = Astro.props;
+---
+
+<section class="hero" style={`background-image: url('${backgroundImage}')`}>
+    <div class="hero-content">
+        <h1 class="hero-title">{title}</h1>
+        <div class="video-container">
+            <div class="video-wrapper">
+                <iframe
+                    width="560"
+                    height="315"
+                    src={videoUrl}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
+            </div>
+            <div class="video-description">
+                <p>{description}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @import '../../styles/hero.css';
+</style>

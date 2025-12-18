@@ -1,0 +1,45 @@
+---
+interface Props {
+    title: string;
+    image: string;
+    description?: string;
+    features?: string[];
+    videoUrl?: string;
+    variant?: 'default' | 'compact' | 'horizontal';
+}
+
+const {
+    title,
+    image,
+    description,
+    features,
+    videoUrl,
+    variant = 'default'
+} = Astro.props;
+---
+
+<div class={`product-card ${variant}`}>
+    <div class="product-image-container">
+        <img src={image} alt={title} class="product-image" />
+    </div>
+    <div class="product-info">
+        <h3>{title}</h3>
+        {description && <p>{description}</p>}
+        {features && features.length > 0 && (
+            <ul>
+                {features.map(feature => (
+                    <li>{feature}</li>
+                ))}
+            </ul>
+        )}
+        {videoUrl && (
+            <a href={videoUrl} target="_blank" class="video-button">
+                Voir la vidéo
+            </a>
+        )}
+    </div>
+</div>
+
+<style>
+    @import '../../styles/products.css';
+</style>

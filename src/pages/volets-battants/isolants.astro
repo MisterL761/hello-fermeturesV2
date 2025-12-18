@@ -1,0 +1,185 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+    title="Volets Battants Isolants - Hello Fermetures"
+    description="Découvrez nos volets battants isolants : rainurage vertical, horizontal, plein lisse, lame jointive. Isolation thermique et design moderne."
+>
+
+<style>
+    .products-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+        margin-top: 150px;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 50px;
+        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .product-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.2s; }
+    .product-card:nth-child(3) { animation-delay: 0.3s; }
+    .product-card:nth-child(4) { animation-delay: 0.4s; }
+    .product-card:nth-child(5) { animation-delay: 0.5s; }
+    .product-card:nth-child(6) { animation-delay: 0.6s; }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 177, 3, 0.5);
+        box-shadow: 0 12px 40px rgba(255, 177, 3, 0.2);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 350px;
+        object-fit: contain;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .product-content {
+        padding: 20px;
+    }
+
+    .product-content h3 {
+        font-size: 1.3rem;
+        color: #ffb103;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .product-content p {
+        color: #cccccc;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .products-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .products-section {
+            margin-top: 140px;
+            padding: 40px 15px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .products-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .product-image {
+            height: 280px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .section-title {
+            font-size: 1.6rem;
+        }
+
+        .product-content h3 {
+            font-size: 1.2rem;
+        }
+    }
+</style>
+
+<section class="products-section">
+    <h1 class="section-title font-display">Volets Battants Isolants</h1>
+
+    <div class="products-grid">
+        <div class="product-card">
+            <img src="/img/volet-isolant-rainurage-vertical.png" alt="Rainurage verticale" class="product-image">
+            <div class="product-content">
+                <h3>Rainurage Verticale</h3>
+                <p>Sobriété et style contemporain avec des lignes verticales épurées.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/volet-isolant-rainurage-vertical-barre.png" alt="Rainurage verticale et barre" class="product-image">
+            <div class="product-content">
+                <h3>Rainurage Verticale + Barre</h3>
+                <p>Un style traditionnel revisité avec des barres pour renforcer le caractère.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/volet-isolant-rainurage-vertical-barre-echarpe.png" alt="Rainurage verticale, barre et écharpe" class="product-image">
+            <div class="product-content">
+                <h3>Rainurage Verticale + Barre + Écharpe</h3>
+                <p>Le charme authentique des volets d'antan avec une solidité renforcée.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/volet-isolant-plein-lisse.png" alt="Plein lisse" class="product-image">
+            <div class="product-content">
+                <h3>Plein Lisse</h3>
+                <p>Minimalisme total pour un aspect moderne et sobre.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/volet-isolant-lame-jointive.png" alt="Lame jointive" class="product-image">
+            <div class="product-content">
+                <h3>Lame Jointive</h3>
+                <p>Finition traditionnelle avec lames apparentes parfaitement alignées.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/volet-isolant-rainurage-horizontal.png" alt="Rainurage horizontale" class="product-image">
+            <div class="product-content">
+                <h3>Rainurage Horizontale</h3>
+                <p>Aspect contemporain avec lignes horizontales pour plus de largeur visuelle.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+</Layout>

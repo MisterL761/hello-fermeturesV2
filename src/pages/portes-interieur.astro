@@ -1,0 +1,363 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+    title="Portes d'intérieur Bois, Aluminium, Verre - Hello Fermetures"
+    description="Découvrez nos portes d'intérieur sur mesure en bois, aluminium ou verre. Designs modernes et classiques pour sublimer votre intérieur."
+>
+
+<style>
+    .hero-section {
+        position: relative;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
+                    url('/img/bg-porte-interieur.png') center/cover;
+        margin-top: 140px;
+    }
+
+    .hero-content {
+        max-width: 900px;
+        text-align: center;
+        padding: 40px 20px;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .video-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+    }
+
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .video-description {
+        color: #cccccc;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    .products-section {
+        max-width: 1200px;
+        margin: 80px auto;
+        padding: 0 20px;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .section-intro {
+        text-align: center;
+        color: #cccccc;
+        font-size: 1.1rem;
+        margin-bottom: 50px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+    }
+
+    .product-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.2s; }
+    .product-card:nth-child(3) { animation-delay: 0.3s; }
+    .product-card:nth-child(4) { animation-delay: 0.4s; }
+    .product-card:nth-child(5) { animation-delay: 0.5s; }
+    .product-card:nth-child(6) { animation-delay: 0.6s; }
+    .product-card:nth-child(7) { animation-delay: 0.7s; }
+    .product-card:nth-child(8) { animation-delay: 0.8s; }
+    .product-card:nth-child(9) { animation-delay: 0.9s; }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 177, 3, 0.5);
+        box-shadow: 0 12px 40px rgba(255, 177, 3, 0.2);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .product-content {
+        padding: 20px;
+    }
+
+    .product-content h3 {
+        font-size: 1.3rem;
+        color: #ffb103;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .product-content p {
+        color: #cccccc;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .catalogues-section {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 60px 20px;
+        margin-top: 80px;
+    }
+
+    .catalogues-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .catalogue-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        transition: transform 0.4s ease;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        max-width: 500px;
+        margin: 40px auto 0;
+    }
+
+    .catalogue-card:hover {
+        transform: scale(1.05);
+        border-color: rgba(255, 177, 3, 0.5);
+    }
+
+    .catalogue-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
+            min-height: 50vh;
+            margin-top: 140px;
+        }
+
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .section-intro {
+            font-size: 1rem;
+        }
+
+        .products-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .product-image {
+            height: 220px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-content h1 {
+            font-size: 1.8rem;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+        }
+
+        .product-content h3 {
+            font-size: 1.2rem;
+        }
+    }
+</style>
+
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="font-display">Portes d'Intérieur Sur-Mesure</h1>
+        <div class="video-container">
+            <div class="video-wrapper">
+                <iframe
+                    src="https://www.youtube.com/embed/WQUa0PEsfXY?si=2s1Xvo6-gA9HfoOU"
+                    title="Découvrez nos partenaires"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="video-description">
+                Le Moine est une entreprise bretonne fondée il y a environ 60 ans, reconnue pour son expertise
+                dans la conception et la fabrication de portes d'intérieur. Production 100% française avec un
+                savoir-faire artisanal d'exception.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="products-section">
+    <h2 class="section-title font-display">Notre Gamme de Portes d'Intérieur</h2>
+    <p class="section-intro">
+        Sublimez votre intérieur avec des portes alliant esthétique et qualité.
+    </p>
+
+    <div class="products-grid">
+        <div class="product-card">
+            <img src="/img/porte-lm33px.png" alt="Porte LM33 PX en bois" class="product-image">
+            <div class="product-content">
+                <h3>Porte LM33 PX</h3>
+                <p>Une porte en bois, parfaite pour un style intemporel.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/porte-lm52px.png" alt="Porte LM52 PX en bois" class="product-image">
+            <div class="product-content">
+                <h3>Porte LM52 PX</h3>
+                <p>Design minimaliste en bois, idéal pour les intérieurs classiques.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/porte-lm104cx.png" alt="Porte LM104 CX en aluminium" class="product-image">
+            <div class="product-content">
+                <h3>Porte LM104 CX</h3>
+                <p>Porte élégante en aluminium, pour un design moderne.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/porte-lm30gv.png" alt="Porte LM30 GV en aluminium et verre" class="product-image">
+            <div class="product-content">
+                <h3>Porte LM30 GV</h3>
+                <p>Porte en aluminium et verre laissant passer la lumière.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/porte-lm35px.png" alt="Porte LM35 PX en bois" class="product-image">
+            <div class="product-content">
+                <h3>Porte LM35 PX</h3>
+                <p>Porte en bois, avec un design classique et moderne.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/porte-lm50.png" alt="Porte LM50 en bois" class="product-image">
+            <div class="product-content">
+                <h3>Porte LM50</h3>
+                <p>Porte en bois avec imitation nœud de bois ayant un aspect moderne.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/porte-open-insert.png" alt="Porte OPEN en bois" class="product-image">
+            <div class="product-content">
+                <h3>Porte OPEN</h3>
+                <p>Porte en bois imitation nœud avec une bande décorative.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/porte-lm85.png" alt="Porte LM85 en bois" class="product-image">
+            <div class="product-content">
+                <h3>Porte LM85</h3>
+                <p>Porte en bois avec une décoration type lame de bois.</p>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/img/porte-lm45.png" alt="Porte LM45 en bois de chêne" class="product-image">
+            <div class="product-content">
+                <h3>Porte Design</h3>
+                <p>Porte en bois de chêne avec une coloration grise.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="catalogues-section">
+    <div class="catalogues-container">
+        <h2 class="section-title font-display">Notre Catalogue</h2>
+        <p class="section-intro">
+            Découvrez l'intégralité de notre gamme de portes d'intérieur.
+        </p>
+
+        <a href="/catalogue/catalogue-lemoine.pdf" target="_blank" class="catalogue-card">
+            <img src="/img/catalogue-porte-lemoine.png" alt="Catalogue Le Moine">
+        </a>
+    </div>
+</section>
+
+</Layout>

@@ -1,0 +1,295 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Domotique Hello Fermetures">
+	<main>
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="hero-content">
+				<h1 class="hero-title">Découvrez nos partenaires</h1>
+				<div class="video-container">
+					<div class="video-wrapper">
+						<iframe
+							width="560"
+							height="315"
+							src="https://www.youtube.com/embed/jgnMjW5sv44?si=QwVeWTAQ7tbP2Ngm"
+							title="YouTube video player"
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							referrerpolicy="strict-origin-when-cross-origin"
+							allowfullscreen
+						></iframe>
+					</div>
+					<div class="video-description">
+						<p>Somfy est un leader mondial dans le domaine de l'automatisation des ouvertures et fermetures de la maison et du bâtiment. Fondée en 1969 en France, l'entreprise développe des solutions innovantes pour améliorer le confort, la sécurité et l'efficacité énergétique des habitations et locaux professionnels.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Products Section -->
+		<section class="products-section">
+			<h2 class="section-title">Découvrez notre gamme de domotique</h2>
+			<p class="intro-text">TaHoma : la maison connectée, durable et intelligente.</p>
+
+			<div class="product-container">
+				<!-- TaHoma -->
+				<div class="product-card">
+					<div class="product-image-container">
+						<img src="/img/tahoma.jpg" alt="La boxe Tahoma" class="product-image" />
+					</div>
+					<div class="product-info">
+						<h3>La boxe Tahoma</h3>
+						<ul>
+							<li>Compatibilité étendue : Fonctionne avec plus de 200 équipements de différentes marques (volets, stores, éclairage, chauffage, etc.)</li>
+							<li>Contrôle à distance : Gérez votre maison depuis votre smartphone, tablette ou ordinateur</li>
+							<li>Scénarios personnalisés : Programmez des routines selon vos habitudes (ex. fermeture automatique des volets le soir)</li>
+							<li>Connectivité : Compatible avec le WiFi, RTS, IO-Homecontrol et Zigbee 3.0</li>
+							<li>Sécurité renforcée : Chiffrement des données et protection contre les intrusions</li>
+							<li>Intégration domotique : Compatible avec Amazon Alexa, Google Assistant et Apple HomeKit</li>
+							<li>Mises à jour automatiques : Nouvelles fonctionnalités et sécurité améliorée régulièrement</li>
+							<li>Facilité d'installation : Connexion simple via une application intuitive</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	main {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.hero {
+		position: relative;
+		min-height: 80vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(30, 30, 30, 0.95) 100%),
+					url('/img/domotique.webp') center/cover no-repeat;
+		padding: 140px 20px 60px;
+		overflow: hidden;
+	}
+
+	.hero-content {
+		max-width: 1400px;
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+		z-index: 2;
+	}
+
+	.hero-title {
+		font-size: 3.5rem;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 50px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		animation: fadeInUp 0.8s ease-out;
+	}
+
+	.video-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 40px;
+		align-items: center;
+		background: rgba(255, 255, 255, 0.03);
+		backdrop-filter: blur(10px);
+		border-radius: 20px;
+		padding: 40px;
+		border: 1px solid rgba(255, 177, 3, 0.1);
+		animation: fadeInUp 0.8s ease-out 0.2s both;
+	}
+
+	.video-wrapper {
+		position: relative;
+		padding-bottom: 56.25%;
+		height: 0;
+		overflow: hidden;
+		border-radius: 15px;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+	}
+
+	.video-wrapper iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 15px;
+	}
+
+	.video-description {
+		color: #e0e0e0;
+		font-size: 1.1rem;
+		line-height: 1.8;
+	}
+
+	.video-description p {
+		margin: 0;
+	}
+
+	.products-section {
+		padding: 100px 20px;
+		background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+	}
+
+	.section-title {
+		font-size: 2.8rem;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 20px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.intro-text {
+		text-align: center;
+		font-size: 1.2rem;
+		color: #b0b0b0;
+		margin-bottom: 60px;
+	}
+
+	.product-container {
+		max-width: 1100px;
+		margin: 0 auto;
+	}
+
+	.product-card {
+		background: rgba(255, 255, 255, 0.03);
+		backdrop-filter: blur(10px);
+		border-radius: 20px;
+		overflow: hidden;
+		border: 1px solid rgba(255, 177, 3, 0.1);
+		transition: all 0.4s ease;
+		animation: fadeInUp 0.6s ease-out both;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0;
+	}
+
+	.product-card:hover {
+		transform: translateY(-10px);
+		border-color: rgba(255, 177, 3, 0.3);
+		box-shadow: 0 20px 60px rgba(255, 177, 3, 0.2);
+	}
+
+	.product-image-container {
+		width: 100%;
+		height: 100%;
+		min-height: 400px;
+		overflow: hidden;
+		background: rgba(255, 255, 255, 0.02);
+	}
+
+	.product-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.4s ease;
+	}
+
+	.product-card:hover .product-image {
+		transform: scale(1.05);
+	}
+
+	.product-info {
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.product-info h3 {
+		font-size: 1.8rem;
+		margin-bottom: 20px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.product-info ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.product-info li {
+		color: #d0d0d0;
+		margin-bottom: 12px;
+		padding-left: 25px;
+		position: relative;
+		line-height: 1.6;
+	}
+
+	.product-info li:before {
+		content: "→";
+		position: absolute;
+		left: 0;
+		color: #ffb103;
+		font-weight: bold;
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			padding: 120px 15px 40px;
+			min-height: 60vh;
+		}
+
+		.hero-title {
+			font-size: 2rem;
+		}
+
+		.video-container {
+			grid-template-columns: 1fr;
+			padding: 25px;
+			gap: 25px;
+		}
+
+		.video-description {
+			font-size: 1rem;
+		}
+
+		.section-title {
+			font-size: 2rem;
+		}
+
+		.product-card {
+			grid-template-columns: 1fr;
+		}
+
+		.product-image-container {
+			min-height: 300px;
+		}
+
+		.product-info {
+			padding: 30px;
+		}
+
+		.product-info h3 {
+			font-size: 1.5rem;
+		}
+	}
+</style>
