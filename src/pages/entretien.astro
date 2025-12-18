@@ -7,303 +7,6 @@ import Layout from '../layouts/Layout.astro';
     description="Guide d'entretien pour fenêtres, portes, volets, portails et stores. Découvrez nos conseils pour prolonger la durée de vie de vos produits Hello Fermetures."
 >
 
-<style>
-    .container-entretien {
-        max-width: 1300px;
-        margin: 0 auto;
-        padding: 30px 20px;
-        margin-top: 180px;
-        transition: margin-top 0.3s ease;
-    }
-
-    .title-main {
-        font-size: 3rem;
-        text-align: center;
-        margin-bottom: 50px;
-        position: relative;
-        animation: fadeInDown 0.6s ease;
-    }
-
-    .title-main::after {
-        content: '';
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(90deg, #ffb103, #ff8c00);
-    }
-
-    .category-title {
-        font-size: 2.2rem;
-        margin: 60px 0 30px;
-        color: #ffb103;
-        position: relative;
-        padding-bottom: 10px;
-        animation: slideInLeft 0.6s ease;
-    }
-
-    .category-title::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 60px;
-        height: 3px;
-        background: linear-gradient(90deg, #ffb103, #ff8c00);
-    }
-
-    .product {
-        display: flex;
-        align-items: flex-start;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 15px;
-        padding: 25px;
-        margin-bottom: 25px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        animation: fadeInUp 0.5s ease backwards;
-    }
-
-    .product:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 177, 3, 0.2);
-    }
-
-    .product-image {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-right: 25px;
-        border: 2px solid rgba(255, 255, 255, 0.15);
-        transition: transform 0.3s ease;
-        flex-shrink: 0;
-    }
-
-    .product:hover .product-image {
-        transform: scale(1.05);
-    }
-
-    .product-content {
-        flex: 1;
-    }
-
-    .product-content h3 {
-        font-size: 1.6rem;
-        margin-top: 0;
-        color: #ffffff;
-        transition: color 0.3s ease;
-    }
-
-    .product-content h4 {
-        font-size: 1.2rem;
-        color: #cccccc;
-        margin: 15px 0 10px;
-    }
-
-    .maintenance-tips ul {
-        padding-left: 25px;
-        color: #cccccc;
-        list-style-type: disc;
-    }
-
-    .frequency-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 30px 0;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    }
-
-    .frequency-table th, .frequency-table td {
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        padding: 15px;
-        text-align: left;
-        color: #cccccc;
-        transition: background 0.3s ease;
-    }
-
-    .frequency-table th {
-        background: linear-gradient(135deg, #ffb103, #ff8c00);
-        color: #000;
-        font-weight: 600;
-    }
-
-    .frequency-table tr:nth-child(even) {
-        background: rgba(0, 0, 0, 0.3);
-    }
-
-    .frequency-table tr:hover td {
-        background: rgba(255, 177, 3, 0.1);
-    }
-
-    .warning {
-        background: rgba(255, 177, 3, 0.1);
-        border-left: 6px solid #ffb103;
-        padding: 15px 20px;
-        margin: 20px 0;
-        border-radius: 5px;
-        color: #cccccc;
-        animation: fadeIn 0.5s ease;
-    }
-
-    .cleaning-products {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin: 40px 0;
-    }
-
-    .cleaning-product {
-        flex: 1;
-        min-width: 250px;
-        background: rgba(255, 255, 255, 0.05);
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-        transition: transform 0.3s ease;
-    }
-
-    .cleaning-product:hover {
-        transform: translateY(-3px);
-    }
-
-    .cleaning-product ul {
-        color: #cccccc;
-        list-style-type: circle;
-    }
-
-    .print-button, .print-card-button, .download-button {
-        display: inline-block;
-        margin: 20px auto;
-        padding: 12px 30px;
-        background: linear-gradient(135deg, #ffb103, #ff8c00);
-        color: #000;
-        border: none;
-        border-radius: 30px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-align: center;
-    }
-
-    .print-card-button {
-        margin: 20px 0 0;
-        padding: 10px 20px;
-        font-size: 1rem;
-    }
-
-    .download-button {
-        display: none;
-    }
-
-    .print-button:hover, .print-card-button:hover, .download-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(255, 177, 3, 0.4);
-    }
-
-    .intro-text {
-        color: #cccccc;
-        max-width: 900px;
-        margin: 0 auto 30px;
-        text-align: center;
-    }
-
-    @media print {
-        .product {
-            display: none;
-        }
-        .product.print-selected {
-            display: flex;
-            background: white;
-            border: 1px solid #ddd;
-        }
-        .product-image {
-            width: 80px;
-            height: 80px;
-        }
-        .frequency-table {
-            display: none;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .container-entretien {
-            padding: 15px;
-            margin-top: 140px;
-        }
-        .title-main {
-            font-size: 2.2rem;
-        }
-        .category-title {
-            font-size: 1.8rem;
-        }
-        .product {
-            flex-direction: column;
-            padding: 20px;
-        }
-        .product-image {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 15px;
-        }
-        .cleaning-product {
-            min-width: 100%;
-        }
-        .frequency-table {
-            display: none;
-        }
-        .download-button {
-            display: block;
-        }
-    }
-
-    @media (max-width: 426px) {
-        .container-entretien {
-            padding: 10px;
-            margin-top: 160px;
-        }
-        .title-main {
-            font-size: 1.8rem;
-        }
-        .category-title {
-            font-size: 1.5rem;
-        }
-        .product-image {
-            width: 80px;
-            height: 80px;
-        }
-    }
-
-    @keyframes fadeInDown {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideInLeft {
-        from { opacity: 0; transform: translateX(-20px); }
-        to { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-</style>
 
 <div class="container-entretien">
     <h1 class="title-main font-display uppercase">Guide d'entretien des produits</h1>
@@ -313,7 +16,7 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="category-title font-display uppercase">Ouvertures</h2>
 
         <div class="product">
-            <img src="/public/images/fenetre.jpg" alt="Fenêtre" class="product-image">
+            <img src="/images/fenetre.jpg" alt="Fenêtre" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Fenêtres</h3>
                 <div class="maintenance-tips">
@@ -336,7 +39,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product">
-            <img src="/public/images/porte-entree.webp" alt="Porte d'entrée" class="product-image">
+            <img src="/images/porte-entree.webp" alt="Porte d'entrée" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Portes d'entrée</h3>
                 <div class="maintenance-tips">
@@ -358,7 +61,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product">
-            <img src="/public/images/porte-interieur.webp" alt="Porte d'intérieur" class="product-image">
+            <img src="/images/porte-interieur.webp" alt="Porte d'intérieur" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Portes d'intérieurs</h3>
                 <div class="maintenance-tips">
@@ -380,7 +83,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product">
-            <img src="/public/images/porte-garage.webp" alt="Porte de garage" class="product-image">
+            <img src="/images/porte-garage.webp" alt="Porte de garage" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Portes de garage</h3>
                 <div class="maintenance-tips">
@@ -403,7 +106,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product">
-            <img src="/public/images/volet-roulant.webp" alt="Volet roulant" class="product-image">
+            <img src="/images/volet-roulant.webp" alt="Volet roulant" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Volets roulants</h3>
                 <div class="maintenance-tips">
@@ -425,7 +128,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product">
-            <img src="/public/images/volets.webp" alt="Volet battant" class="product-image">
+            <img src="/images/volets.webp" alt="Volet battant" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Volets battants</h3>
                 <div class="maintenance-tips">
@@ -451,7 +154,7 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="category-title font-display uppercase">Extérieur</h2>
 
         <div class="product">
-            <img src="/public/images/portail.webp" alt="Portail" class="product-image">
+            <img src="/images/portail.webp" alt="Portail" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Portails</h3>
                 <div class="maintenance-tips">
@@ -474,7 +177,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product">
-            <img src="/public/images/cloture.webp" alt="Clôture" class="product-image">
+            <img src="/images/cloture.webp" alt="Clôture" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Clôtures</h3>
                 <div class="maintenance-tips">
@@ -497,7 +200,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product">
-            <img src="/public/images/pergola.webp" alt="Pergola" class="product-image">
+            <img src="/images/pergola.webp" alt="Pergola" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Pergolas</h3>
                 <div class="maintenance-tips">
@@ -520,7 +223,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product">
-            <img src="/public/images/veranda.jpg" alt="Véranda" class="product-image">
+            <img src="/images/veranda.jpg" alt="Véranda" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Vérandas</h3>
                 <div class="maintenance-tips">
@@ -543,7 +246,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product">
-            <img src="/public/images/carport.webp" alt="Carport" class="product-image">
+            <img src="/images/carport.webp" alt="Carport" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Carports</h3>
                 <div class="maintenance-tips">
@@ -570,7 +273,7 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="category-title font-display uppercase">Stores</h2>
 
         <div class="product">
-            <img src="/public/images/store.jpg" alt="Store intérieur" class="product-image">
+            <img src="/images/store.jpg" alt="Store intérieur" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Stores intérieurs</h3>
                 <div class="maintenance-tips">
@@ -592,7 +295,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product">
-            <img src="/public/images/store-banne.webp" alt="Store banne" class="product-image">
+            <img src="/images/store-banne.webp" alt="Store banne" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Stores bannes</h3>
                 <div class="maintenance-tips">
@@ -618,7 +321,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product">
-            <img src="/public/images/bg-moustiquaire.jpg" alt="Moustiquaire" class="product-image">
+            <img src="/images/bg-moustiquaire.jpg" alt="Moustiquaire" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Moustiquaires</h3>
                 <div class="maintenance-tips">
@@ -645,7 +348,7 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="category-title font-display uppercase">Automatisation</h2>
 
         <div class="product">
-            <img src="/public/images/domotique.webp" alt="Domotique" class="product-image">
+            <img src="/images/domotique.webp" alt="Domotique" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Domotique</h3>
                 <div class="maintenance-tips">
@@ -668,7 +371,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product">
-            <img src="/public/images/motorisation.webp" alt="Motorisation" class="product-image">
+            <img src="/images/motorisation.webp" alt="Motorisation" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Motorisations</h3>
                 <div class="maintenance-tips">
@@ -695,7 +398,7 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="category-title font-display uppercase">Autres</h2>
 
         <div class="product">
-            <img src="/public/images/bg-accessoire-volet.webp" alt="Accessoire de volet" class="product-image">
+            <img src="/images/bg-accessoire-volet.webp" alt="Accessoire de volet" class="product-image">
             <div class="product-content">
                 <h3 class="font-display uppercase">Accessoires volets</h3>
                 <div class="maintenance-tips">

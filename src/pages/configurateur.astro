@@ -191,34 +191,3 @@ import Layout from '../layouts/Layout.astro';
     </a>
 </Layout>
 
-<style>
-    .bg-grid-pattern {
-        background-image:
-            linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        background-size: 50px 50px;
-    }
-
-    /* Animation pour le hero */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    h1, h2 {
-        animation: fadeInUp 0.8s ease-out;
-    }
-
-    /* Responsive iframe */
-    @media (max-width: 768px) {
-        iframe#portalIframe {
-            min-height: 500px;
-        }
-    }
-</style>

@@ -7,291 +7,6 @@ import Layout from '../layouts/Layout.astro';
     description="Découvrez nos portes de garage sur mesure : refoulement, latérales, battantes, enroulables et basculantes. Robustesse, élégance et personnalisation."
 >
 
-<style>
-    .hero-section {
-        position: relative;
-        min-height: 85vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
-                    url('/img/bg-porte-garage.png') center/cover;
-        margin-top: 140px;
-        padding: 40px 20px;
-    }
-
-    .hero-content {
-        max-width: 1400px;
-        width: 100%;
-        text-align: center;
-        opacity: 0;
-        animation: fadeInUp 1s ease-out forwards;
-    }
-
-    .hero-content h1 {
-        font-size: 3rem;
-        font-weight: 300;
-        letter-spacing: 2px;
-        margin-bottom: 40px;
-        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .videos-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-        margin-top: 30px;
-    }
-
-    .video-container {
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 15px;
-    }
-
-    .video-wrapper {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        overflow: hidden;
-        border-radius: 10px;
-        margin-bottom: 15px;
-    }
-
-    .video-wrapper iframe,
-    .video-wrapper video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    .video-description {
-        color: #cccccc;
-        font-size: 0.9rem;
-        line-height: 1.6;
-        text-align: left;
-    }
-
-    .products-section {
-        max-width: 1200px;
-        margin: 80px auto;
-        padding: 0 20px;
-    }
-
-    .section-title {
-        font-size: 2.5rem;
-        font-weight: 300;
-        text-align: center;
-        margin-bottom: 15px;
-        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .section-intro {
-        text-align: center;
-        color: #cccccc;
-        font-size: 1.1rem;
-        margin-bottom: 50px;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .products-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
-    }
-
-    .product-card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 15px;
-        overflow: hidden;
-        transition: all 0.4s ease;
-        opacity: 0;
-        animation: fadeInUp 0.8s ease-out forwards;
-    }
-
-    .product-card:nth-child(1) { animation-delay: 0.1s; }
-    .product-card:nth-child(2) { animation-delay: 0.2s; }
-    .product-card:nth-child(3) { animation-delay: 0.3s; }
-    .product-card:nth-child(4) { animation-delay: 0.4s; }
-    .product-card:nth-child(5) { animation-delay: 0.5s; }
-
-    .product-card:hover {
-        transform: translateY(-8px);
-        border-color: rgba(255, 177, 3, 0.5);
-        box-shadow: 0 12px 40px rgba(255, 177, 3, 0.2);
-    }
-
-    .product-image {
-        width: 100%;
-        height: 250px;
-        object-fit: contain;
-        background: rgba(255, 255, 255, 0.02);
-    }
-
-    .product-content {
-        padding: 25px;
-    }
-
-    .product-content h3 {
-        font-size: 1.4rem;
-        color: #ffb103;
-        margin-bottom: 15px;
-        font-weight: 600;
-    }
-
-    .product-content ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .product-content li {
-        color: #cccccc;
-        font-size: 0.9rem;
-        padding: 6px 0;
-        padding-left: 20px;
-        position: relative;
-    }
-
-    .product-content li::before {
-        content: '✓';
-        position: absolute;
-        left: 0;
-        color: #ffb103;
-        font-weight: bold;
-    }
-
-    .catalogues-section {
-        background: rgba(255, 255, 255, 0.03);
-        padding: 60px 20px;
-        margin-top: 80px;
-    }
-
-    .catalogues-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .catalogues-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        margin-top: 40px;
-    }
-
-    .catalogue-card {
-        position: relative;
-        overflow: hidden;
-        border-radius: 15px;
-        transition: transform 0.4s ease;
-        border: 2px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .catalogue-card:hover {
-        transform: scale(1.05);
-        border-color: rgba(255, 177, 3, 0.5);
-    }
-
-    .catalogue-card img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @media (max-width: 1024px) {
-        .videos-grid {
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
-        .catalogues-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero-section {
-            min-height: auto;
-            margin-top: 140px;
-            padding: 30px 15px;
-        }
-
-        .hero-content h1 {
-            font-size: 2rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-        }
-
-        .section-intro {
-            font-size: 1rem;
-        }
-
-        .products-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .catalogues-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .product-image {
-            height: 220px;
-        }
-
-        .video-description {
-            font-size: 0.85rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .hero-content h1 {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-        }
-
-        .section-title {
-            font-size: 1.6rem;
-        }
-
-        .product-content h3 {
-            font-size: 1.2rem;
-        }
-
-        .video-container {
-            padding: 15px;
-        }
-    }
-</style>
 
 <section class="hero-section">
     <div class="hero-content">
@@ -341,7 +56,7 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="products-grid">
         <div class="product-card">
-            <img src="/public/images/porte-garage-refoulement.jpg" alt="Porte de garage à refoulement" class="product-image">
+            <img src="/images/porte-garage-refoulement.jpg" alt="Porte de garage à refoulement" class="product-image">
             <div class="product-content">
                 <h3>Porte à Refoulement</h3>
                 <ul>
@@ -355,7 +70,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product-card">
-            <img src="/public/images/porte-garage-lateral.png" alt="Porte de garage latérale" class="product-image">
+            <img src="/images/porte-garage-lateral.png" alt="Porte de garage latérale" class="product-image">
             <div class="product-content">
                 <h3>Porte Latérale</h3>
                 <ul>
@@ -369,7 +84,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product-card">
-            <img src="/public/images/porte-garage-battante.png" alt="Porte de garage battante" class="product-image">
+            <img src="/images/porte-garage-battante.png" alt="Porte de garage battante" class="product-image">
             <div class="product-content">
                 <h3>Porte Battante</h3>
                 <ul>
@@ -382,7 +97,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product-card">
-            <img src="/public/images/porte-garage-enroulement.jpg" alt="Porte de garage à enroulement" class="product-image">
+            <img src="/images/porte-garage-enroulement.jpg" alt="Porte de garage à enroulement" class="product-image">
             <div class="product-content">
                 <h3>Porte à Enroulement</h3>
                 <ul>
@@ -396,7 +111,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="product-card">
-            <img src="/public/images/porte-garage-basculante.png" alt="Porte de garage basculante" class="product-image">
+            <img src="/images/porte-garage-basculante.png" alt="Porte de garage basculante" class="product-image">
             <div class="product-content">
                 <h3>Porte Basculante</h3>
                 <ul>
@@ -421,13 +136,13 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="catalogues-grid">
             <a href="/public/catalogues/catalogue-sda.pdf" target="_blank" class="catalogue-card">
-                <img src="/public/images/catalogue-porte-garage-sda.png" alt="Catalogue SDA">
+                <img src="/images/catalogue-porte-garage-sda.png" alt="Catalogue SDA">
             </a>
             <a href="/public/catalogues/catalogue-moos.pdf" target="_blank" class="catalogue-card">
-                <img src="/public/images/catalogue-porte-garage-moos.png" alt="Catalogue Moos">
+                <img src="/images/catalogue-porte-garage-moos.png" alt="Catalogue Moos">
             </a>
             <a href="https://www.hormann.fr/mediacenter/preview/320922fr/87277_GRM_RenoMatic_2025_FR_FR_D.pdf" target="_blank" class="catalogue-card">
-                <img src="/public/images/catalogue-horman-porte-garage.png" alt="Catalogue Hörmann">
+                <img src="/images/catalogue-horman-porte-garage.png" alt="Catalogue Hörmann">
             </a>
         </div>
     </div>
