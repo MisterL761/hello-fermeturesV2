@@ -1,0 +1,90 @@
+/* Variables CSS globales */
+
+:root {
+    /* Couleurs principales */
+    --color-gold: #ffb103;
+    --color-gold-light: #ffd700;
+    --color-black: #0a0a0a;
+    --color-carbon: #1a1a1a;
+    --color-dark-gray: #2b2b2b;
+
+    /* Couleurs de texte */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #e0e0e0;
+    --color-text-tertiary: #d0d0d0;
+    --color-text-muted: #b0b0b0;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+    --gradient-dark: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+    --gradient-overlay: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(30, 30, 30, 0.95) 100%);
+
+    /* Effets glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 177, 3, 0.1);
+    --glass-border-hover: rgba(255, 177, 3, 0.3);
+
+    /* Espacements */
+    --spacing-xs: 10px;
+    --spacing-sm: 20px;
+    --spacing-md: 40px;
+    --spacing-lg: 60px;
+    --spacing-xl: 100px;
+
+    /* Border radius */
+    --radius-sm: 8px;
+    --radius-md: 15px;
+    --radius-lg: 20px;
+
+    /* Shadows */
+    --shadow-sm: 0 8px 25px rgba(0, 0, 0, 0.6);
+    --shadow-md: 0 20px 60px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.8);
+    --shadow-gold: 0 20px 60px rgba(255, 177, 3, 0.2);
+
+    /* Transitions */
+    --transition-fast: 0.3s ease;
+    --transition-normal: 0.4s ease;
+    --transition-slow: 0.6s ease;
+
+    /* Tailles de conteneurs */
+    --container-sm: 800px;
+    --container-md: 1200px;
+    --container-lg: 1400px;
+    --container-xl: 1920px;
+
+    /* Tailles de police */
+    --font-xs: 0.875rem;
+    --font-sm: 1rem;
+    --font-md: 1.1rem;
+    --font-lg: 1.2rem;
+    --font-xl: 1.6rem;
+    --font-2xl: 1.8rem;
+    --font-3xl: 2.8rem;
+    --font-4xl: 3.5rem;
+}
+
+/* Classes utilitaires */
+.container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.text-gradient {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+}
+
+.glass-card:hover {
+    border-color: var(--glass-border-hover);
+}

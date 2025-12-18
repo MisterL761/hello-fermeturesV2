@@ -1,16 +1,14 @@
 ---
-// Header.astro
+// Header Component
 ---
 
 <nav id="main-nav" class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10 transition-all duration-500 py-8">
     <div class="px-6 flex justify-between items-center max-w-[1920px] mx-auto">
-        <a href="/" class="flex-shrink-0">
-            <img id="nav-logo" src="/public/images/logo.webp" alt="Hello Fermetures - Menuisier Oise" class="h-24 w-auto object-contain transition-all duration-500">
+        <a href="#" class="flex-shrink-0">
+            <img id="nav-logo" src="/public/images/logo.png" alt="Hello Fermetures - Menuisier Oise" class="h-24 w-auto object-contain transition-all duration-500">
         </a>
-
         <div class="hidden xl:flex items-center gap-8 text-sm uppercase font-medium tracking-wide">
-            <a href="/" class="text-white hover:text-gold transition">Accueil</a>
-
+            <a href="#" class="text-white hover:text-gold transition">Accueil</a>
             <div class="group relative py-4">
                 <a href="#catalogue" class="text-white hover:text-gold transition flex items-center gap-1 cursor-pointer">
                     Produits <i class="fa-solid fa-chevron-down text-[10px] opacity-50 group-hover:text-gold"></i>
@@ -19,111 +17,92 @@
                     <div>
                         <h4 class="text-gold font-display font-bold uppercase mb-4 border-b border-white/10 pb-2 flex items-center gap-2"><i class="fa-solid fa-door-open"></i> Ouvertures</h4>
                         <ul class="space-y-3 text-xs text-gray-400">
-                            <li><a href="/fenetres" class="hover:text-white transition block hover:translate-x-1 duration-200">Fenêtres</a></li>
-                            <li><a href="/portes-entree" class="hover:text-white transition block hover:translate-x-1 duration-200">Portes d'entrée</a></li>
-                            <li><a href="/portes-interieur" class="hover:text-white transition block hover:translate-x-1 duration-200">Portes d'intérieur</a></li>
-                            <li><a href="/portes-garage" class="hover:text-white transition block hover:translate-x-1 duration-200">Portes de Garage</a></li>
-                            <li><a href="/volets-roulants" class="hover:text-white transition block hover:translate-x-1 duration-200">Volets Roulants</a></li>
-                            <li><a href="/volets-battants" class="hover:text-white transition block hover:translate-x-1 duration-200">Volets Battants</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Fenêtres PVC & Alu</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Portes d'entrée</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Portes d'intérieur</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Portes de Garage</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Volets Roulants</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Volets Battants</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-gold font-display font-bold uppercase mb-4 border-b border-white/10 pb-2 flex items-center gap-2"><i class="fa-solid fa-tree"></i> Extérieur</h4>
                         <ul class="space-y-3 text-xs text-gray-400">
-                            <li><a href="/portails" class="hover:text-white transition block hover:translate-x-1 duration-200">Portails</a></li>
-                            <li><a href="/pergolas" class="hover:text-white transition block hover:translate-x-1 duration-200">Pergolas</a></li>
-                            <li><a href="/clotures" class="hover:text-white transition block hover:translate-x-1 duration-200">Clôtures</a></li>
-                            <li><a href="/verandas" class="hover:text-white transition block hover:translate-x-1 duration-200">Vérandas</a></li>
-                            <li><a href="/carports" class="hover:text-white transition block hover:translate-x-1 duration-200">Carports</a></li>
-                            <li><a href="/garde-corps" class="hover:text-white transition block hover:translate-x-1 duration-200">Garde-corps</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Portails Alu</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Pergolas Bioclimatiques</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Clôtures</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Vérandas</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Carports</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Garde-corps</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-gold font-display font-bold uppercase mb-4 border-b border-white/10 pb-2 flex items-center gap-2"><i class="fa-solid fa-sun"></i> Protection</h4>
                         <ul class="space-y-3 text-xs text-gray-400 mb-6">
-                            <li><a href="/stores-interieurs" class="hover:text-white transition block hover:translate-x-1 duration-200">Stores Intérieurs</a></li>
-                            <li><a href="/stores-bannes" class="hover:text-white transition block hover:translate-x-1 duration-200">Stores Bannes</a></li>
-                            <li><a href="/moustiquaires" class="hover:text-white transition block hover:translate-x-1 duration-200">Moustiquaires</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Stores Intérieurs</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Stores Bannes</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Moustiquaires</a></li>
                         </ul>
                         <h4 class="text-gold font-display font-bold uppercase mb-4 border-b border-white/10 pb-2 flex items-center gap-2"><i class="fa-solid fa-wifi"></i> Domotique</h4>
                         <ul class="space-y-3 text-xs text-gray-400">
-                            <li><a href="/domotique" class="hover:text-white transition block hover:translate-x-1 duration-200">Domotique Somfy</a></li>
-                            <li><a href="/motorisation" class="hover:text-white transition block hover:translate-x-1 duration-200">Motorisations</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Domotique Somfy</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Motorisations</a></li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="text-gold font-display font-bold uppercase mb-4 border-b border-white/10 pb-2 flex items-center gap-2"><i class="fa-solid fa-box-open"></i> Rangements</h4>
                         <ul class="space-y-3 text-xs text-gray-400 mb-6">
-                            <li><a href="/abris-jardin" class="hover:text-white transition block hover:translate-x-1 duration-200">Abris de Jardin</a></li>
-                            <li><a href="/abris-bois" class="hover:text-white transition block hover:translate-x-1 duration-200">Abris à Bois</a></li>
-                            <li><a href="/coffre-jardin" class="hover:text-white transition block hover:translate-x-1 duration-200">Coffres Jardin</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Abris de Jardin</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Abris à Bois</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Coffres Jardin</a></li>
                         </ul>
                         <h4 class="text-gold font-display font-bold uppercase mb-4 border-b border-white/10 pb-2 flex items-center gap-2"><i class="fa-solid fa-plus"></i> Autres</h4>
                         <ul class="space-y-3 text-xs text-gray-400">
-                            <li><a href="/grille-de-defense" class="hover:text-white transition block hover:translate-x-1 duration-200">Grilles de Défense</a></li>
-                            <li><a href="/dressings" class="hover:text-white transition block hover:translate-x-1 duration-200">Dressing</a></li>
-                            <li><a href="/accessoire-volet" class="hover:text-white transition block hover:translate-x-1 duration-200">Accessoires volet</a></li>
-                            <li><a href="/accessoire-volet-battant" class="hover:text-white transition block hover:translate-x-1 duration-200">Accessoires volet battant</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Grilles de Défense</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Dressing</a></li>
+                            <li><a href="#" class="hover:text-white transition block hover:translate-x-1 duration-200">Accessoires</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-
-            <a href="/qualification" class="text-white hover:text-gold transition">Qualification</a>
-            <a href="https://revelhome.app/connexion?slug=hello-fermetures" target="_blank" class="text-white hover:text-gold transition">Espace Clients</a>
+            <a href="#qualification" class="text-white hover:text-gold transition">Qualification</a>
+            <a href="#" class="text-white hover:text-gold transition">Espace Clients</a>
             <a href="/realisations" class="text-white hover:text-gold transition">Nos réalisations</a>
             <a href="/entretien" class="text-white hover:text-gold transition">Entretien</a>
+            <a href="#nous-trouver" class="text-white hover:text-gold transition">Nous trouver</a>
         </div>
-
         <div class="hidden lg:flex items-center gap-6">
             <a href="tel:0310454838" class="text-gold font-bold text-lg hover:text-white transition font-display tracking-wider">03 10 45 48 38</a>
-
-            <a href="https://www.google.com/maps/dir//2+%2F+4+Av.+Georges+Bataille,+60330+Le+Plessis-Belleville/@49.0992707,2.7631278,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x47e6276e7d17a457:0x9d84664b6d820dd7!2m2!1d2.755528!2d49.094943?authuser=1&entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" class="flex items-center gap-2 text-gold border border-gold px-4 py-3 rounded-sm hover:bg-gold hover:text-black transition text-xs font-display font-bold uppercase tracking-widest">
-                <i class="fa-solid fa-location-dot"></i> Nous situer
-            </a>
-
-            <a href="/demande-devis" class="cta-animate bg-gold text-black px-6 py-3 text-sm font-display font-bold uppercase tracking-widest hover:bg-white transition shadow-[0_0_20px_rgba(255,177,3,0.3)]">Demande de devis</a>
+            <a href="#contact" class="cta-animate bg-gold text-black px-6 py-3 text-sm font-display font-bold uppercase tracking-widest hover:bg-white transition shadow-[0_0_20px_rgba(255,177,3,0.3)]">Demande de devis</a>
         </div>
-
         <button onclick="toggleMenu()" class="xl:hidden text-white text-3xl focus:outline-none"><i class="fa-solid fa-bars"></i></button>
     </div>
-
     <div id="mobile-menu" class="xl:hidden bg-carbon border-b border-white/10 overflow-y-auto">
         <div class="flex flex-col p-6 gap-4 text-center">
-            <a href="/" class="text-white hover:text-gold uppercase tracking-widest text-sm" onclick="toggleMenu()">Accueil</a>
-
-            <div class="border-y border-white/5 py-4">
-                <span class="text-gold font-bold uppercase text-xs mb-4 block">Nos Catégories</span>
-                <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-left text-xs text-gray-400">
-                    <a href="/fenetres">Fenêtres</a> <a href="#">Portails</a>
-                    <a href="#">Portes</a> <a href="#">Pergolas</a>
-                    <a href="#">Volets</a> <a href="#">Stores</a>
-                    <a href="#">Garage</a> <a href="#">Domotique</a>
-                </div>
-            </div>
-
-            <a href="/qualification" class="text-white hover:text-gold uppercase tracking-widest text-sm" onclick="toggleMenu()">Qualification</a>
-            <a href="https://revelhome.app/connexion?slug=hello-fermetures" class="text-white hover:text-gold uppercase tracking-widest text-sm" onclick="toggleMenu()">Espace Clients</a>
+            <a href="#" class="text-white hover:text-gold uppercase tracking-widest text-sm" onclick="toggleMenu()">Accueil</a>
+            <div class="border-y border-white/5 py-4"><span class="text-gold font-bold uppercase text-xs mb-4 block">Nos Catégories</span><div class="grid grid-cols-2 gap-x-4 gap-y-3 text-left text-xs text-gray-400"><a href="#">Fenêtres</a> <a href="#">Portails</a><a href="#">Portes</a> <a href="#">Pergolas</a><a href="#">Volets</a> <a href="#">Stores</a><a href="#">Garage</a> <a href="#">Domotique</a></div></div>
+            <a href="#qualification" class="text-white hover:text-gold uppercase tracking-widest text-sm" onclick="toggleMenu()">Qualification</a>
+            <a href="#" class="text-white hover:text-gold uppercase tracking-widest text-sm" onclick="toggleMenu()">Espace Clients</a>
             <a href="/realisations" class="text-white hover:text-gold uppercase tracking-widest text-sm" onclick="toggleMenu()">Nos réalisations</a>
             <a href="/entretien" class="text-white hover:text-gold uppercase tracking-widest text-sm" onclick="toggleMenu()">Entretien</a>
-
-            <a href="/nous-situer" class="text-white hover:text-gold uppercase tracking-widest text-sm" onclick="toggleMenu()">Nous situer</a>
-
+            <a href="#nous-trouver" class="text-white hover:text-gold uppercase tracking-widest text-sm" onclick="toggleMenu()">Nous trouver</a>
             <div class="h-px bg-white/10 my-2"></div>
             <a href="tel:0310454838" class="text-gold font-bold text-lg">03 10 45 48 38</a>
-            <a href="/demande-devis" class="bg-gold text-black px-6 py-3 uppercase font-bold text-xs tracking-widest" onclick="toggleMenu()">Demande de devis</a>
+            <a href="#contact" class="bg-gold text-black px-6 py-3 uppercase font-bold text-xs tracking-widest" onclick="toggleMenu()">Demande de devis</a>
         </div>
     </div>
 </nav>
 
-<script is:inline>
+<script>
     function toggleMenu() {
         const menu = document.getElementById('mobile-menu');
         menu?.classList.toggle('open');
     }
+
     window.addEventListener('scroll', function() {
         const nav = document.getElementById('main-nav');
         const logo = document.getElementById('nav-logo');
+
         if (window.scrollY > 50) {
             nav?.classList.remove('py-8');
             nav?.classList.add('py-4');
@@ -137,3 +116,6 @@
         }
     });
 </script>
+
+
+
