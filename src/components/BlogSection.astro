@@ -207,10 +207,10 @@ const posts = [
         const mTitle = document.getElementById('modal-title');
         const mDate = document.getElementById('modal-date-text');
         const mBody = document.getElementById('modal-body');
-        const openModal = (id) => {
-            const template = document.getElementById(`post-template-${id}`);
+        const openModal = (id: number) => {
+            const template = document.getElementById(`post-template-${id}`) as HTMLTemplateElement;
             if (!template) return;
-            const contentDiv = template.content.firstElementChild;
+            const contentDiv = template.content.firstElementChild as HTMLElement;
             const title = contentDiv.dataset.title;
             const date = contentDiv.dataset.date;
             const category = contentDiv.dataset.category;

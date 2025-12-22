@@ -2,7 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Fenêtre PVC : L'Excellence du Rapport Qualité-Prix - Hello Fermetures">
+<Layout
+    title="Fenêtre PVC : L'Excellence du Rapport Qualité-Prix - Hello Fermetures"
+    description="Fenêtre PVC haut de gamme : excellent rapport qualité-prix, isolation thermique performante et entretien minimal. Le choix intelligent."
+>
 	<main>
 		<section class="detail-page">
 			<div class="detail-container">
@@ -595,11 +598,11 @@ import Layout from '../layouts/Layout.astro';
 	const clickableImages = document.querySelectorAll('.clickable-image');
 
 	clickableImages.forEach(function(img) {
-		img.addEventListener('click', function() {
+		img.addEventListener('click', function(this: HTMLElement) {
 			if (modal && modalImg) {
 				modal.classList.add('active');
 				// Get the actual image element
-				const imgElement = this.tagName === 'IMG' ? this : this.querySelector('img');
+				const imgElement = this.tagName === 'IMG' ? this as HTMLImageElement : this.querySelector('img') as HTMLImageElement;
 				if (imgElement) {
 					modalImg.src = imgElement.src;
 					modalImg.alt = imgElement.alt;

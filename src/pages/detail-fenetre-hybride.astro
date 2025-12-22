@@ -2,7 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Fenêtre Hybride Alu/PVC : La Fusion de la Performance - Hello Fermetures">
+<Layout
+    title="Fenêtre Hybride Alu/PVC : La Fusion de la Performance - Hello Fermetures"
+    description="Fenêtre hybride aluminium/PVC : alliance parfaite entre design moderne et performances thermiques. Le meilleur des deux matériaux réunis."
+>
 	<main>
 		<section class="detail-page">
 			<div class="detail-container">
@@ -588,11 +591,11 @@ import Layout from '../layouts/Layout.astro';
 	const clickableImages = document.querySelectorAll('.clickable-image');
 
 	clickableImages.forEach(function(img) {
-		img.addEventListener('click', function() {
+		img.addEventListener('click', function(this: HTMLElement) {
 			if (modal && modalImg) {
 				modal.classList.add('active');
 				// Get the actual image element
-				const imgElement = this.tagName === 'IMG' ? this : this.querySelector('img');
+				const imgElement = this.tagName === 'IMG' ? this as HTMLImageElement : this.querySelector('img') as HTMLImageElement;
 				if (imgElement) {
 					modalImg.src = imgElement.src;
 					modalImg.alt = imgElement.alt;
