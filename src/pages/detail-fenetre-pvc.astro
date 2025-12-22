@@ -371,7 +371,7 @@ import Layout from '../layouts/Layout.astro';
 
 	.premium-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		grid-template-columns: repeat(4, 1fr);
 		gap: 30px;
 		margin-top: 40px;
 	}
@@ -519,6 +519,20 @@ import Layout from '../layouts/Layout.astro';
 		}
 	}
 
+	@media (max-width: 1200px) {
+		.premium-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 25px;
+		}
+	}
+
+	@media (max-width: 900px) {
+		.premium-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 20px;
+		}
+	}
+
 	@media (max-width: 768px) {
 		.detail-page {
 			padding: 120px 15px 40px;
@@ -551,11 +565,6 @@ import Layout from '../layouts/Layout.astro';
 
 		.equipment-grid {
 			grid-template-columns: 1fr;
-		}
-
-		.premium-grid {
-			grid-template-columns: repeat(2, 1fr);
-			gap: 20px;
 		}
 
 		.highlight-image-wrapper {
