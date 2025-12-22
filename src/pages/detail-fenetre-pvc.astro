@@ -110,6 +110,72 @@ import Layout from '../layouts/Layout.astro';
 						<li>Résistance totale à la corrosion et aux intempéries</li>
 					</ul>
 				</div>
+
+				<div class="specs-section premium-equipment">
+					<h2 class="specs-title">Découvrez Nos Équipements Premium</h2>
+
+					<div class="highlight-image-wrapper">
+						<img src="/public/images/fenetre-vue-eclaté.webp" alt="Vue éclatée d'une fenêtre en PVC" class="highlight-image clickable-image" />
+					</div>
+
+					<div class="premium-grid">
+						<div class="premium-item">
+							<div class="premium-image-container clickable-image">
+								<img src="/public/images/cremone-semi-fixe.webp" alt="Crémone semi-fixe pour fenêtre en PVC" class="premium-equipment-image" />
+							</div>
+							<p class="premium-description"><strong>Crémone Semi-Fixe</strong> : Maximisez la sécurité et l'étanchéité avec notre crémone optionnelle pour oscillo-battant, conçue pour une performance inégalée.</p>
+						</div>
+
+						<div class="premium-item">
+							<div class="premium-image-container clickable-image">
+								<img src="/public/images/fenetre-anti-fausse-manoeuvre.webp" alt="Système anti-fausse manoeuvre pour fenêtre en PVC" class="premium-equipment-image" />
+							</div>
+							<p class="premium-description"><strong>Anti-Fausse Manoeuvre</strong> : Profitez d'une utilisation fluide et sécurisée grâce à un système innovant empêchant l'ouverture simultanée en mode classique et oscillo-battant.</p>
+						</div>
+
+						<div class="premium-item">
+							<div class="premium-image-container clickable-image">
+								<img src="/public/images/systeme-securite.webp" alt="Système de sécurité avancé pour fenêtre en PVC" class="premium-equipment-image" />
+							</div>
+							<p class="premium-description"><strong>Système de Sécurité Avancé</strong> : Gâche robuste, galet champignon et verrou central pour une protection optimale, sans pivot supplémentaire sur semi-fixe.</p>
+						</div>
+
+						<div class="premium-item">
+							<div class="premium-image-container clickable-image">
+								<img src="/public/images/systeme-anti-fatigue.webp" alt="Système anti-affaissement pour fenêtre en PVC" class="premium-equipment-image" />
+							</div>
+							<p class="premium-description"><strong>Technologie Anti-Affaissement</strong> : Garantissez une longévité exceptionnelle avec un système anti-affaissement et un profil de finition facilitant l'entretien.</p>
+						</div>
+
+						<div class="premium-item">
+							<div class="premium-image-container clickable-image">
+								<img src="/public/images/soudure-grain-dorge.webp" alt="Soudure grain d'orge pour fenêtre en PVC" class="premium-equipment-image" />
+							</div>
+							<p class="premium-description"><strong>Soudure Grain d'Orge</strong> : Alliez élégance et solidité avec un assemblage en coupe d'onglet et une finition raffinée, invisible sur les modèles plaxés.</p>
+						</div>
+
+						<div class="premium-item">
+							<div class="premium-image-container clickable-image">
+								<img src="/public/images/parcloses.webp" alt="Parcloses élégantes pour fenêtre en PVC" class="premium-equipment-image" />
+							</div>
+							<p class="premium-description"><strong>Parcloses Élégantes</strong> : Sublimez vos fenêtres avec des parcloses arrondies ou moulurées, pour un style sophistiqué et moderne.</p>
+						</div>
+
+						<div class="premium-item">
+							<div class="premium-image-container clickable-image">
+								<img src="/public/images/profil-renforce.webp" alt="Profil renforcé écologique pour fenêtre en PVC" class="premium-equipment-image" />
+							</div>
+							<p class="premium-description"><strong>Profil Renforcé Écologique</strong> : Découvrez la robustesse des profils 100% renforcés en PVC Greenline de Kömmerling®, pour une durabilité respectueuse de l'environnement.</p>
+						</div>
+
+						<div class="premium-item">
+							<div class="premium-image-container clickable-image">
+								<img src="/public/images/pivot-symetrique.webp" alt="Pivot symétrique haute résistance pour fenêtre en PVC" class="premium-equipment-image" />
+							</div>
+							<p class="premium-description"><strong>Pivots Haute Résistance</strong> : Supportant jusqu'à 130 kg, ces pivots symétriques assurent une ouverture fluide et durable en mode français ou oscillo-battant.</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 
@@ -185,6 +251,7 @@ import Layout from '../layouts/Layout.astro';
 	.specs-section:nth-child(5) { animation-delay: 0.5s; }
 	.specs-section:nth-child(6) { animation-delay: 0.6s; }
 	.specs-section:nth-child(7) { animation-delay: 0.7s; }
+	.specs-section:nth-child(8) { animation-delay: 0.8s; }
 
 	.specs-title {
 		font-size: 2rem;
@@ -276,6 +343,81 @@ import Layout from '../layouts/Layout.astro';
 		left: 0;
 		color: #ffb103;
 		font-weight: bold;
+	}
+
+	/* Premium Equipment Section */
+	.highlight-image-wrapper {
+		max-width: 500px;
+		margin: 40px auto;
+		text-align: center;
+	}
+
+	.highlight-image {
+		width: 100%;
+		height: auto;
+		border-radius: 15px;
+		border: 2px solid rgba(255, 177, 3, 0.3);
+		transition: all 0.3s ease;
+		cursor: pointer;
+		background: #fff;
+		padding: 15px;
+	}
+
+	.highlight-image:hover {
+		transform: scale(1.05);
+		box-shadow: 0 15px 40px rgba(255, 177, 3, 0.3);
+		border-color: rgba(255, 177, 3, 0.6);
+	}
+
+	.premium-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: 30px;
+		margin-top: 40px;
+	}
+
+	.premium-item {
+		text-align: center;
+	}
+
+	.premium-image-container {
+		background: #fff;
+		padding: 15px;
+		border-radius: 12px;
+		border: 2px solid rgba(255, 177, 3, 0.2);
+		display: inline-block;
+		width: 100%;
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+
+	.premium-image-container:hover {
+		border-color: rgba(255, 177, 3, 0.5);
+		transform: translateY(-5px);
+		box-shadow: 0 10px 25px rgba(255, 177, 3, 0.2);
+	}
+
+	.premium-equipment-image {
+		width: 100%;
+		height: auto;
+		display: block;
+		transition: transform 0.3s ease;
+	}
+
+	.premium-description {
+		color: #d0d0d0;
+		font-size: 0.95rem;
+		line-height: 1.6;
+		margin-top: 15px;
+		text-align: center;
+	}
+
+	.premium-description strong {
+		color: #ffb103;
+		font-weight: 600;
+		display: block;
+		margin-bottom: 5px;
+		font-size: 1.05rem;
 	}
 
 	.advantages-list {
@@ -411,10 +553,25 @@ import Layout from '../layouts/Layout.astro';
 			grid-template-columns: 1fr;
 		}
 
+		.premium-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 20px;
+		}
+
+		.highlight-image-wrapper {
+			max-width: 90%;
+		}
+
 		.modal-close {
 			top: 20px;
 			right: 20px;
 			font-size: 40px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.premium-grid {
+			grid-template-columns: 1fr;
 		}
 	}
 </style>
@@ -423,16 +580,24 @@ import Layout from '../layouts/Layout.astro';
 	// Modal functionality for image zoom
 	const modal = document.getElementById('image-modal');
 	const modalImg = document.getElementById('modal-image');
-	const clickableImage = document.getElementById('main-product-image');
 	const closeBtn = document.querySelector('.modal-close');
 
-	if (clickableImage && modal && modalImg) {
-		clickableImage.addEventListener('click', function() {
-			modal.classList.add('active');
-			modalImg.src = this.src;
-			modalImg.alt = this.alt;
+	// Handle all clickable images
+	const clickableImages = document.querySelectorAll('.clickable-image');
+
+	clickableImages.forEach(function(img) {
+		img.addEventListener('click', function() {
+			if (modal && modalImg) {
+				modal.classList.add('active');
+				// Get the actual image element
+				const imgElement = this.tagName === 'IMG' ? this : this.querySelector('img');
+				if (imgElement) {
+					modalImg.src = imgElement.src;
+					modalImg.alt = imgElement.alt;
+				}
+			}
 		});
-	}
+	});
 
 	if (closeBtn && modal) {
 		closeBtn.addEventListener('click', function() {
