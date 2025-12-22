@@ -211,10 +211,10 @@ const posts = [
             const template = document.getElementById(`post-template-${id}`) as HTMLTemplateElement;
             if (!template) return;
             const contentDiv = template.content.firstElementChild as HTMLElement;
-            const title = contentDiv.dataset.title;
-            const date = contentDiv.dataset.date;
-            const category = contentDiv.dataset.category;
-            const image = contentDiv.dataset.image;
+            const title = contentDiv.dataset.title ?? '';
+            const date = contentDiv.dataset.date ?? '';
+            const category = contentDiv.dataset.category ?? '';
+            const image = contentDiv.dataset.image ?? '';
             const htmlContent = contentDiv.innerHTML;
             if(mImage) mImage.src = image;
             if(mCategory) mCategory.textContent = category;
