@@ -11,7 +11,6 @@ const posts = [
         excerpt: "La fenêtre n'est pas qu'un produit technique, c'est une ouverture sur le monde qui définit le caractère de votre façade.",
         image: "/images/art-fenetre.webp",
         buttonLabel: "Lire l'analyse",
-        // Contenu de la modale (Texte complet)
         content: `
       <p class="mb-4 text-lg text-white">Longtemps considérée comme un simple élément fonctionnel, la fenêtre est aujourd'hui un objet de décoration à part entière.</p>
       <h4 class="text-xl font-bold text-gold mb-3 mt-6">L'importance du clair de jour</h4>
@@ -27,7 +26,7 @@ const posts = [
             <p class="text-sm text-gray-400">Le style ne sacrifie rien à l'isolation thermique (Uw) et acoustique.</p>
         </div>
       </div>
-      <p>Venez découvrir nos gammes "Art & Fenêtres" dans notre showroom pour voir la différence.</p>
+      <p>Venez découvrir L' Art de fenêtre dans notre showroom pour voir la différence.</p>
     `
     },
     {
@@ -208,14 +207,14 @@ const posts = [
         const mTitle = document.getElementById('modal-title');
         const mDate = document.getElementById('modal-date-text');
         const mBody = document.getElementById('modal-body');
-        const openModal = (id) => {
-            const template = document.getElementById(`post-template-${id}`);
+        const openModal = (id: number) => {
+            const template = document.getElementById(`post-template-${id}`) as HTMLTemplateElement;
             if (!template) return;
-            const contentDiv = template.content.firstElementChild;
-            const title = contentDiv.dataset.title;
-            const date = contentDiv.dataset.date;
-            const category = contentDiv.dataset.category;
-            const image = contentDiv.dataset.image;
+            const contentDiv = template.content.firstElementChild as HTMLElement;
+            const title = contentDiv.dataset.title ?? '';
+            const date = contentDiv.dataset.date ?? '';
+            const category = contentDiv.dataset.category ?? '';
+            const image = contentDiv.dataset.image ?? '';
             const htmlContent = contentDiv.innerHTML;
             if(mImage) mImage.src = image;
             if(mCategory) mCategory.textContent = category;

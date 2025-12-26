@@ -2,336 +2,341 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Hello Fermetures - Votre abris à bois">
-	<main>
-		<!-- Hero Section -->
-		<section class="hero">
-			<div class="hero-content">
-				<h1 class="hero-title">Découvrez nos partenaires</h1>
-				<div class="video-container">
-					<div class="video-wrapper">
-						<iframe
-							width="560"
-							height="315"
-							src="https://www.youtube.com/embed/Ljy1hxhgUPM?si=81QEtTRd6Fr_cEUp"
-							title="YouTube video player"
-							frameborder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-							referrerpolicy="strict-origin-when-cross-origin"
-							allowfullscreen
-						></iframe>
-					</div>
-					<div class="video-description">
-						<p>L'entreprise Hörmann est un fabricant européen renommé pour ses solutions d'aménagements extérieurs sur mesure, telles que les abris à bois et les solutions de rangement extérieur. Fondée il y a plus de 80 ans, elle est implantée en Allemagne</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Products Section -->
-		<section class="products-section">
-			<h2 class="section-title">Découvrez notre gamme d'abris à bois</h2>
-			<p class="intro-text">Mettez à l'abris votre bois pour un bois au sec</p>
-
-			<div class="products-grid">
-				<!-- Abris à bois Berry Classic -->
-				<div class="product-card">
-					<div class="product-image-container">
-						<img src="/img/abris-bois-berry-classic.avif" alt="Abris à bois Berry Classic" class="product-image" />
-					</div>
-					<div class="product-info">
-						<h3>Abris à bois berry classic</h3>
-						<ul>
-							<li>Protection efficace</li>
-							<li>Structure robuste</li>
-							<li>Résistent aux intempéries et aux moisissures</li>
-							<li>Facilité d'entretien</li>
-							<li>Garantie 20 ans</li>
-						</ul>
-					</div>
-				</div>
-
-				<!-- Abris à bois Berry Modern -->
-				<div class="product-card">
-					<div class="product-image-container">
-						<img src="/img/abris-bois-berry-modern.avif" alt="Abris à bois Berry Modern" class="product-image" />
-					</div>
-					<div class="product-info">
-						<h3>Abris à bois berry modern</h3>
-						<ul>
-							<li>Protection efficace</li>
-							<li>Structure robuste</li>
-							<li>Résistent aux intempéries et aux moisissures</li>
-							<li>Garantie 20 ans</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Catalogue Section -->
-		<section class="catalogue-section">
-			<h2 class="section-title">Découvrez nos catalogues d'abris à bois</h2>
-			<div class="catalogue-container">
-				<a href="/catalogue/catalogue-abris-jardin-hormann.pdf" target="_blank" class="catalogue-link">
-					<img src="/img/catalogue-abris-hormann.png" alt="Catalogue Hörmann" class="catalogue-image" />
-				</a>
-			</div>
-		</section>
-	</main>
-</Layout>
+<Layout title="Hello Fermetures - Votre abris à bois"
+    description="Abris à bois sur mesure en aluminium. Protection optimale pour votre bois de chauffage avec des solutions élégantes et durables."
+>
 
 <style>
-	main {
-		width: 100%;
-		margin: 0 auto;
-	}
+    .hero-section {
+        position: relative;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
+                    url('/images/bg-abris-bois.png') center/cover;
+        margin-top: 140px;
+    }
 
-	.hero {
-		position: relative;
-		min-height: 80vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(30, 30, 30, 0.95) 100%),
-					url('/img/bg-abris-bois.png') center/cover no-repeat;
-		padding: 140px 20px 60px;
-		overflow: hidden;
-	}
+    .hero-content {
+        max-width: 900px;
+        text-align: center;
+        padding: 40px 20px;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out forwards;
+    }
 
-	.hero-content {
-		max-width: 1400px;
-		width: 100%;
-		margin: 0 auto;
-		position: relative;
-		z-index: 2;
-	}
+    .hero-content h1 {
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 
-	.hero-title {
-		font-size: 3.5rem;
-		font-weight: 700;
-		text-align: center;
-		margin-bottom: 50px;
-		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		animation: fadeInUp 0.8s ease-out;
-	}
+    .video-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+    }
 
-	.video-container {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 40px;
-		align-items: center;
-		background: rgba(255, 255, 255, 0.03);
-		backdrop-filter: blur(10px);
-		border-radius: 20px;
-		padding: 40px;
-		border: 1px solid rgba(255, 177, 3, 0.1);
-		animation: fadeInUp 0.8s ease-out 0.2s both;
-	}
+    .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
 
-	.video-wrapper {
-		position: relative;
-		padding-bottom: 56.25%;
-		height: 0;
-		overflow: hidden;
-		border-radius: 15px;
-		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-	}
+    .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 
-	.video-wrapper iframe {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		border-radius: 15px;
-	}
+    .video-description {
+        color: #cccccc;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: center;
+    }
 
-	.video-description {
-		color: #e0e0e0;
-		font-size: 1.1rem;
-		line-height: 1.8;
-	}
+    .products-section {
+        max-width: 1200px;
+        margin: 80px auto;
+        padding: 0 20px;
+    }
 
-	.video-description p {
-		margin: 0;
-	}
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
 
-	.products-section {
-		padding: 100px 20px;
-		background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
-	}
+    .section-intro {
+        text-align: center;
+        color: #cccccc;
+        font-size: 1.1rem;
+        margin-bottom: 50px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-	.section-title {
-		font-size: 2.8rem;
-		font-weight: 700;
-		text-align: center;
-		margin-bottom: 20px;
-		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
 
-	.intro-text {
-		text-align: center;
-		font-size: 1.2rem;
-		color: #b0b0b0;
-		margin-bottom: 60px;
-	}
+    .product-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
 
-	.products-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-		gap: 40px;
-		max-width: 1400px;
-		margin: 0 auto;
-	}
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.2s; }
+    .product-card:nth-child(3) { animation-delay: 0.3s; }
+    .product-card:nth-child(4) { animation-delay: 0.4s; }
+    .product-card:nth-child(5) { animation-delay: 0.5s; }
+    .product-card:nth-child(6) { animation-delay: 0.6s; }
 
-	.product-card {
-		background: rgba(255, 255, 255, 0.03);
-		backdrop-filter: blur(10px);
-		border-radius: 20px;
-		overflow: hidden;
-		border: 1px solid rgba(255, 177, 3, 0.1);
-		transition: all 0.4s ease;
-		animation: fadeInUp 0.6s ease-out both;
-	}
+    .product-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 177, 3, 0.5);
+        box-shadow: 0 12px 40px rgba(255, 177, 3, 0.2);
+    }
 
-	.product-card:nth-child(1) { animation-delay: 0.1s; }
-	.product-card:nth-child(2) { animation-delay: 0.2s; }
+    .product-image {
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
+        background: rgba(255, 255, 255, 0.02);
+    }
 
-	.product-card:hover {
-		transform: translateY(-10px);
-		border-color: rgba(255, 177, 3, 0.3);
-		box-shadow: 0 20px 60px rgba(255, 177, 3, 0.2);
-	}
+    .product-content {
+        padding: 25px;
+    }
 
-	.product-image-container {
-		width: 100%;
-		height: 300px;
-		overflow: hidden;
-		background: rgba(255, 255, 255, 0.02);
-	}
+    .product-content h3 {
+        font-size: 1.4rem;
+        color: #ffb103;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
 
-	.product-image {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-		transition: transform 0.4s ease;
-	}
+    .product-content ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 20px;
+    }
 
-	.product-card:hover .product-image {
-		transform: scale(1.05);
-	}
+    .product-content li {
+        color: #cccccc;
+        font-size: 0.9rem;
+        padding: 6px 0;
+        padding-left: 20px;
+        position: relative;
+    }
 
-	.product-info {
-		padding: 30px;
-	}
+    .product-content li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #ffb103;
+        font-weight: bold;
+    }
 
-	.product-info h3 {
-		font-size: 1.8rem;
-		margin-bottom: 20px;
-		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
+    .catalogues-section {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 60px 20px;
+        margin-top: 80px;
+    }
 
-	.product-info ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
+    .catalogues-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
 
-	.product-info li {
-		color: #d0d0d0;
-		margin-bottom: 12px;
-		padding-left: 25px;
-		position: relative;
-		line-height: 1.6;
-	}
+    .catalogues-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+    }
 
-	.product-info li:before {
-		content: "→";
-		position: absolute;
-		left: 0;
-		color: #ffb103;
-		font-weight: bold;
-	}
+    .catalogue-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        transition: transform 0.4s ease;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+    }
 
-	.catalogue-section {
-		padding: 100px 20px;
-		background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
-	}
+    .catalogue-card:hover {
+        transform: scale(1.05);
+        border-color: rgba(255, 177, 3, 0.5);
+    }
 
-	.catalogue-container {
-		max-width: 800px;
-		margin: 0 auto;
-		text-align: center;
-	}
+    .catalogue-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 
-	.catalogue-link {
-		display: inline-block;
-		transition: transform 0.3s ease;
-	}
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-	.catalogue-link:hover {
-		transform: scale(1.05);
-	}
+    @media (max-width: 768px) {
+        .hero-section {
+            min-height: 50vh;
+            margin-top: 140px;
+        }
 
-	.catalogue-image {
-		max-width: 100%;
-		height: auto;
-		border-radius: 15px;
-		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-	}
+        .hero-content h1 {
+            font-size: 2rem;
+        }
 
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
+        .section-title {
+            font-size: 2rem;
+        }
 
-	@media (max-width: 768px) {
-		.hero {
-			padding: 120px 15px 40px;
-			min-height: 60vh;
-		}
+        .section-intro {
+            font-size: 1rem;
+        }
 
-		.hero-title {
-			font-size: 2rem;
-		}
+        .products-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
 
-		.video-container {
-			grid-template-columns: 1fr;
-			padding: 25px;
-			gap: 25px;
-		}
+        .catalogues-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
 
-		.video-description {
-			font-size: 1rem;
-		}
+        .product-image {
+            height: 220px;
+        }
+    }
 
-		.section-title {
-			font-size: 2rem;
-		}
+    @media (max-width: 480px) {
+        .hero-content h1 {
+            font-size: 1.8rem;
+        }
 
-		.products-grid {
-			grid-template-columns: 1fr;
-			gap: 25px;
-		}
+        .section-title {
+            font-size: 1.6rem;
+        }
 
-		.product-info h3 {
-			font-size: 1.5rem;
-		}
-	}
+        .product-content h3 {
+            font-size: 1.2rem;
+        }
+    }
 </style>
+
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="font-display">Abris à bois</h1>
+        <div class="video-container">
+            <div class="video-wrapper">
+                <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/Ljy1hxhgUPM?si=81QEtTRd6Fr_cEUp"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="video-description">
+                L'entreprise Hörmann est un fabricant européen renommé pour ses solutions d'aménagements extérieurs sur mesure, telles que les abris à bois et les solutions de rangement extérieur. Fondée il y a plus de 80 ans, elle est implantée en Allemagne
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="products-section">
+    <h2 class="section-title font-display">Notre Gamme d'abris à bois</h2>
+    <p class="section-intro">
+        Mettez à l'abris votre bois pour un bois au sec
+    </p>
+
+    <div class="products-grid">
+        <div class="product-card">
+            <img src="/images/abris-bois-berry-classic.avif" alt="Abris à bois Berry Classic" class="product-image">
+            <div class="product-content">
+                <h3>Abris à bois berry classic</h3>
+                <ul>
+                    <li>Protection efficace</li>
+                    <li>Structure robuste</li>
+                    <li>Résistent aux intempéries et aux moisissures</li>
+                    <li>Facilité d'entretien</li>
+                    <li>Garantie 20 ans</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="/images/abris-bois-berry-modern.avif" alt="Abris à bois Berry Modern" class="product-image">
+            <div class="product-content">
+                <h3>Abris à bois berry modern</h3>
+                <ul>
+                    <li>Protection efficace</li>
+                    <li>Structure robuste</li>
+                    <li>Résistent aux intempéries et aux moisissures</li>
+                    <li>Garantie 20 ans</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="catalogues-section">
+    <div class="catalogues-container">
+        <h2 class="section-title font-display">Nos Catalogues</h2>
+        <p class="section-intro">
+            Découvrez l'intégralité de nos gammes dans nos catalogues détaillés.
+        </p>
+
+        <div class="catalogues-grid">
+            <a href="/public/catalogues/catalogue-abris-jardin-hormann.pdf" target="_blank" class="catalogue-card">
+                <img src="/images/catalogue-abris-hormann.png" alt="Catalogue Hörmann">
+            </a>
+        </div>
+    </div>
+</section>
+
+</Layout>

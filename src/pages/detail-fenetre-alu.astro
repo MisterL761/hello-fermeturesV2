@@ -1,0 +1,243 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+    title="Fenêtre en Aluminium : L'Élégance Moderne - Hello Fermetures"
+    description="Fenêtre en aluminium premium : design épuré, finesse des profilés et performances thermiques exceptionnelles. L'élégance moderne pour votre maison."
+>
+	<main>
+		<section class="detail-page">
+			<div class="detail-container">
+				<h1 class="detail-title">Fenêtre en Aluminium : L'Élégance Moderne</h1>
+
+				<div class="product-image-wrapper">
+					<img src="/images/fenetre-alu.webp" alt="Fenêtre en Aluminium L'Élégance Moderne" class="product-main-image" />
+				</div>
+
+				<div class="specs-section">
+					<h2 class="specs-title">Spécifications Techniques</h2>
+					<ul class="specs-list">
+						<li><strong>Profilé:</strong> <span>Aluminium à rupture de pont thermique</span></li>
+						<li><strong>Renforcement:</strong> <span>Structure interne en aluminium haute résistance</span></li>
+						<li><strong>Vitrage standard:</strong> <span>Double vitrage 6/14/4 avec gaz argon</span></li>
+						<li><strong>Ouverture:</strong> <span>Oscillo-battante, coulissante ou fixe (configurable)</span></li>
+						<li><strong>Ferrures:</strong> <span>Système anti-effraction avec verrouillage multipoints</span></li>
+						<li><strong>Joint d'étanchéité:</strong> <span>Triple joint EPDM pour une étanchéité supérieure</span></li>
+						<li><strong>Normes:</strong> <span>Conforme aux normes NF EN 14-351-1 et RT 2020</span></li>
+					</ul>
+				</div>
+
+				<div class="specs-section">
+					<h2 class="specs-title">Caractéristiques Physiques</h2>
+					<ul class="specs-list">
+						<li><strong>Matériau:</strong> <span>Aluminium thermolaqué recyclable</span></li>
+						<li><strong>Dimensions standards:</strong> <span>Configurable sur mesure (ex. 1200 x 1400 mm)</span></li>
+						<li><strong>Poids moyen:</strong> <span>Environ 25-35 kg selon dimensions</span></li>
+						<li><strong>Couleur:</strong> <span>Large gamme RAL (anthracite, noir, blanc, etc.)</span></li>
+						<li><strong>Résistance aux intempéries:</strong> <span>Haute résistance à la corrosion et aux UV</span></li>
+						<li><strong>Entretien:</strong> <span>Nettoyage simple avec un chiffon humide</span></li>
+					</ul>
+				</div>
+
+				<div class="specs-section">
+					<h2 class="specs-title">Performances Énergétiques</h2>
+					<ul class="specs-list">
+						<li><strong>Coefficient thermique (Uw):</strong> <span>1.2 W/m².K (double vitrage standard)</span></li>
+						<li><strong>Facteur solaire (Sw):</strong> <span>0.55 pour un contrôle solaire optimisé</span></li>
+						<li><strong>Isolation acoustique:</strong> <span>Réduction jusqu'à 35 dB</span></li>
+						<li><strong>Transmission lumineuse:</strong> <span>Environ 70% avec double vitrage</span></li>
+						<li><strong>Économie d'énergie:</strong> <span>Réduction des déperditions thermiques jusqu'à 30%</span></li>
+						<li><strong>Compatibilité maison passive:</strong> <span>Option triple vitrage pour Uw ≤ 0.7 W/m².K</span></li>
+					</ul>
+				</div>
+
+				<div class="specs-section advantages">
+					<h2 class="specs-title">Avantages</h2>
+					<ul class="advantages-list">
+						<li>Design moderne et épuré pour une esthétique contemporaine</li>
+						<li>Excellente durabilité grâce à l'aluminium résistant à la corrosion</li>
+						<li>Isolation thermique performante avec rupture de pont thermique</li>
+						<li>Personnalisation esthétique avec un large choix de couleurs</li>
+						<li>Sécurité renforcée avec des systèmes de verrouillage avancés</li>
+						<li>Matériau recyclable pour un impact environnemental réduit</li>
+						<li>Confort acoustique optimal pour un environnement intérieur paisible</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.detail-page {
+		min-height: 100vh;
+		padding: 140px 20px 60px;
+		background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+	}
+
+	.detail-container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.detail-title {
+		font-size: 3rem;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 50px;
+		background: linear-gradient(135deg, #ffb103 0%, #ffd700 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		animation: fadeInUp 0.8s ease-out;
+	}
+
+	.product-image-wrapper {
+		max-width: 600px;
+		margin: 0 auto 60px;
+		animation: fadeInUp 0.8s ease-out 0.2s both;
+	}
+
+	.product-main-image {
+		width: 100%;
+		height: auto;
+		border-radius: 15px;
+		border: 2px solid rgba(255, 177, 3, 0.2);
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.product-main-image:hover {
+		transform: scale(1.05);
+		box-shadow: 0 20px 60px rgba(255, 177, 3, 0.3);
+	}
+
+	.specs-section {
+		background: rgba(255, 255, 255, 0.03);
+		backdrop-filter: blur(10px);
+		border-radius: 20px;
+		padding: 40px;
+		margin-bottom: 30px;
+		border: 1px solid rgba(255, 177, 3, 0.1);
+		animation: fadeInUp 0.6s ease-out both;
+	}
+
+	.specs-section:nth-child(3) { animation-delay: 0.3s; }
+	.specs-section:nth-child(4) { animation-delay: 0.4s; }
+	.specs-section:nth-child(5) { animation-delay: 0.5s; }
+	.specs-section:nth-child(6) { animation-delay: 0.6s; }
+
+	.specs-title {
+		font-size: 2rem;
+		font-weight: 600;
+		margin-bottom: 25px;
+		color: #ffb103;
+		border-bottom: 2px solid rgba(255, 177, 3, 0.3);
+		padding-bottom: 15px;
+	}
+
+	.specs-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.specs-list li {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		padding: 15px 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+		font-size: 1.05rem;
+		gap: 20px;
+	}
+
+	.specs-list li:last-child {
+		border-bottom: none;
+	}
+
+	.specs-list li strong {
+		color: #ccc;
+		flex: 0 0 auto;
+		min-width: 200px;
+		font-weight: 500;
+	}
+
+	.specs-list li span {
+		color: #fff;
+		flex: 1;
+		text-align: right;
+	}
+
+	.advantages-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.advantages-list li {
+		padding: 15px 0 15px 35px;
+		position: relative;
+		color: #d0d0d0;
+		font-size: 1.05rem;
+		line-height: 1.6;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	}
+
+	.advantages-list li:last-child {
+		border-bottom: none;
+	}
+
+	.advantages-list li::before {
+		content: "✓";
+		position: absolute;
+		left: 0;
+		color: #ffb103;
+		font-weight: bold;
+		font-size: 1.3rem;
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.detail-page {
+			padding: 120px 15px 40px;
+		}
+
+		.detail-title {
+			font-size: 2rem;
+		}
+
+		.specs-section {
+			padding: 25px;
+		}
+
+		.specs-title {
+			font-size: 1.5rem;
+		}
+
+		.specs-list li {
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		.specs-list li strong {
+			min-width: auto;
+		}
+
+		.specs-list li span {
+			text-align: left;
+		}
+	}
+</style>

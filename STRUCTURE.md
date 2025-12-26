@@ -108,7 +108,7 @@ import HeroVideo from '../components/hero/HeroVideo.astro';
     title="Découvrez nos partenaires"
     videoUrl="https://www.youtube.com/embed/VIDEO_ID"
     description="Description du fabricant..."
-    backgroundImage="/img/bg-grille-defense.jpg"
+    backgroundImage="/images/bg-grille-defense.jpg"
 />
 ```
 
@@ -141,7 +141,7 @@ import ProductCard from '../components/product/ProductCard.astro';
 
 <ProductCard
     title="Grille Antique"
-    image="/img/Grille_Antique.jpg"
+    image="/images/Grille_Antique.jpg"
     description="Traverses carré plein de 14..."
     variant="compact"
 />
@@ -149,7 +149,7 @@ import ProductCard from '../components/product/ProductCard.astro';
 <!-- Avec liste de fonctionnalités -->
 <ProductCard
     title="Portail Battant"
-    image="/img/portail-battant.jpg"
+    image="/images/portail-battant.jpg"
     features={[
         'Esthétique classique',
         'Facile à motoriser',
@@ -187,8 +187,8 @@ import ProductCard from '../components/product/ProductCard.astro';
     subtitle="Protection et esthétique"
     variant="compact"
 >
-    <ProductCard title="Produit 1" image="/img/product1.jpg" variant="compact" />
-    <ProductCard title="Produit 2" image="/img/product2.jpg" variant="compact" />
+    <ProductCard title="Produit 1" image="/images/product1.jpg" variant="compact" />
+    <ProductCard title="Produit 2" image="/images/product2.jpg" variant="compact" />
     <!-- Plus de produits... -->
 </ProductGrid>
 ```
@@ -210,13 +210,13 @@ Section affichant le catalogue PDF téléchargeable.
 **Exemple d'utilisation :**
 ```astro
 ---
-import CatalogueSection from '../components/catalogue/CatalogueSection.astro';
+import CatalogueSection from '../components/public/catalogues/CatalogueSection.astro';
 ---
 
 <CatalogueSection
     title="Découvrez notre catalogue"
-    catalogueUrl="/catalogue/lahfer-grilles.pdf"
-    catalogueImage="/img/catalogue-lahfer.png"
+    catalogueUrl="/public/catalogues/lahfer-grilles.pdf"
+    catalogueImage="/images/catalogue-lahfer.png"
     altText="Catalogue LAHFER"
 />
 ```
@@ -231,7 +231,7 @@ import Layout from '../layouts/Layout.astro';
 import HeroVideo from '../components/hero/HeroVideo.astro';
 import ProductGrid from '../components/product/ProductGrid.astro';
 import ProductCard from '../components/product/ProductCard.astro';
-import CatalogueSection from '../components/catalogue/CatalogueSection.astro';
+import CatalogueSection from '../components/public/catalogues/CatalogueSection.astro';
 ---
 
 <Layout title="Ma Page Produit">
@@ -241,7 +241,7 @@ import CatalogueSection from '../components/catalogue/CatalogueSection.astro';
             title="Découvrez nos partenaires"
             videoUrl="https://www.youtube.com/embed/VIDEO_ID"
             description="Description du partenaire fabricant..."
-            backgroundImage="/img/bg-page.jpg"
+            backgroundImage="/images/bg-page.jpg"
         />
 
         <!-- Products Section -->
@@ -252,7 +252,7 @@ import CatalogueSection from '../components/catalogue/CatalogueSection.astro';
         >
             <ProductCard
                 title="Produit 1"
-                image="/img/product1.jpg"
+                image="/images/product1.jpg"
                 features={[
                     'Caractéristique 1',
                     'Caractéristique 2',
@@ -261,7 +261,7 @@ import CatalogueSection from '../components/catalogue/CatalogueSection.astro';
             />
             <ProductCard
                 title="Produit 2"
-                image="/img/product2.jpg"
+                image="/images/product2.jpg"
                 description="Description du produit"
                 videoUrl="https://youtube.com/watch?v=..."
             />
@@ -271,8 +271,8 @@ import CatalogueSection from '../components/catalogue/CatalogueSection.astro';
         <!-- Catalogue Section -->
         <CatalogueSection
             title="Téléchargez notre catalogue"
-            catalogueUrl="/catalogue/catalogue.pdf"
-            catalogueImage="/img/catalogue.png"
+            catalogueUrl="/public/catalogues/catalogue.pdf"
+            catalogueImage="/images/catalogue.png"
         />
     </main>
 </Layout>
@@ -314,8 +314,8 @@ import CatalogueSection from '../components/catalogue/CatalogueSection.astro';
 ```astro
 <!-- ✅ BON : Utiliser ProductGrid + ProductCard -->
 <ProductGrid title="Nos produits">
-    <ProductCard title="Produit 1" image="/img/1.jpg" />
-    <ProductCard title="Produit 2" image="/img/2.jpg" />
+    <ProductCard title="Produit 1" image="/images/1.jpg" />
+    <ProductCard title="Produit 2" image="/images/2.jpg" />
 </ProductGrid>
 
 <!-- ❌ MAUVAIS : Recréer toute la structure -->
