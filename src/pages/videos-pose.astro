@@ -1,0 +1,281 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+    title="Nos Vidéos de Pose - Hello Fermetures"
+    description="Découvrez nos vidéos de pose et d'installation : fenêtres, volets, portes, portails. Guides pratiques et conseils d'experts pour vos projets Hello Fermetures."
+>
+
+<style>
+    .hero-section {
+        position: relative;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
+                    url('/images/bg-fenetre.jpg') center/cover;
+        margin-top: 140px;
+    }
+
+    .hero-content {
+        text-align: center;
+        max-width: 800px;
+        padding: 40px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.8;
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease 0.2s forwards;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .videos-section {
+        background: #000;
+        padding: 80px 20px;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin-bottom: 60px;
+        text-align: center;
+        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .videos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .video-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .video-card:nth-child(1) { animation-delay: 0.1s; }
+    .video-card:nth-child(2) { animation-delay: 0.2s; }
+    .video-card:nth-child(3) { animation-delay: 0.3s; }
+    .video-card:nth-child(4) { animation-delay: 0.4s; }
+    .video-card:nth-child(5) { animation-delay: 0.5s; }
+    .video-card:nth-child(6) { animation-delay: 0.6s; }
+
+    .video-card:hover {
+        transform: translateY(-8px);
+        border-color: #ffb103;
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .video-content {
+        padding: 25px;
+    }
+
+    .video-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+    }
+
+    .video-description {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+        }
+
+        .videos-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+    }
+</style>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>Nos Vidéos de Pose</h1>
+        <p>Découvrez nos guides d'installation et nos conseils d'experts pour réussir la pose de vos fenêtres, volets, portes et autres menuiseries.</p>
+        <p>Des tutoriels détaillés pour vous accompagner dans vos projets de rénovation et d'installation.</p>
+    </div>
+</section>
+
+<!-- Videos Section -->
+<section class="videos-section">
+    <h2 class="section-title">Tutoriels & Installations</h2>
+
+    <div class="videos-grid">
+        <!-- Video 1: Présentation Hello Fermetures -->
+        <div class="video-card">
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/tLT5_zHT2LA?si=uRK9GNrZXkQMid3n"
+                    title="Présentation Hello Fermetures"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
+            </div>
+            <div class="video-content">
+                <h3 class="video-title">Présentation Hello Fermetures</h3>
+                <p class="video-description">Découvrez notre entreprise, notre savoir-faire et notre engagement qualité dans la menuiserie sur mesure.</p>
+            </div>
+        </div>
+
+        <!-- Video 2: Installation Fenêtres -->
+        <div class="video-card">
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/HXGlzrWsOQM"
+                    title="Installation fenêtres"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
+            </div>
+            <div class="video-content">
+                <h3 class="video-title">Installation de Fenêtres</h3>
+                <p class="video-description">Guide complet pour l'installation professionnelle de fenêtres PVC et aluminium, étape par étape.</p>
+            </div>
+        </div>
+
+        <!-- Video 3: Pose Volets -->
+        <div class="video-card">
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/O58jHYw3CK4?si=VIRro3_ctmk1oNFv"
+                    title="Pose volets"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
+            </div>
+            <div class="video-content">
+                <h3 class="video-title">Pose de Volets</h3>
+                <p class="video-description">Tutoriel détaillé pour la pose et l'installation de volets roulants et battants en toute sécurité.</p>
+            </div>
+        </div>
+
+        <!-- Video 4: Portes d'Entrée -->
+        <div class="video-card">
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/_LmVlxnlgUg?si=pl3AkEcy2fg4zC15"
+                    title="Installation porte d'entrée"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
+            </div>
+            <div class="video-content">
+                <h3 class="video-title">Installation Porte d'Entrée</h3>
+                <p class="video-description">Conseils d'experts pour l'installation d'une porte d'entrée sécurisée et performante.</p>
+            </div>
+        </div>
+
+        <!-- Video 5: Portes de Garage Hörmann -->
+        <div class="video-card">
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/bEOMlv4wnDU"
+                    title="Portes de garage Hörmann"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
+            </div>
+            <div class="video-content">
+                <h3 class="video-title">Portes de Garage Hörmann</h3>
+                <p class="video-description">Découvrez l'installation et les fonctionnalités des portes de garage motorisées Hörmann.</p>
+            </div>
+        </div>
+
+        <!-- Video 6: Conseils & Entretien -->
+        <div class="video-card">
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/tLT5_zHT2LA?si=uRK9GNrZXkQMid3n"
+                    title="Conseils entretien menuiseries"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
+            </div>
+            <div class="video-content">
+                <h3 class="video-title">Conseils d'Entretien</h3>
+                <p class="video-description">Nos recommandations pour entretenir vos menuiseries et prolonger leur durée de vie.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+</Layout>
