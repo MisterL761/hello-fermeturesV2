@@ -4,13 +4,13 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
     title="Nos Vidéos de Pose - Hello Fermetures"
-    description="Découvrez nos vidéos de pose et d'installation : fenêtres, volets, portes, portails. Guides pratiques et conseils d'experts pour vos projets Hello Fermetures."
+    description="Découvrez les vidéos de pose de Hello Fermetures : fenêtres, portes d'entrée, vérandas, stores, portails, volets et portes de garage. Qualité et expertise en action."
 >
 
 <style>
     .hero-section {
         position: relative;
-        min-height: 70vh;
+        min-height: 50vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -38,15 +38,6 @@ import Layout from '../layouts/Layout.astro';
         animation: fadeInUp 0.8s ease forwards;
     }
 
-    .hero-content p {
-        font-size: 1.2rem;
-        color: rgba(255, 255, 255, 0.9);
-        line-height: 1.8;
-        margin-bottom: 20px;
-        opacity: 0;
-        animation: fadeInUp 0.8s ease 0.2s forwards;
-    }
-
     @keyframes fadeInUp {
         from {
             opacity: 0;
@@ -58,86 +49,209 @@ import Layout from '../layouts/Layout.astro';
         }
     }
 
-    .videos-section {
+    .filter-section {
         background: #000;
-        padding: 80px 20px;
+        padding: 40px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .section-title {
-        font-size: 2.5rem;
-        font-weight: 300;
-        letter-spacing: 2px;
-        margin-bottom: 60px;
+    .filter-container {
         text-align: center;
-        background: linear-gradient(135deg, #ffffff 0%, #ffb103 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .videos-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 40px;
         max-width: 1400px;
         margin: 0 auto;
     }
 
-    .video-card {
+    .filter-button {
         background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 12px 24px;
+        margin: 8px;
+        cursor: pointer;
+        border-radius: 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .filter-button:hover {
+        background: rgba(255, 177, 3, 0.1);
+        border-color: #ffb103;
+        color: #ffb103;
+        transform: translateY(-2px);
+    }
+
+    .filter-button.active {
+        background: linear-gradient(135deg, #ffb103, #ff8c00);
+        color: #000;
+        border-color: #ffb103;
+        box-shadow: 0 4px 15px rgba(255, 177, 3, 0.3);
+    }
+
+    .mobile-filter-container {
+        display: none;
+    }
+
+    .videos-section {
+        background: #000;
+        padding: 60px 20px;
+    }
+
+    .video-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .video-item {
+        position: relative;
         border-radius: 12px;
         overflow: hidden;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         opacity: 0;
-        animation: fadeInUp 0.6s ease forwards;
+        transform: translateY(30px);
     }
 
-    .video-card:nth-child(1) { animation-delay: 0.1s; }
-    .video-card:nth-child(2) { animation-delay: 0.2s; }
-    .video-card:nth-child(3) { animation-delay: 0.3s; }
-    .video-card:nth-child(4) { animation-delay: 0.4s; }
-    .video-card:nth-child(5) { animation-delay: 0.5s; }
-    .video-card:nth-child(6) { animation-delay: 0.6s; }
+    .video-item.show {
+        opacity: 1;
+        transform: translateY(0);
+        animation: fadeInItem 0.5s ease-out forwards;
+    }
 
-    .video-card:hover {
+    .video-item.hide {
+        opacity: 0;
+        transform: translateY(30px);
+        display: none;
+    }
+
+    @keyframes fadeInItem {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .video-item:hover {
         transform: translateY(-8px);
-        border-color: #ffb103;
-        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 177, 3, 0.5);
+        box-shadow: 0 20px 40px rgba(255, 177, 3, 0.15);
     }
 
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
+    .video-item iframe {
+        width: 100%;
+        height: 280px;
+        display: block;
+        pointer-events: none;
     }
 
-    .video-container iframe {
+    .video-overlay {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
+        right: 0;
+        bottom: 65px;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 2;
     }
 
-    .video-content {
-        padding: 25px;
+    .video-overlay:hover {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .play-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(255, 177, 3, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .video-overlay:hover .play-icon {
+        background: #ffb103;
+        transform: scale(1.1);
+    }
+
+    .play-icon::after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 20px solid #000;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        margin-left: 5px;
     }
 
     .video-title {
-        font-size: 1.5rem;
+        padding: 20px 15px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
         font-weight: 600;
-        color: #fff;
-        margin-bottom: 12px;
-        letter-spacing: 1px;
+        font-size: 1rem;
+        line-height: 1.4;
+        min-height: 65px;
+        display: flex;
+        align-items: center;
     }
 
-    .video-description {
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.7);
-        line-height: 1.6;
+    .video-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(5px);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .video-modal-content {
+        position: relative;
+        width: auto;
+        height: auto;
+        background: #000;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .video-modal iframe {
+        display: block;
+        width: 95vw;
+        height: 80vh;
+        max-width: 1400px;
+    }
+
+    .video-modal-close {
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        color: #fff;
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1001;
+        transition: color 0.3s;
+    }
+
+    .video-modal-close:hover {
+        color: #ffb103;
     }
 
     @media (max-width: 768px) {
@@ -145,17 +259,43 @@ import Layout from '../layouts/Layout.astro';
             font-size: 2rem;
         }
 
-        .hero-content p {
-            font-size: 1rem;
+        .filter-container {
+            display: none;
         }
 
-        .section-title {
-            font-size: 1.8rem;
+        .mobile-filter-container {
+            display: block;
+            text-align: center;
         }
 
-        .videos-grid {
+        .mobile-filter-menu {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .mobile-filter-menu.active {
+            display: block;
+        }
+
+        .mobile-filter-menu button {
+            display: block;
+            width: 100%;
+            margin: 5px auto;
+            max-width: 300px;
+        }
+
+        .video-gallery {
             grid-template-columns: 1fr;
-            gap: 30px;
+            gap: 20px;
+        }
+
+        .video-item iframe {
+            height: 200px;
+        }
+
+        .video-modal iframe {
+            width: 98vw;
+            height: 60vh;
         }
     }
 </style>
@@ -164,118 +304,452 @@ import Layout from '../layouts/Layout.astro';
 <section class="hero-section">
     <div class="hero-content">
         <h1>Nos Vidéos de Pose</h1>
-        <p>Découvrez nos guides d'installation et nos conseils d'experts pour réussir la pose de vos fenêtres, volets, portes et autres menuiseries.</p>
-        <p>Des tutoriels détaillés pour vous accompagner dans vos projets de rénovation et d'installation.</p>
+    </div>
+</section>
+
+<!-- Filter Section -->
+<section class="filter-section">
+    <div class="filter-container">
+        <button class="filter-button active" onclick="filterSelection('all')">Tout</button>
+        <button class="filter-button" onclick="filterSelection('fenetre')">Fenêtres</button>
+        <button class="filter-button" onclick="filterSelection('porte')">Portes d'entrée</button>
+        <button class="filter-button" onclick="filterSelection('veranda')">Vérandas et pergolas</button>
+        <button class="filter-button" onclick="filterSelection('store-interieur')">Stores intérieurs</button>
+        <button class="filter-button" onclick="filterSelection('portail')">Portails et clôtures</button>
+        <button class="filter-button" onclick="filterSelection('store-banne')">Stores bannes</button>
+        <button class="filter-button" onclick="filterSelection('volet-roulant')">Volets roulants</button>
+        <button class="filter-button" onclick="filterSelection('volet-battant')">Volets battants</button>
+        <button class="filter-button" onclick="filterSelection('porte-garage')">Portes de garage</button>
+        <button class="filter-button" onclick="filterSelection('carport')">Carports</button>
+        <button class="filter-button" onclick="filterSelection('usine')">Visite usine</button>
+    </div>
+
+    <div class="mobile-filter-container">
+        <button class="filter-button" onclick="toggleMobileFilters()">Filtrer les vidéos</button>
+        <div class="mobile-filter-menu">
+            <button class="filter-button active" onclick="filterSelection('all')">Tout</button>
+            <button class="filter-button" onclick="filterSelection('fenetre')">Fenêtres</button>
+            <button class="filter-button" onclick="filterSelection('porte')">Portes d'entrée</button>
+            <button class="filter-button" onclick="filterSelection('veranda')">Vérandas et pergolas</button>
+            <button class="filter-button" onclick="filterSelection('store-interieur')">Stores intérieurs</button>
+            <button class="filter-button" onclick="filterSelection('portail')">Portails et clôtures</button>
+            <button class="filter-button" onclick="filterSelection('store-banne')">Stores bannes</button>
+            <button class="filter-button" onclick="filterSelection('volet-roulant')">Volets roulants</button>
+            <button class="filter-button" onclick="filterSelection('volet-battant')">Volets battants</button>
+            <button class="filter-button" onclick="filterSelection('porte-garage')">Portes de garage</button>
+            <button class="filter-button" onclick="filterSelection('carport')">Carports</button>
+            <button class="filter-button" onclick="filterSelection('usine')">Visite usine</button>
+        </div>
     </div>
 </section>
 
 <!-- Videos Section -->
 <section class="videos-section">
-    <h2 class="section-title">Tutoriels & Installations</h2>
-
-    <div class="videos-grid">
-        <!-- Video 1: Présentation Hello Fermetures -->
-        <div class="video-card">
-            <div class="video-container">
-                <iframe
-                    src="https://www.youtube.com/embed/tLT5_zHT2LA?si=uRK9GNrZXkQMid3n"
-                    title="Présentation Hello Fermetures"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy"
-                ></iframe>
+    <div class="video-gallery">
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/HXGlzrWsOQM" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
             </div>
-            <div class="video-content">
-                <h3 class="video-title">Présentation Hello Fermetures</h3>
-                <p class="video-description">Découvrez notre entreprise, notre savoir-faire et notre engagement qualité dans la menuiserie sur mesure.</p>
-            </div>
+            <div class="video-title">Pose d'une fenêtre en aluminium</div>
         </div>
 
-        <!-- Video 2: Installation Fenêtres -->
-        <div class="video-card">
-            <div class="video-container">
-                <iframe
-                    src="https://www.youtube.com/embed/HXGlzrWsOQM"
-                    title="Installation fenêtres"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy"
-                ></iframe>
+        <div class="video-item porte show">
+            <iframe src="https://www.youtube.com/embed/S-VU5RCJ5Ig?si=P6pg40daRPXtIsDD" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
             </div>
-            <div class="video-content">
-                <h3 class="video-title">Installation de Fenêtres</h3>
-                <p class="video-description">Guide complet pour l'installation professionnelle de fenêtres PVC et aluminium, étape par étape.</p>
-            </div>
+            <div class="video-title">Pose d'une porte d'entrée en aluminium</div>
         </div>
 
-        <!-- Video 3: Pose Volets -->
-        <div class="video-card">
-            <div class="video-container">
-                <iframe
-                    src="https://www.youtube.com/embed/O58jHYw3CK4?si=VIRro3_ctmk1oNFv"
-                    title="Pose volets"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy"
-                ></iframe>
+        <div class="video-item store-banne show">
+            <iframe src="https://www.youtube.com/embed/TmFlxdqJS1o?si=WHrCm1pRWPTzfFpP" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
             </div>
-            <div class="video-content">
-                <h3 class="video-title">Pose de Volets</h3>
-                <p class="video-description">Tutoriel détaillé pour la pose et l'installation de volets roulants et battants en toute sécurité.</p>
-            </div>
+            <div class="video-title">Pose d'un store banne solaire</div>
         </div>
 
-        <!-- Video 4: Portes d'Entrée -->
-        <div class="video-card">
-            <div class="video-container">
-                <iframe
-                    src="https://www.youtube.com/embed/_LmVlxnlgUg?si=pl3AkEcy2fg4zC15"
-                    title="Installation porte d'entrée"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy"
-                ></iframe>
+        <div class="video-item volet-battant show">
+            <iframe src="https://www.youtube.com/embed/qVAcosPkFQ0?si=2hjw3zIy6yfOOw3l" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
             </div>
-            <div class="video-content">
-                <h3 class="video-title">Installation Porte d'Entrée</h3>
-                <p class="video-description">Conseils d'experts pour l'installation d'une porte d'entrée sécurisée et performante.</p>
-            </div>
+            <div class="video-title">Pose d'un volet battant en aluminium</div>
         </div>
 
-        <!-- Video 5: Portes de Garage Hörmann -->
-        <div class="video-card">
-            <div class="video-container">
-                <iframe
-                    src="https://www.youtube.com/embed/bEOMlv4wnDU"
-                    title="Portes de garage Hörmann"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy"
-                ></iframe>
+        <div class="video-item volet-battant show">
+            <iframe src="https://www.youtube.com/embed/DgLAykOIc4E?si=EhIl2zT5BtO73I42" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
             </div>
-            <div class="video-content">
-                <h3 class="video-title">Portes de Garage Hörmann</h3>
-                <p class="video-description">Découvrez l'installation et les fonctionnalités des portes de garage motorisées Hörmann.</p>
-            </div>
+            <div class="video-title">Pose d'un volet battant en aluminium pour porte fenêtre</div>
         </div>
 
-        <!-- Video 6: Conseils & Entretien -->
-        <div class="video-card">
-            <div class="video-container">
-                <iframe
-                    src="https://www.youtube.com/embed/tLT5_zHT2LA?si=uRK9GNrZXkQMid3n"
-                    title="Conseils entretien menuiseries"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy"
-                ></iframe>
+        <div class="video-item portail show">
+            <iframe src="https://www.youtube.com/embed/O58jHYw3CK4?si=VIRro3_ctmk1oNFv" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
             </div>
-            <div class="video-content">
-                <h3 class="video-title">Conseils d'Entretien</h3>
-                <p class="video-description">Nos recommandations pour entretenir vos menuiseries et prolonger leur durée de vie.</p>
+            <div class="video-title">Réalisation portail, portillion et clôture</div>
+        </div>
+
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/t2hSyJC7Y1E?si=PGPpnCYGY_48Cs2A" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
             </div>
+            <div class="video-title">Pose d'un coulissant en dépose total</div>
+        </div>
+
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/c3A4tmlSJDs?si=y4rPKMLc3uGmk8aq" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Pose d'une moustiquaire pour fenêtre</div>
+        </div>
+
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/wwvex0HaL6M?si=_4GaiTblriJrfToy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Dépose total d'une fenêtre en aluminium</div>
+        </div>
+
+        <div class="video-item volet-roulant show">
+            <iframe src="https://www.youtube.com/embed/zUsAXSva02M?si=h0C8teLo6t-Q5DqT" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'un volet roulant solaire somfy</div>
+        </div>
+
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/0_2wQoANctg?si=xIR3n2MsgBefKNXx" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'une porte fenetre en pvc</div>
+        </div>
+
+        <div class="video-item porte-garage show">
+            <iframe src="https://www.youtube.com/embed/UrQdSgqv-Gc?si=vvekBA9h3xpj1V2v" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'une porte de garage</div>
+        </div>
+
+        <div class="video-item volet-roulant show">
+            <iframe src="https://www.youtube.com/embed/3SXBjdhEUEM?si=-ud5Xo4Xqh44avBV" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'un volet roulant somfy</div>
+        </div>
+
+        <div class="video-item volet-roulant show">
+            <iframe src="https://www.youtube.com/embed/P_lad8KxNUc?si=iPxJprqDOyrhY2nK" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'un volet roulant solaire pour une porte fenêtre</div>
+        </div>
+
+        <div class="video-item porte-garage show">
+            <iframe src="https://www.youtube.com/embed/mePYx6a1OBY?si=FuyFkLTHkA7rvH5U" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'une porte de garage Hormann</div>
+        </div>
+
+        <div class="video-item portail show">
+            <iframe src="https://www.youtube.com/embed/RkhT2oDgPT0?si=XwIm2ZsCnKmH4_9K" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'une motorisation sur un portail battant</div>
+        </div>
+
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/riRNPFVIjyA?si=_Kcl6XYlzUAMGuC7" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Pose d'une fenêtre hybride</div>
+        </div>
+
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/08xgSqCfxlk?si=vIs48WL9hu-5Tx3j" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation de deux coulissant en aluminium</div>
+        </div>
+
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/aFiHEG6WCZM?si=yVMtf4HxldY2i914" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'une fenêtre avec soubassement</div>
+        </div>
+
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/x1fPxtth740?si=hflwZTMhoTaUnShr" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Remplacement d'une fenêtre de salle de bain</div>
+        </div>
+
+        <div class="video-item volet-roulant show">
+            <iframe src="https://www.youtube.com/embed/vYXF2s9EpCs?feature=shared" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Pose d'un volet roulant solaire</div>
+        </div>
+
+        <div class="video-item volet-roulant show">
+            <iframe src="https://www.youtube.com/embed/L3Vf6eIKUNQ?si=YhTG_ZAotNagK116" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'un volet roulant solaire</div>
+        </div>
+
+        <div class="video-item porte-garage show">
+            <iframe src="https://www.youtube.com/embed/R_gttgPR7_M?si=lgepvDN-CqXejnAT" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'une porte de garage moos avec portillion intégré</div>
+        </div>
+
+        <div class="video-item porte show">
+            <iframe src="https://www.youtube.com/embed/BNXUdJf8IFs?si=AZbRZQU6BTyw1yLv" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Pose d'une porte d'entrée entièrement vitrée</div>
+        </div>
+
+        <div class="video-item porte show">
+            <iframe src="https://www.youtube.com/embed/UPv31CV6vC0?si=vlbdchEm6akTGTAt" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Pose d'un coulissant en PVC avec l'installation d'un volet roulant solaire Somfy</div>
+        </div>
+
+        <div class="video-item portail show">
+            <iframe src="https://www.youtube.com/embed/TSimphBgLKo?si=ZO8_3eN66rZ2ChPH" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'un portail de la gamme creation de chez cetal</div>
+        </div>
+
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/D1z-BrR5c7g?si=Xb4LxSXEbwafpqqK" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Pose d'une fenêtre en PVC</div>
+        </div>
+
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/_kW9WGPBDfw?si=K5OrchsrLiaYr3SD" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation menuiserie PVC, sur ce chantier particulier</div>
+        </div>
+
+        <div class="video-item usine show">
+            <iframe src="https://www.youtube.com/embed/HOUibuMK1jk?si=6qYZ_IoBqJClZt12" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Nous avons était accueillis Chez Hormann pour visitez leur usine</div>
+        </div>
+
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/RQQfqdXCVmo?si=BvWmbiCkE9Uo0t2M" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Pose de fenêtre en PVC de chez PROFERM et volet battant en pvc</div>
+        </div>
+
+        <div class="video-item porte show">
+            <iframe src="https://www.youtube.com/embed/By5l6YinEK0?si=9gEjQmLVMM7AlGFD" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation Porte fenêtre PVC, et son volet roulant monobloc PROFERM</div>
+        </div>
+
+        <div class="video-item porte show">
+            <iframe src="https://www.youtube.com/embed/46loM7dCZLc?si=gCG8ll5fFMMNSdpV" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'une porte de service PVC Blanc de chez PROFERM</div>
+        </div>
+
+        <div class="video-item porte-garage show">
+            <iframe src="https://www.youtube.com/embed/FAgvXpbvb2I?si=-YRHh6kL4SAdcG43" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'une porte de garage Hormann Roll OD , pratique et efficacité</div>
+        </div>
+
+        <div class="video-item usine show">
+            <iframe src="https://www.youtube.com/embed/iHpICzzXMZE?si=KKlOnS_N3V10LMGQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Explication accessoires anti effraction C2 sur porte de garage Hormann</div>
+        </div>
+
+        <div class="video-item portail show">
+            <iframe src="https://www.youtube.com/embed/UASo6jUIYDA?si=EaZqk99Hu_Q9MsVR" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'un portail coulissant de chez Cetal, et d'une motorisation somfy</div>
+        </div>
+
+        <div class="video-item portail show">
+            <iframe src="https://www.youtube.com/embed/pcB2bVfwF9A?si=DQMY1Rvn-OyG5miT" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Pose d'un Portail coulissant et d'une motorisation somfy</div>
+        </div>
+
+        <div class="video-item store-banne show">
+            <iframe src="https://www.youtube.com/embed/6iSTXnAYZk0?si=jC8s-qwz4rGBMRQW" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Installation d'un sorte banne de chez Marquises , motorisation somfy IO</div>
+        </div>
+
+        <div class="video-item fenetre show">
+            <iframe src="https://www.youtube.com/embed/W_bP3pmp4ZU?si=ITCYOtaO3fBRUnbO" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Pose de fenêtre PVC blanc monobloc</div>
+        </div>
+
+        <div class="video-item porte show">
+            <iframe src="https://www.youtube.com/embed/poV0OsYwDVM?si=AClWmJwq_KlwMZOc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-overlay" onclick="openVideoModal(this)">
+                <div class="play-icon"></div>
+            </div>
+            <div class="video-title">Pose d'une porte d'entrée EURADIF</div>
         </div>
     </div>
 </section>
+
+<!-- Video Modal -->
+<div id="videoModal" class="video-modal">
+    <div class="video-modal-content">
+        <span class="video-modal-close" onclick="closeVideoModal()">×</span>
+        <iframe id="modalVideo" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+
+<script is:inline>
+    function filterSelection(category) {
+        // Remove active class from all buttons
+        document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+
+        // Add active class to the clicked button
+        const buttons = document.querySelectorAll(`[onclick="filterSelection('${category}')"]`);
+        buttons.forEach(btn => btn.classList.add('active'));
+
+        // Get all video items
+        let items = document.querySelectorAll('.video-item');
+
+        // Reset all items
+        items.forEach(item => {
+            item.classList.remove('show', 'hide');
+            item.style.display = 'none';
+        });
+
+        // Determine which items to show
+        let itemsToShow = [];
+        if (category === 'all') {
+            itemsToShow = Array.from(items);
+        } else {
+            itemsToShow = Array.from(items).filter(item => item.classList.contains(category));
+        }
+
+        setTimeout(() => {
+            itemsToShow.forEach((item, index) => {
+                item.style.display = 'block';
+                setTimeout(() => {
+                    item.classList.add('show');
+                }, index * 50);
+            });
+        }, 50);
+
+        // Close mobile menu
+        const mobileMenu = document.querySelector('.mobile-filter-menu');
+        if (mobileMenu) {
+            mobileMenu.classList.remove('active');
+        }
+    }
+
+    function toggleMobileFilters() {
+        document.querySelector('.mobile-filter-menu').classList.toggle('active');
+    }
+
+    function openVideoModal(overlay) {
+        const videoItem = overlay.parentElement;
+        const iframe = videoItem.querySelector('iframe');
+        let videoSrc = iframe.src;
+
+        // Add autoplay if not present
+        if (!videoSrc.includes('autoplay=1')) {
+            videoSrc += (videoSrc.includes('?') ? '&' : '?') + 'autoplay=1';
+        }
+
+        const modal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        modalVideo.src = videoSrc;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+        const modal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        modalVideo.src = '';
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('videoModal')) {
+            closeVideoModal();
+        }
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeVideoModal();
+        }
+    });
+</script>
 
 </Layout>
