@@ -1,30 +1,63 @@
 ---
-// Footer Component
+// Footer.astro
+const currentYear = new Date().getFullYear();
+
+// --- CONFIGURATION DES LIGNES DE PARTENAIRES ---
+
+// Ligne 1 : Les plus "institutionnels" ou techniques
+const partnersRow1 = [
+    { name: "RGE", logo: "/images/logo-rge.webp", url: "/qualification/qualification-rge.pdf" },
+    { name: "Dickson", logo: "/images/dickson.webp", url: "https://www.dickson-constant.com/fr/ou-acheter/129354/" },
+    { name: "Serge Ferrari", logo: "/images/Serge-ferrari-footer.png", url: "https://store-locator.sergeferrarigroup.com/fr/france/hauts-de-france/oise/le-plessis-belleville/hello-fermetures-133" },
+];
+
+// Ligne 2 : Les marques fabricants
+const partnersRow2 = [
+    { name: "Somfy", logo: "/images/somfy-footer.png", url: "https://www.somfy.fr/ou-acheter/installateurs/hello-fermetures-le-plessis-belleville-1.html" },
+    { name: "Expert Cetal", logo: "/images/cetal-footer.png", url: "https://www.portail-cetal.fr/revendeurs/hello-fermetures/" },
+    { name: "Expert Proferm", logo: "/images/proferm.png", url: "https://proferm.net/notre-reseau/trouver-un-installateur/hello-fermetures/" },
+];
+
+// Classe CSS commune pour la taille des logos (Plus gros : h-16 sur mobile, h-20 sur ordi)
+const logoSizeClass = "h-16 md:h-20 w-auto object-contain";
+const logoHoverEffect = "opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500";
 ---
 
 <footer id="contact" class="bg-black border-t border-white/10 pt-20 pb-10 px-6 font-body">
     <div class="max-w-7xl mx-auto">
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
             <div>
                 <div class="text-2xl font-display font-bold text-white mb-6">HELLO <span class="text-gold">FERMETURES</span></div>
                 <div class="space-y-6">
-                    <div class="flex items-start gap-4"><i class="fa-solid fa-location-dot text-gold mt-1"></i><address class="not-italic text-gray-400 text-sm leading-relaxed"><strong class="text-white block mb-1">Showroom Principal</strong>2 Avenue Georges Bataille<br>60330 Le Plessis-Belleville</address></div>
-                    <div class="flex items-center gap-4"><i class="fa-solid fa-phone text-gold"></i><a href="tel:0310454838" class="text-xl font-bold text-white hover:text-gold transition">03 10 45 48 38</a></div>
-                    <a href="https://maps.google.com/?q=2+Avenue+Georges+Bataille+60330+Le+Plessis-Belleville" target="_blank" class="inline-block border border-white/20 px-6 py-2 text-xs font-bold uppercase tracking-widest text-white hover:bg-gold hover:text-black hover:border-gold transition">Nous situer</a>
+                    <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-location-dot text-gold mt-1"></i>
+                        <address class="not-italic text-gray-400 text-sm leading-relaxed">
+                            <strong class="text-white block mb-1">Showroom Principal</strong>
+                            2 Avenue Georges Bataille<br>60330 Le Plessis-Belleville
+                        </address>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <i class="fa-solid fa-phone text-gold"></i>
+                        <a href="tel:0310454838" class="text-xl font-bold text-white hover:text-gold transition">03 10 45 48 38</a>
+                    </div>
+                    <a href="https://goo.gl/maps/..." target="_blank" class="inline-block border border-white/20 px-6 py-2 text-xs font-bold uppercase tracking-widest text-white hover:bg-gold hover:text-black hover:border-gold transition">Nous situer</a>
                 </div>
             </div>
+
             <div>
                 <h4 class="text-gold text-xs font-bold uppercase tracking-widest mb-6">Horaires d'ouverture</h4>
-                <div class="text-sm space-y-3">
+                <div class="text-sm space-y-3 text-white">
                     <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500 w-24">Lundi</span><span class="text-red-500 font-bold text-xs uppercase">Fermé</span></div>
-                    <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500 w-24">Mardi</span><span class="text-white text-right">09:00–12:00 / 14:00–18:00</span></div>
-                    <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500 w-24">Mercredi</span><span class="text-white text-right">09:00–12:00 / 14:00–18:00</span></div>
-                    <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500 w-24">Jeudi</span><span class="text-white text-right">09:00–12:00 / 14:00–18:00</span></div>
-                    <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500 w-24">Vendredi</span><span class="text-white text-right">09:00–12:00 / 14:00–18:00</span></div>
-                    <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500 w-24">Samedi</span><span class="text-white text-right">09:00–12:00 / 14:00–18:00</span></div>
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500 w-24">Mardi</span><span>09:00–12:00 / 14:00–18:00</span></div>
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500 w-24">Mercredi</span><span>09:00–12:00 / 14:00–18:00</span></div>
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500 w-24">Jeudi</span><span>09:00–12:00 / 14:00–18:00</span></div>
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500 w-24">Vendredi</span><span>09:00–12:00 / 14:00–18:00</span></div>
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span class="text-gray-500 w-24">Samedi</span><span>09:00–12:00 / 14:00–18:00</span></div>
                     <div class="flex justify-between pb-2"><span class="text-gray-500 w-24">Dimanche</span><span class="text-red-500 font-bold text-xs uppercase">Fermé</span></div>
                 </div>
             </div>
+
             <div>
                 <h4 class="text-gold text-xs font-bold uppercase tracking-widest mb-6">Services Clients</h4>
                 <ul class="space-y-4 text-sm">
@@ -33,18 +66,58 @@
                     <li><a href="#" class="flex items-center gap-3 text-gray-400 hover:text-white transition group"><span class="w-1 h-1 bg-gold rounded-full group-hover:w-2 transition-all"></span> Avis Eldo</a></li>
                 </ul>
             </div>
+
             <div>
                 <h4 class="text-gold text-xs font-bold uppercase tracking-widest mb-6">Le saviez-vous ?</h4>
-                <div class="weather-box">
+                <div class="weather-box p-4 bg-white/5 border border-white/10">
                     <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-cloud-rain text-white text-xl"></i><span class="text-white font-bold uppercase text-xs">Climat Local</span></div>
-                    <p class="text-gray-400 text-xs leading-relaxed mb-3">Le Plessis-Belleville est une ville avec une pluviométrie importante (moyenne <span class="text-gold font-bold">710 mm/an</span>).</p>
-                    <p class="text-gray-400 text-xs leading-relaxed">Température moyenne : <span class="text-gold font-bold">11.2°C</span>.<br><br><em class="text-white">Il est donc crucial de se munir de menuiseries performantes pour votre confort.</em></p>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-3">Le Plessis-Belleville (moyenne <span class="text-gold font-bold">710 mm/an</span>).</p>
+                    <p class="text-gray-400 text-xs leading-relaxed"><em class="text-white italic">Il est donc crucial de se munir de menuiseries performantes.</em></p>
                 </div>
             </div>
         </div>
+
+        <div class="border-t border-white/10 py-12">
+            <p class="text-center text-gray-500 text-[10px] uppercase tracking-[0.2em] mb-12">Nos Partenaires & Certifications</p>
+
+            <div class="flex flex-col items-center gap-y-12 px-4">
+
+                <div class="flex flex-wrap justify-center items-center gap-x-12 md:gap-x-20">
+                    {partnersRow1.map((partner) => (
+                            <a href={partner.url} target="_blank" rel="noopener noreferrer" class="group" title={partner.name}>
+                                <img
+                                        src={partner.logo}
+                                        alt={partner.name}
+                                        class={`${logoSizeClass} ${logoHoverEffect}`}
+                                        loading="lazy"
+                                />
+                            </a>
+                    ))}
+                </div>
+
+                <div class="flex flex-wrap justify-center items-center gap-x-12 md:gap-x-20">
+                    {partnersRow2.map((partner) => (
+                            <a href={partner.url} target="_blank" rel="noopener noreferrer" class="group" title={partner.name}>
+                                <img
+                                        src={partner.logo}
+                                        alt={partner.name}
+                                        class={`${logoSizeClass} ${logoHoverEffect}`}
+                                        loading="lazy"
+                                />
+                            </a>
+                    ))}
+                </div>
+
+            </div>
+        </div>
+
         <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600 uppercase tracking-widest">
-            <p>© 2025 Hello Fermetures - Tous droits réservés.</p>
-            <div class="flex flex-wrap justify-center gap-6"><a href="#" class="hover:text-gold transition">Mentions légales</a><a href="#" class="hover:text-gold transition">Confidentialité</a><a href="#" class="hover:text-gold transition">CGV</a><a href="#" class="hover:text-gold transition">Plan du site</a></div>
+            <p>© {currentYear} Hello Fermetures - Tous droits réservés.</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="/mentions-legales" class="hover:text-gold transition">Mentions légales</a>
+                <a href="/confidentialite" class="hover:text-gold transition">Confidentialité</a>
+                <a href="/cgv" class="hover:text-gold transition">CGV</a>
+            </div>
         </div>
     </div>
 </footer>

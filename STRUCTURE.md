@@ -108,7 +108,7 @@ import HeroVideo from '../components/hero/HeroVideo.astro';
     title="Découvrez nos partenaires"
     videoUrl="https://www.youtube.com/embed/VIDEO_ID"
     description="Description du fabricant..."
-    backgroundImage="/public/images/bg-grille-defense.jpg"
+    backgroundImage="/images/bg-grille-defense.jpg"
 />
 ```
 
@@ -141,7 +141,7 @@ import ProductCard from '../components/product/ProductCard.astro';
 
 <ProductCard
     title="Grille Antique"
-    image="/public/images/Grille_Antique.jpg"
+    image="/images/Grille_Antique.jpg"
     description="Traverses carré plein de 14..."
     variant="compact"
 />
@@ -149,7 +149,7 @@ import ProductCard from '../components/product/ProductCard.astro';
 <!-- Avec liste de fonctionnalités -->
 <ProductCard
     title="Portail Battant"
-    image="/public/images/portail-battant.jpg"
+    image="/images/portail-battant.jpg"
     features={[
         'Esthétique classique',
         'Facile à motoriser',
@@ -187,8 +187,8 @@ import ProductCard from '../components/product/ProductCard.astro';
     subtitle="Protection et esthétique"
     variant="compact"
 >
-    <ProductCard title="Produit 1" image="/public/images/product1.jpg" variant="compact" />
-    <ProductCard title="Produit 2" image="/public/images/product2.jpg" variant="compact" />
+    <ProductCard title="Produit 1" image="/images/product1.jpg" variant="compact" />
+    <ProductCard title="Produit 2" image="/images/product2.jpg" variant="compact" />
     <!-- Plus de produits... -->
 </ProductGrid>
 ```
@@ -216,7 +216,7 @@ import CatalogueSection from '../components/public/catalogues/CatalogueSection.a
 <CatalogueSection
     title="Découvrez notre catalogue"
     catalogueUrl="/public/catalogues/lahfer-grilles.pdf"
-    catalogueImage="/public/images/catalogue-lahfer.png"
+    catalogueImage="/images/catalogue-lahfer.png"
     altText="Catalogue LAHFER"
 />
 ```
@@ -241,7 +241,7 @@ import CatalogueSection from '../components/public/catalogues/CatalogueSection.a
             title="Découvrez nos partenaires"
             videoUrl="https://www.youtube.com/embed/VIDEO_ID"
             description="Description du partenaire fabricant..."
-            backgroundImage="/public/images/bg-page.jpg"
+            backgroundImage="/images/bg-page.jpg"
         />
 
         <!-- Products Section -->
@@ -252,7 +252,7 @@ import CatalogueSection from '../components/public/catalogues/CatalogueSection.a
         >
             <ProductCard
                 title="Produit 1"
-                image="/public/images/product1.jpg"
+                image="/images/product1.jpg"
                 features={[
                     'Caractéristique 1',
                     'Caractéristique 2',
@@ -261,7 +261,7 @@ import CatalogueSection from '../components/public/catalogues/CatalogueSection.a
             />
             <ProductCard
                 title="Produit 2"
-                image="/public/images/product2.jpg"
+                image="/images/product2.jpg"
                 description="Description du produit"
                 videoUrl="https://youtube.com/watch?v=..."
             />
@@ -272,7 +272,7 @@ import CatalogueSection from '../components/public/catalogues/CatalogueSection.a
         <CatalogueSection
             title="Téléchargez notre catalogue"
             catalogueUrl="/public/catalogues/catalogue.pdf"
-            catalogueImage="/public/images/catalogue.png"
+            catalogueImage="/images/catalogue.png"
         />
     </main>
 </Layout>
@@ -314,8 +314,8 @@ import CatalogueSection from '../components/public/catalogues/CatalogueSection.a
 ```astro
 <!-- ✅ BON : Utiliser ProductGrid + ProductCard -->
 <ProductGrid title="Nos produits">
-    <ProductCard title="Produit 1" image="/public/images/1.jpg" />
-    <ProductCard title="Produit 2" image="/public/images/2.jpg" />
+    <ProductCard title="Produit 1" image="/images/1.jpg" />
+    <ProductCard title="Produit 2" image="/images/2.jpg" />
 </ProductGrid>
 
 <!-- ❌ MAUVAIS : Recréer toute la structure -->

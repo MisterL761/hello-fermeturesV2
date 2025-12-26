@@ -6,7 +6,7 @@ interface Props {
     backgroundImage?: string;
 }
 
-const { title, videoUrl, description, backgroundImage = '/public/images/bg-default.jpg' } = Astro.props;
+const { title, videoUrl, description, backgroundImage = '/images/bg-default.jpg' } = Astro.props;
 ---
 
 <section class="hero" style={`background-image: url('${backgroundImage}')`}>
